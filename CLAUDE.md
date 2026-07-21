@@ -18,8 +18,11 @@ other files exist only to install, lint, and iterate on it.
   this file *is* the work. Structured as §0–§9 (the one idea → always-on
   directives → autonomy contract → configuration → orientation → the five
   phases → output → hard rules → anti-patterns → self-check). The five phase
-  headings under §5 are load-bearing: `--only <phase>` names them, and the
-  README's phase table mirrors them. Keep the two in sync.
+  *slugs* under §5 are load-bearing — `--only <phase>` names them, so
+  `seiri|seiton|seiso|seiketsu|shitsuke` must match the frontmatter
+  `argument-hint`. The English glosses beside them are not: `SKILL.md` says
+  "Seiton — put each thing in its place" where `README.md` says "set in
+  order", and that divergence is fine. Only the slugs need syncing.
 - **`skills/wrap/templates/wrap-config.md`** — the `.wrap.md` template users
   copy into their projects. Its four section headings (Canonical locations /
   Verification commands / Disposable zones / Commit conventions) are parsed by
