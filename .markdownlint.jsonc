@@ -1,0 +1,7 @@
+{
+  // Prose hard-wraps at ~78 columns, but the 5S phase tables and the output
+  // sample run wider on purpose.
+  "MD013": false,
+  // The config template and SKILL.md use <type>, <scope>, <phase> placeholders.
+  "MD033": false
+}
