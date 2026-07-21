@@ -184,8 +184,8 @@ A place for everything, and the place is discoverable.
 - **Re-check the boundary.** Does anything sit in the canonical area that is
   actually still exploratory, or vice versa? Propose the relocation.
 - **Refresh the index.** The config's `index` file must match what is on disk.
-  A status table listing ten topics over a directory of eighty is worse than
-  no table.
+  A status table listing ten topics over a directory of sixty-seven is worse
+  than no table.
 - **For code milestones**, the same logic applies to structure: a helper that
   now has three callers moves out of the file that spawned it; a module that
   turned out not to be shared moves back in.
@@ -264,7 +264,7 @@ entry-point section. In conversation, close with a compact table:
 
 ```text
 Seiri     3 deleted, 1 annexed, 2 hypotheses retired
-Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (80 topics)
+Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (67 topics)
 Seiso     4 docs reconciled; markdownlint ✓; lychee 2 dead links (advisory)
 Seiketsu  1 lesson → AGENTS.md; nothing else generalised
 Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed

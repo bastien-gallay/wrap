@@ -49,8 +49,9 @@ other files exist only to install, lint, and iterate on it.
 
 ## Provenance
 
-The protocol is a codification of a pattern observed across ~590 commits in a
-docs-first knowledge hub — consolidate scattered sessions into one source,
+The protocol is a codification of a pattern observed across 635 commits (469
+of them `docs:`) in a docs-first knowledge hub — consolidate scattered
+sessions into one source,
 write provenance, reconcile every doc carrying the superseded claim, retire
 hypotheses in a table, promote the durable lesson, write the handoff. The 5S
 framing was applied afterwards; it fit without forcing.

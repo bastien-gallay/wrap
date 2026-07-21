@@ -65,7 +65,7 @@ is unconfigured, and offers to write a `.wrap.md` at the end.
 
 ```text
 Seiri     3 deleted, 1 annexed, 2 hypotheses retired
-Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (80 topics)
+Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (67 topics)
 Seiso     4 docs reconciled; markdownlint ✓; lychee 2 dead links (advisory)
 Seiketsu  1 lesson → AGENTS.md; nothing else generalised
 Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed
