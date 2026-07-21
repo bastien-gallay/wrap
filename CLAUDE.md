@@ -69,9 +69,11 @@ Written 2026-07-21, at the end of the session that created the skill.
   self-wrap exercised Seiso and Seiketsu but found nothing for Seiri (no
   scratch, no dead hypotheses) and little for Seiton, so three of five phases
   are effectively untested.
-- **Open, not ticketed.** This repo has no `.wrap.md` of its own. Running
-  unconfigured is a supported path and was itself worth testing, so this is a
-  deliberate gap, not an oversight.
+- **Closed 2026-07-21.** This repo had no `.wrap.md` of its own during the
+  self-wrap, which is how the unconfigured path got tested. One was written
+  immediately afterwards. Its commit conventions section diverges from the
+  template on purpose: this repo's subjects carry no type prefix, verified
+  against `git log` rather than assumed.
 - **Looks like a contradiction, is not.** The first commit message
   (`cd75710`) says the pattern was observed across "~590 commits". The real
   figure is 635. The message is left uncorrected on purpose — §1.6 of
