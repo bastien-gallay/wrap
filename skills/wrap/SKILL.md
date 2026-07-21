@@ -200,6 +200,13 @@ claim.
   tables, not only body prose — a corrected body under a stale header is a
   document that contradicts itself twenty lines apart, and the header is what
   people read.
+- **Re-derive every figure the session wrote down.** Counts, dates, versions,
+  "N of M" claims — especially any that came from a subagent's report, a
+  summary, or your own earlier command. These are the superseded claims most
+  likely to survive the pass, because they look like facts rather than
+  conclusions and nobody re-runs the command. Re-run it. Watch for shell
+  aliases too: a colourising `ls` emits ANSI escapes that silently break a
+  `^`-anchored grep and return a confident zero.
 - **Run the verification commands** from config. Report output verbatim.
   Blocking failures stop the wrap: fix them, or say clearly that the milestone
   is not closable yet. Advisory failures get reported and carried into the
