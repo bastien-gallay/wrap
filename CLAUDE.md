@@ -29,9 +29,31 @@ other files exist only to install, lint, and iterate on it.
   §3 of `SKILL.md`. Renaming a heading here is a breaking change.
 - **`README.md`** — human-facing summary; must stay in sync with `SKILL.md`'s
   spine but is not itself executed.
+- **`FEEDBACK.md`** — append-only intake for raw run notes, newest first,
+  above the `<!-- No open feedback -->` sentinel.
+- **`feedback/`** — archived batches as `YYYY-MM-DD-reviewed.md`, written
+  *after* a batch has been folded into `SKILL.md`.
 - **`install.sh`** — symlinks (default) or copies `skills/wrap` into
   `~/.claude/skills/wrap`. Symlink is the intended mode so edits to `SKILL.md`
   propagate live without reinstalling.
+
+## The iteration loop (this repo's actual workflow)
+
+The protocol is improved by running it on real milestones, then folding what
+the run exposed back into the prose:
+
+1. A real run surfaces friction → capture it verbatim in `FEEDBACK.md`, at
+   the time, without deciding the fix.
+2. Fold the change into `SKILL.md` — usually a new bullet in a phase under
+   §5, an always-on directive in §1, or an entry in §8 anti-patterns. Record
+   the *why* under `## Design decisions worth not re-litigating` below, so the
+   reasoning does not live only in git history.
+3. Move the consumed notes into `feedback/<date>-reviewed.md`.
+
+**Editing `SKILL.md` during a wrap of this repo is a hazard**, not a
+convenience: the install is a symlink, so the protocol changes while it is
+executing and the run stops being reproducible. Capture into `FEEDBACK.md`
+during the pass; edit `SKILL.md` after it closes.
 
 ## Design decisions worth not re-litigating
 
