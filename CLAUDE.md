@@ -54,10 +54,29 @@ other files exist only to install, lint, and iterate on it.
 
 The protocol is a codification of a pattern observed across 635 commits (469
 of them `docs:`) in a docs-first knowledge hub — consolidate scattered
-sessions into one source,
-write provenance, reconcile every doc carrying the superseded claim, retire
-hypotheses in a table, promote the durable lesson, write the handoff. The 5S
-framing was applied afterwards; it fit without forcing.
+sessions into one source, write provenance, reconcile every doc carrying the
+superseded claim, retire hypotheses in a table, promote the durable lesson,
+write the handoff. The 5S framing was applied afterwards; it fit without
+forcing.
+
+## State — what is open
+
+Written 2026-07-21, at the end of the session that created the skill.
+
+- **Settled.** The protocol is written, installed at `~/.claude/skills/wrap`,
+  and committed. It has been run once — on this repo, against itself.
+- **Open, not ticketed.** It has never run on an external milestone. The
+  self-wrap exercised Seiso and Seiketsu but found nothing for Seiri (no
+  scratch, no dead hypotheses) and little for Seiton, so three of five phases
+  are effectively untested.
+- **Open, not ticketed.** This repo has no `.wrap.md` of its own. Running
+  unconfigured is a supported path and was itself worth testing, so this is a
+  deliberate gap, not an oversight.
+- **Looks like a contradiction, is not.** The first commit message
+  (`cd75710`) says the pattern was observed across "~590 commits". The real
+  figure is 635. The message is left uncorrected on purpose — §1.6 of
+  `SKILL.md` says supersede, do not rewrite history. `CLAUDE.md` carries the
+  corrected figure; the commit carries the one that was believed at the time.
 
 ## Conventions
 
