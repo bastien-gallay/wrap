@@ -159,6 +159,9 @@ are kept where they are still true and marked closed where they are not.
   purpose; keep prose wrapped at ~78 columns to match existing style. `MD024`
   is scoped to siblings, because the changelog repeats `### Added` per release
   and each reviewed-feedback archive repeats `### What worked` per batch.
-- `.DS_Store` and `.personal/` are gitignored.
+- **`.gitignore` covers five paths**: `.DS_Store`, `.personal/`, `dist/`,
+  `node_modules/`, `.impeccable/`. The last is a regenerating hook cache that
+  was ignored only through this clone's `.git/info/exclude` until 2026-07-26 —
+  a fresh clone saw it as an untracked file.
 - Version bumps live in `.claude-plugin/plugin.json` *and*
   `marketplace.json` — both, or the plugin silently freezes.
