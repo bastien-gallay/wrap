@@ -55,6 +55,16 @@ convenience: the install is a symlink, so the protocol changes while it is
 executing and the run stops being reproducible. Capture into `FEEDBACK.md`
 during the pass; edit `SKILL.md` after it closes.
 
+**Step 1 does not work from other repos, and that is the loop's weak point.**
+A wrap running in someone else's checkout cannot reach this `FEEDBACK.md`, so
+friction from external runs is lost unless someone goes back through the
+session transcripts. That is exactly what happened between 2026-07-21 and
+07-25: 26 runs, one note. Recovering them meant parsing
+`~/.claude/projects/*/*.jsonl` for `/wrap` expansions and reading the turns
+that followed — feasible, and not a substitute. The naive fix (have `SKILL.md`
+append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
+`feedback/2026-07-26-reviewed.md` for why it only works on symlink installs.
+
 ## Design decisions worth not re-litigating
 
 - **No milestone profiles.** An earlier draft branched on dev / fix / doc
@@ -71,6 +81,32 @@ during the pass; edit `SKILL.md` after it closes.
 - **Retired hypotheses are kept, not erased.** A future session may arrive
   holding a dead belief; it needs to recognise its own, which requires the
   belief to still be written down somewhere.
+- **Publication is one confirmation, not three.** Splitting `commit`, `push`
+  and PR into separate approvals looked like caution. In 26 observed runs it
+  produced three round-trips every single time and never once caught a mistake
+  the commit-subject list had not already surfaced. The confirmation still
+  exists; it is just presented whole, signing authorisation included.
+- **Orientation fans out, the five phases do not.** The phases are serial by
+  construction — you cannot rank what to keep before you know what exists.
+  What parallelises is the *reading*: a main-loop turn at the end of a long
+  session carries ~245 k of cached context, a fresh collector's turn carries
+  20–40 k, so a `grep` is 6–10× cheaper outside the main context. Hence four
+  collectors, one barrier, one writer. Fanning out the *edits* was rejected:
+  claims overlap files, so parallel writers recreate the commit-split problem
+  and can clobber each other.
+- **Seiketsu is never delegated.** Routing lessons to destinations requires
+  having seen the whole pass, and the "zero to two lessons, be strict"
+  discipline only holds in a context that watched itself accumulate candidates.
+  A subagent asked to promote lessons promotes seven.
+- **The glyphs are output structure, not decoration.** The Japanese names earn
+  their place — they keep the five phases from collapsing into five generic
+  steps — but `Seiketsu` alone is unreadable at a glance. A glyph costs one
+  token per line and makes a run scannable for judgements. Two registers, kept
+  distinct: five fixed phase glyphs, and a closed verdict set (✅ ⚠️ ❌ →).
+- **The skill ships decoupled from every real project.** Examples use `PROJ-\d+`
+  and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
+  sample before anyone noticed; a skill that travels to other people's repos
+  must not carry a client's identifiers in its own prose.
 
 ## Provenance
 
@@ -83,14 +119,28 @@ forcing.
 
 ## State — what is open
 
-Written 2026-07-21, at the end of the session that created the skill.
+Revised 2026-07-26, after folding 26 runs into `0.2.0`. The 2026-07-21 lines
+are kept where they are still true and marked closed where they are not.
 
 - **Settled.** The protocol is written, installed at `~/.claude/skills/wrap`,
-  and committed. It has been run once — on this repo, against itself.
-- **Open, not ticketed.** It has never run on an external milestone. The
-  self-wrap exercised Seiso and Seiketsu but found nothing for Seiri (no
-  scratch, no dead hypotheses) and little for Seiton, so three of five phases
-  are effectively untested.
+  and committed. `0.2.0` folds two feedback batches; see
+  `feedback/2026-07-26-reviewed.md` for the note-to-fold ledger.
+- **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
+  between 07-21 and 07-25 exercised all five phases on real external
+  milestones. Seiso carries the value in essentially every run; Seiri and
+  Seiton are legitimately empty most of the time, which is the designed
+  outcome, not an untested one.
+- **Open, not ticketed — the parallel-collector design is written but unrun.**
+  `0.2.0` describes Orientation as a fan-out of four read-only collectors plus
+  a refuter. That is a prediction about cost, derived from measured averages
+  (245 k cache-read per main-loop turn, 67 turns per run), not a measurement of
+  the new design. The next run is the first test. If the fixed startup cost of
+  four collectors eats the saving, the fallback is fewer collectors with more
+  work each, not a return to serial reading.
+- **Open, not ticketed — the feedback intake is still repo-local.** Friction
+  from a run in someone else's checkout has nowhere to land. The naive fix was
+  considered and deliberately not folded; the reasoning is in
+  `feedback/2026-07-26-reviewed.md`.
 - **Closed 2026-07-21.** This repo had no `.wrap.md` of its own during the
   self-wrap, which is how the unconfigured path got tested. One was written
   immediately afterwards. Its commit conventions section diverges from the
@@ -106,7 +156,9 @@ Written 2026-07-21, at the end of the session that created the skill.
 
 - **Markdown is linted with markdownlint** against `.markdownlint.jsonc`.
   `MD013` (line length) is disabled because the phase tables run wide on
-  purpose; keep prose wrapped at ~78 columns to match existing style.
+  purpose; keep prose wrapped at ~78 columns to match existing style. `MD024`
+  is scoped to siblings, because the changelog repeats `### Added` per release
+  and each reviewed-feedback archive repeats `### What worked` per batch.
 - `.DS_Store` and `.personal/` are gitignored.
 - Version bumps live in `.claude-plugin/plugin.json` *and*
   `marketplace.json` — both, or the plugin silently freezes.
