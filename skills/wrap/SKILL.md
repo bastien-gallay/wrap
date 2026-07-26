@@ -71,10 +71,6 @@ which makes Shitsuke's handoff the centre of the pass).
 7. **No profiles.** There is one pass. A doc milestone and a bugfix milestone
    run the same five phases; each phase simply finds different things, or
    nothing.
-
-## 2. Autonomy contract
-
-| Action | Mode |
 8. **Another session may be in this repo right now.** Before editing, check
    whether the file already carries changes that are not yours. If it does:
    do not touch it, defer whatever you were going to add, leave it uncommitted,
@@ -89,17 +85,21 @@ which makes Shitsuke's handoff the centre of the pass).
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
     independent commands into one call rather than one per turn.
+
+## 2. Autonomy contract
+
+| Action | Mode |
 | --- | --- |
 | Reconcile a document against a superseded claim | Do it, report it |
 | Refresh an index / status table | Do it, report it |
 | Run lint, tests, link-check | Do it, report the output verbatim |
 | Append a lesson to a durable location | Do it, report it |
 | Write the next-session entry point | Do it, report it |
+| Write a `.wrap.md` when none exists | Do it, report it |
 | Bump a tool version | Do it, report it |
 | **Delete a file** | **Propose, wait** |
 | **Move / relocate a file** | **Propose, wait** |
 | **Edit a ticket, issue, or wiki page** | **Propose, wait** |
-| Write a `.wrap.md` when none exists | Do it, report it |
 | **The publication path** | **Propose, wait** |
 
 Group the confirmations: present all of a phase's deletions and moves as one
@@ -129,11 +129,11 @@ means "figure it out or skip the check", never "fail".
 - skills: .claude/skills/           # where operational lessons go
 - decisions: architecture/adr/      # where cross-cutting decisions go
 - journal: infrastructure/{YYYY}-{MM}-applied-decisions.md
+- tracker: jira PROJ / github issues # surfaces outside the repo (§Seiso)
 
 ## Verification commands
 - blocking: markdownlint '**/*.md'
 - blocking: uv run pytest
-- tracker: jira PROJ / github issues # surfaces outside the repo (§Seiso)
 - advisory: lychee --offline .
 
 ## Disposable zones
@@ -257,6 +257,16 @@ claim.
   conclusions and nobody re-runs the command. Re-run it. Watch for shell
   aliases too: a colourising `ls` emits ANSI escapes that silently break a
   `^`-anchored grep and return a confident zero.
+- **Reconcile the surfaces outside the repo.** A ticket in `READY FOR DEV` on a
+  justification this session killed is more expensive than any stale document —
+  somebody picks it up tomorrow and builds on a dead premise. Report these and
+  **propose** the rewording; do not edit. Prefer a comment over a field edit,
+  and never touch labels: on many projects a label change moves a ticket's
+  status through an automation.
+- **Route what is bigger than the milestone.** A finding outside this
+  milestone's scope gets a ticket, an issue comment, or a line in the open list.
+  It is never silently fixed — that is scope creep with no trace — and never
+  dropped.
 - **Run the verification commands** from config. Report output verbatim.
   Blocking failures stop the wrap: fix them, or say clearly that the milestone
   is not closable yet. Advisory failures get reported and carried into the
@@ -268,16 +278,6 @@ claim.
   either becomes a tracked item or gets deleted; commented-out code goes;
   debug logging goes; a test that was skipped to land the fix gets named in
   the open list.
-- **Reconcile the surfaces outside the repo.** A ticket in `READY FOR DEV` on a
-  justification this session killed is more expensive than any stale document —
-  somebody picks it up tomorrow and builds on a dead premise. Report these and
-  **propose** the rewording; do not edit. Prefer a comment over a field edit,
-  and never touch labels: on many projects a label change moves a ticket's
-  status through an automation.
-- **Route what is bigger than the milestone.** A finding outside this
-  milestone's scope gets a ticket, an issue comment, or a line in the open list.
-  It is never silently fixed — that is scope creep with no trace — and never
-  dropped.
 
 ### 📐 Seiketsu (清潔) — standardise: promote the lesson
 
@@ -294,6 +294,7 @@ routing wrongly is the common failure:
 | Applies to anyone working in this repo | The `lessons` file (e.g. `AGENTS.md`) |
 | A cross-cutting decision with alternatives | An ADR |
 | "We applied X to environment Y on date Z" | The dated journal |
+| How to *wrap this repo* — what a pass here gets wrong | `.wrap.md`, `## Notes` |
 
 Be strict. Most sessions produce **zero to two** durable lessons. Promoting
 seven means most of them were topic-specific and you just polluted the file
@@ -304,7 +305,6 @@ A lesson worth promoting is phrased as the trap plus the instance that
 produced it, not as an abstraction. "A local reading extrapolated into a
 global conclusion — we measured one shard's queue and called it cluster
 throughput" beats "be careful with metrics".
-| How to *wrap this repo* — what a pass here gets wrong | `.wrap.md`, `## Notes` |
 
 ### 🪧 Shitsuke (躾) — sustain: the entry point
 
@@ -381,6 +381,8 @@ advise?".
   is *correct*; the newer one is sometimes the one that drifted.
 - Never mark a milestone closed while a blocking check fails.
 - Never commit without showing the subjects first.
+- Never commit a file whose other changes belong to someone else's session.
+- Never edit a ticket, an issue, or a wiki page without confirmation.
 - Never write "TODO" as the resolution of anything in this pass.
 
 ## 8. Anti-patterns
@@ -399,6 +401,15 @@ advise?".
   assumes they are in the wrong repo.
 - **Wrapping mid-flight.** Running this on work that is merely paused. It
   produces a document that describes a conclusion that has not happened.
+- **The section-number reference.** Telling the user about "§6" instead of
+  naming the file and the heading. It is unresolvable from memory.
+- **The narrated pass.** A message before each tool call announcing what is
+  about to happen. wrap runs at the end of a long session, where every turn
+  re-reads the largest context of the day; half the cost of a run is prose
+  nobody needed.
+- **The finding told five times.** Once in the phase narration, once in a
+  detail table, once in the closing table, once in the commit body, once in
+  the PR body. Once in the file, once in the table.
 
 ## 9. Self-check before you finish
 
@@ -412,14 +423,3 @@ advise?".
 - Is each proposed commit one idea, with a subject that states a conclusion?
 - Did the refuter get a fresh context, and did I act on what it found?
 - Is there one confirmation left to give, or three?
-- Never commit a file whose other changes belong to someone else's session.
-- Never edit a ticket, an issue, or a wiki page without confirmation.
-- **The section-number reference.** Telling the user about "§6" instead of
-  naming the file and the heading. It is unresolvable from memory.
-- **The narrated pass.** A message before each tool call announcing what is
-  about to happen. wrap runs at the end of a long session, where every turn
-  re-reads the largest context of the day; half the cost of a run is prose
-  nobody needed.
-- **The finding told five times.** Once in the phase narration, once in a
-  detail table, once in the closing table, once in the commit body, once in
-  the PR body. Once in the file, once in the table.

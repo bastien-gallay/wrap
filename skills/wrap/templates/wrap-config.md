@@ -13,6 +13,7 @@ Where things belong once `wrap` decides they belong somewhere.
 - skills: .claude/skills/
 - decisions: architecture/adr/
 - journal: infrastructure/{YYYY}-{MM}-applied-decisions.md
+- tracker: jira PROJ / github issues
 
 `index` is the table that must match reality — the one that quietly drifts.
 `lessons` is the file every contributor reads. `journal` supports `{YYYY}` and

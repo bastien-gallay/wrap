@@ -50,9 +50,9 @@ Then type `/wrap` when a milestone lands.
 
 ## Configure
 
-Optional but recommended. Copy `skills/wrap/templates/wrap-config.md` to
-`.wrap.md` at your project root (or `.personal/wrap/config.md` to keep it out
-of the repo). It declares four things:
+Optional. Copy `skills/wrap/templates/wrap-config.md` to `.wrap.md` at your
+project root (or `.personal/wrap/config.md` to keep it out of the repo). It
+declares five things:
 
 - **Canonical locations** — the index that must match reality, where lessons
   go, where decisions go, the dated journal, and the tracker whose tickets can
@@ -60,6 +60,8 @@ of the repo). It declares four things:
 - **Verification commands** — blocking vs advisory.
 - **Disposable zones** — paths Seiri need not agonise over.
 - **Commit conventions** — format, scope, ticket pattern.
+- **Notes** — free prose, including what a pass over *this* repo got wrong last
+  time.
 
 With no config, `wrap` infers what it can, runs anyway, says plainly that it is
 unconfigured, and **writes the `.wrap.md` itself** during Shitsuke, capturing
@@ -73,26 +75,26 @@ inferred everything again.
 /wrap
 /wrap --dry-run                 # read-only: full plan, nothing touched
 /wrap --only seiso              # run a single phase
+/wrap for picking up tomorrow   # free text narrows the scope, or states intent
 ```
 
-/wrap for picking up tomorrow   # free text narrows the scope, or states intent
 ## Output
 
 ```text
-Seiri     3 deleted, 1 annexed, 2 hypotheses retired
-Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (67 topics)
-Seiso     4 docs reconciled; markdownlint ✓; lychee 2 dead links (advisory)
-Seiketsu  1 lesson → AGENTS.md; nothing else generalised
-Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed
-          3 commits proposed
+🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
+📍 Seiton      6 notes → wip/queue-pacing/README.md; index refreshed (67)
+🧹 Seiso       4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links
+               → PROJ-412's justification is dead, reword proposed not applied
+📐 Seiketsu    1 lesson → AGENTS.md; nothing else generalised
+🪧 Shitsuke    entry point written; 1 open (PROJ-419), 1 not ticketed
 ```
-
-Empty phases are the normal case for small milestones, and `wrap` reports them
-as empty rather than manufacturing activity.
 
 Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking · → routed
 elsewhere. Then the publication block, one confirmation, and a ranked
 recommendation of what to do next.
+
+Empty phases are the normal case for small milestones, and `wrap` reports them
+as empty rather than manufacturing activity.
 
 ## License
 
