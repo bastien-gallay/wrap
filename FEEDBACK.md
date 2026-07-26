@@ -20,6 +20,12 @@ than this one, so the intake only fires during a self-wrap.
 Not a wrap run. Notes from the session that folded the 07-26 batch into
 `0.2.0`, kept because they are about this repo's own workflow.
 
+**Partly folded the same day**, by the self-wrap that followed: the first and
+third notes are now in `.wrap.md`'s `## Notes`, which is where `0.2.0` routes
+lessons about wrapping a given repo. The second — whether a rationale file is
+exempt from the one-idea rule — is a hypothesis, not folded. Archive this batch
+once that one is decided.
+
 - **A wholesale rewrite cannot be retro-split by hunk.** `SKILL.md` was
   rewritten in one pass, then carved into commits by staging hunks
   (`git apply --cached --unidiff-zero`, selecting whole hunks by content
@@ -47,5 +53,31 @@ Not a wrap run. Notes from the session that folded the 07-26 batch into
   not be separated. They shipped as one commit with all three named in the
   body. Worth knowing before the next fold: the section order of `SKILL.md`
   determines what can be committed apart.
+
+## 2026-07-26 — self-wrap, after publication
+
+A real run, on this repo, immediately after `0.2.0` was merged and pushed.
+
+- **`0.2.0` left one `§Seiso` behind, inside the change that forbade it.** The
+  config example in the Configuration section carries the comment
+  `# surfaces outside the repo (§Seiso)`. The same release stripped the other
+  phase cross-references (`§Seiton` → `Seiton`) for exactly that reason.
+  **Routed, not fixed**: editing `SKILL.md` during a pass over this repo is the
+  documented hazard, and every edit to it is release-eligible. It is a `0.2.1`,
+  together with a decision on the remaining numeric self-references (`§2`,
+  `§4`, `§6`, `§1.4`) — they look like the same violation and arguably are not,
+  since a numbered section of the protocol has no other name. Decide once,
+  apply to all.
+
+- **The refuter did not get a fresh context.** The pass verified its own
+  figures by re-running the commands, which caught nothing, and that is not the
+  same thing. The session standing instruction was not to spawn agents unless
+  asked, so the step the protocol added one commit earlier went unexercised on
+  its first run. Not a protocol defect — a note that its most novel step is
+  still untested.
+
+- **Orientation did not fan out either, deliberately.** Three commands over
+  fifteen files. Four collectors would have cost more than they saved. A clean
+  self-wrap is not evidence about the wave in either direction.
 
 <!-- No open feedback. Add new session notes above this line, newest first. -->

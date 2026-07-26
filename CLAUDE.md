@@ -131,24 +131,30 @@ not, and an issue would only restate this section.
 - **Settled.** The protocol is written, installed at `~/.claude/skills/wrap`,
   and committed. `0.2.0` folds two feedback batches; see
   `feedback/2026-07-26-reviewed.md` for the note-to-fold ledger.
-- **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
-  between 07-21 and 07-25 exercised all five phases on real external
-  milestones. Seiso carries the value in essentially every run; Seiri and
-  Seiton are legitimately empty most of the time, which is the designed
-  outcome, not an untested one.
-- **Open, not ticketed — the parallel-collector design is written but unrun.**
 - **Settled 2026-07-26 — the repo is published.**
   `github.com/bastien-gallay/wrap`, public, `main` default. It had no remote at
   all until then, which is why the manifests' `homepage` and `repository` URLs
   pointed at nothing through `0.1.0` and most of `0.2.0`. The first PR (#1) set
   the precedent: a merge commit, not a squash, so the per-idea commit subjects
   survive in the history.
+- **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
+  between 07-21 and 07-25 exercised all five phases on real external
+  milestones. Seiso carries the value in essentially every run; Seiri and
+  Seiton are legitimately empty most of the time, which is the designed
+  outcome, not an untested one.
+- **Open, not ticketed — the parallel-collector design is written but unrun.**
   `0.2.0` describes Orientation as a fan-out of four read-only collectors plus
   a refuter. That is a prediction about cost, derived from measured averages
   (245 k cache-read per main-loop turn, 67 turns per run), not a measurement of
-  the new design. The next run is the first test. If the fixed startup cost of
-  four collectors eats the saving, the fallback is fewer collectors with more
-  work each, not a return to serial reading.
+  the new design. If the fixed startup cost of four collectors eats the saving,
+  the fallback is fewer collectors with more work each, not a return to serial
+  reading.
+
+  **Still unrun after the 2026-07-26 self-wrap.** That pass deliberately did not
+  fan out: orientation in a fifteen-file repo is three commands, so four
+  collectors would have cost more than they saved. The design needs a large
+  repo at the end of a long session — the condition it was written for. Do not
+  read a clean self-wrap as evidence either way.
 - **Open, not ticketed — the feedback intake is still repo-local.** Friction
   from a run in someone else's checkout has nowhere to land. The naive fix was
   considered and deliberately not folded; the reasoning is in
@@ -160,9 +166,18 @@ not, and an issue would only restate this section.
   against `git log` rather than assumed.
 - **Looks like a contradiction, is not.** The first commit message
   (`cd75710`) says the pattern was observed across "~590 commits". The real
-  figure is 635. The message is left uncorrected on purpose — §1.6 of
-  `SKILL.md` says supersede, do not rewrite history. `CLAUDE.md` carries the
-  corrected figure; the commit carries the one that was believed at the time.
+  figure is 635. The message is left uncorrected on purpose — the
+  *supersede, do not rewrite history* directive in `SKILL.md` says so.
+  `CLAUDE.md` carries the corrected figure; the commit carries the one that was
+  believed at the time.
+- **Looks like a contradiction, is not.** `21a453d`'s message says a finding is
+  "recorded in FEEDBACK.md". At that commit it was not — `fbe44ed`, two commits
+  later, writes it. Same rule: the message stands, the later commit supersedes
+  it, and `fbe44ed`'s subject says exactly that.
+- **Looks like a contradiction, is not.** `.wrap.md` strikes out "there is no
+  ticket tracker" and still declares no `ticket-pattern`. Both are current: the
+  tracker exists as of publication, and no commit in the history references an
+  issue number, so there is no pattern to match yet.
 
 ## Conventions
 
