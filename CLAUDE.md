@@ -119,8 +119,14 @@ forcing.
 
 ## State — what is open
 
-Revised 2026-07-26, after folding 26 runs into `0.2.0`. The 2026-07-21 lines
-are kept where they are still true and marked closed where they are not.
+Revised 2026-07-26, after folding 26 runs into `0.2.0` and publishing the repo.
+The 2026-07-21 lines are kept where they are still true and marked closed where
+they are not.
+
+Two open items below are marked *not ticketed*. GitHub issues exist as of
+2026-07-26, so that is now a choice rather than a constraint: both are
+questions about the protocol's own design that the next run answers or does
+not, and an issue would only restate this section.
 
 - **Settled.** The protocol is written, installed at `~/.claude/skills/wrap`,
   and committed. `0.2.0` folds two feedback batches; see
@@ -131,6 +137,12 @@ are kept where they are still true and marked closed where they are not.
   Seiton are legitimately empty most of the time, which is the designed
   outcome, not an untested one.
 - **Open, not ticketed — the parallel-collector design is written but unrun.**
+- **Settled 2026-07-26 — the repo is published.**
+  `github.com/bastien-gallay/wrap`, public, `main` default. It had no remote at
+  all until then, which is why the manifests' `homepage` and `repository` URLs
+  pointed at nothing through `0.1.0` and most of `0.2.0`. The first PR (#1) set
+  the precedent: a merge commit, not a squash, so the per-idea commit subjects
+  survive in the history.
   `0.2.0` describes Orientation as a fan-out of four read-only collectors plus
   a refuter. That is a prediction about cost, derived from measured averages
   (245 k cache-read per main-loop turn, 67 turns per run), not a measurement of
