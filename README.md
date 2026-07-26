@@ -17,11 +17,15 @@ checks. Then the five phases run in order, in one context, with one writer.
 
 | S | What it handles |
 | --- | --- |
-| **Seiri** — sort | What stays, what goes. Absorbed notes deleted; un-reproducible evidence annexed; dead hypotheses retired into a table rather than erased; scratch zones emptied; deliberate non-decisions marked as such. |
-| **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
-| **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers and TL;DRs included, not only body prose. Run the project's checks. Bump changed tool versions. Resolve TODOs left in the diff. |
-| **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, or dated journal. Most sessions produce zero to two. |
-| **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then propose the commits. |
+| 🗂 **Seiri** — sort | What stays, what goes. Absorbed notes deleted; un-reproducible evidence annexed; dead hypotheses retired into a table rather than erased; scratch zones emptied or ignored; deliberate non-decisions marked as such. |
+| 📍 **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
+| 🧹 **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers, TL;DRs and summary lines included, not only body prose. Check the surfaces outside the repo too: a ticket built on a dead premise costs more than a stale doc. Run the project's checks. |
+| 📐 **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, dated journal, or `.wrap.md` when the lesson is about wrapping this repo. Most sessions produce zero to two. |
+| 🪧 **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then the copy-pasteable resume block, and the publication. |
+
+The glyphs are load-bearing in the output, not decoration: they let a run be
+scanned for judgements. The gloss beside each slug is rendered in the language
+of the session.
 
 ## What it is not
 
@@ -84,6 +88,10 @@ Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed
 
 Empty phases are the normal case for small milestones, and `wrap` reports them
 as empty rather than manufacturing activity.
+
+Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking · → routed
+elsewhere. Then the publication block, one confirmation, and a ranked
+recommendation of what to do next.
 
 ## License
 

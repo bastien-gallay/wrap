@@ -3,8 +3,8 @@ name: wrap
 description: >
   Close out a session that reached a milestone — a feature landed, a bug
   fixed, an investigation concluded, a document consolidated — by running a
-  5S pass over the work: Seiri (sort what stays from what goes), Seiton
-  (put each thing in its canonical place), Seiso (clean — reconcile every
+  5S pass over the work: Seiri (sort what stays, what goes), Seiton
+  (put each thing in its place), Seiso (clean — reconcile every
   document carrying a now-superseded claim, run the checks), Seiketsu
   (standardise — promote the durable lesson up to where the next reader
   will meet it), Shitsuke (sustain — leave an entry point for whoever
@@ -186,7 +186,11 @@ without touching anything.
 
 ## 5. The five phases
 
-### Seiri (整理) — sort: what stays, what goes
+Each phase is named by its glyph, its slug, and a gloss **in the language of
+the session**. The slug is what `--only` takes; the glyph is what makes a
+finding findable when the output is scanned rather than read.
+
+### 🗂 Seiri (整理) — sort: what stays, what goes
 
 Separate what has earned its place from what is merely still there.
 
@@ -200,7 +204,8 @@ Separate what has earned its place from what is merely still there.
   either — they get promoted into a *Retired hypotheses* table (Seiton) so a
   future session arriving with one can recognise it.
 - **Disposable zones.** Scratch scripts, one-off shell files, stale worktrees,
-  `.DS_Store`. Propose the list.
+  `.DS_Store`. Propose the list. Some things are better *ignored* than deleted:
+  a generated cache that regenerates is a cleanup you would redo every pass.
 - **Deliberately-untracked items.** Things noticed but not worth a ticket.
   Mark them as such in writing, with the reason. An unmarked non-decision
   reads as an oversight and gets re-litigated.
@@ -208,7 +213,7 @@ Separate what has earned its place from what is merely still there.
 Output of this phase: a four-column list — *item / verdict (keep, delete,
 annex, retire) / where it goes / why*. Deletions wait for confirmation.
 
-### Seiton (整頓) — put each thing in its place
+### 📍 Seiton (整頓) — put each thing in its place
 
 A place for everything, and the place is discoverable.
 
@@ -230,7 +235,7 @@ A place for everything, and the place is discoverable.
   now has three callers moves out of the file that spawned it; a module that
   turned out not to be shared moves back in.
 
-### Seiso (清掃) — clean: reconcile and verify
+### 🧹 Seiso (清掃) — clean: reconcile and verify
 
 Cleaning is not cosmetic. It is finding every surface still carrying yesterday's
 claim.
@@ -269,7 +274,7 @@ claim.
   It is never silently fixed — that is scope creep with no trace — and never
   dropped.
 
-### Seiketsu (清潔) — standardise: promote the lesson
+### 📐 Seiketsu (清潔) — standardise: promote the lesson
 
 The episode is over. What survives it?
 
@@ -292,11 +297,11 @@ outcome, not a failed phase.
 
 A lesson worth promoting is phrased as the trap plus the instance that
 produced it, not as an abstraction. "A local reading extrapolated into a
-global conclusion — we measured one society's queue and called it fleet
+global conclusion — we measured one shard's queue and called it cluster
 throughput" beats "be careful with metrics".
 | How to *wrap this repo* — what a pass here gets wrong | `.wrap.md`, `## Notes` |
 
-### Shitsuke (躾) — sustain: the entry point
+### 🪧 Shitsuke (躾) — sustain: the entry point
 
 Everything above is worthless if the next arrival cannot find it. Write, into
 the canonical document, a section addressed to them. Put it near the top —
@@ -322,15 +327,22 @@ There is no report file. **The tidied repo is the deliverable**, plus the
 entry-point section. In conversation, close with a compact table:
 
 ```text
-Seiri     3 deleted, 1 annexed, 2 hypotheses retired
-Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (67 topics)
-Seiso     4 docs reconciled; markdownlint ✓; lychee 2 dead links (advisory)
-Seiketsu  1 lesson → AGENTS.md; nothing else generalised
-Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed
-          3 commits proposed
+🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
+📍 Seiton      6 notes → wip/queue-pacing/README.md; index refreshed (67)
+🧹 Seiso       4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links
+               → PROJ-412's justification is dead, reword proposed not applied
+📐 Seiketsu    1 lesson → AGENTS.md; nothing else generalised
+🪧 Shitsuke    entry point written; 1 open (PROJ-419), 1 not ticketed
 ```
 
-Then the proposed commit subjects, one per line, awaiting confirmation.
+Verdict glyphs are a closed set: ✅ clean · ⚠️ finding · ❌ blocking · → routed
+elsewhere. They mark the judgement, so the output can be scanned for judgements
+alone.
+
+Then the publication block (§2), and last, **what you would do next, ranked**.
+Not a menu of options — a recommendation, with the reason in half a line. The
+pass has just read everything; the user should not have to ask "so what do you
+advise?".
 
 ## 7. Hard rules
 
