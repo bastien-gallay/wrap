@@ -80,7 +80,11 @@ which makes Shitsuke's handoff the centre of the pass).
    collectors (§4) as much as to a parallel session.
 9. **Locate things by name, never by section number.** "the summary line at the
    end of `wip/queue-pacing/README.md`, under *What survived*" — not "§6". A
-   number is unresolvable from memory and forces the reader to go hunting.
+   number is unresolvable from memory and forces the reader to go hunting. This
+   governs what you say to the user and what you write into their files. The
+   numbered cross-references in *this* document (§2, §4) are addressed to you
+   and stay: a numbered section here has no other name. A *phase* always does —
+   write "Seiton", never "§Seiton".
 10. **Narrate once per phase, at most.** No progress prose between two tool
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
@@ -129,7 +133,7 @@ means "figure it out or skip the check", never "fail".
 - skills: .claude/skills/           # where operational lessons go
 - decisions: architecture/adr/      # where cross-cutting decisions go
 - journal: infrastructure/{YYYY}-{MM}-applied-decisions.md
-- tracker: jira PROJ / github issues # surfaces outside the repo (§Seiso)
+- tracker: jira PROJ / github issues # surfaces outside the repo (Seiso)
 
 ## Verification commands
 - blocking: markdownlint '**/*.md'

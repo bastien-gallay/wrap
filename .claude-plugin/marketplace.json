@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "wrap — single-plugin marketplace.",
-    "version": "0.2.0"
+    "version": "0.2.1"
   },
   "plugins": [
     {
       "name": "wrap",
       "source": "./",
       "description": "Close out a milestone session with a 5S pass, and leave an entry point for the next arrival.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "homepage": "https://github.com/bastien-gallay/wrap",
       "repository": "https://github.com/bastien-gallay/wrap",
