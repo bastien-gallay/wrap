@@ -5,6 +5,20 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] — 2026-07-26
+
+### Fixed
+
+- The config example carried `(§Seiso)` — a section-number reference inside the
+  release that forbade them. A phase has a name; it now reads `(Seiso)`. Found
+  by a wrap of this repo and routed rather than fixed mid-pass, because editing
+  `SKILL.md` while it executes is the documented hazard.
+- The rule now says what it governs: what you tell the user and what you write
+  into their files. The protocol's own numbered cross-references are addressed
+  to the agent executing it and stay, because a numbered section here has no
+  other name — a phase always does. Written down so the next pass does not
+  "fix" them.
+
 ## [0.2.0] — 2026-07-26
 
 Folded from 26 runs across six repos, 2026-07-21 to 07-25. See

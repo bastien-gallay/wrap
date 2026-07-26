@@ -1,6 +1,6 @@
 {
   "name": "wrap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Close out a session that reached a milestone with a 5S pass — sort what stays, put each thing in its canonical place, reconcile every document carrying a superseded claim, promote the durable lesson, and leave an entry point for whoever arrives next.",
   "author": {
     "name": "Bastien Gallay"
