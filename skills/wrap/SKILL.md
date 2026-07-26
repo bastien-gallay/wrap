@@ -52,9 +52,9 @@ should describe.
 2. **Never invent a milestone.** If the session's diff is trivial or the work
    is visibly mid-flight (failing tests, a half-written function, a doc ending
    in a dangling sentence), say so and ask whether to continue anyway.
-3. **Deletions, moves, and git operations always confirm.** Everything else —
-   reconciling prose, refreshing an index, running a linter, appending a
-   lesson — you do directly and report. See §2.
+3. **Deletions, moves, and the publication path always confirm.** Everything
+   else — reconciling prose, refreshing an index, running a linter, appending
+   a lesson, writing the config — you do directly and report. See §2.
 4. **One commit is one idea.** Never bundle a reconciliation, a lesson
    promotion, and a cleanup into one commit because they happened in the same
    pass.
@@ -80,13 +80,18 @@ should describe.
 | Bump a tool version | Do it, report it |
 | **Delete a file** | **Propose, wait** |
 | **Move / relocate a file** | **Propose, wait** |
-| **`git add` / `commit` / `push` / `tag`** | **Propose, wait** |
+| **Edit a ticket, issue, or wiki page** | **Propose, wait** |
+| **The publication path** | **Propose, wait** |
 
 Group the confirmations: present all of a phase's deletions and moves as one
 list with a one-line reason each, and take one answer. Do not ask nine times.
 
-For git specifically, present the intended commits as subject lines before
-staging anything, and honour a session-wide authorisation if given.
+**The publication path is one confirmation, not three.** Present, in a single
+block: the branch state (and the new branch name if the current branch is
+`main`), the commit subjects, the push target, and whether a PR/MR follows.
+Ask for any out-of-sandbox or signing authorisation *there*, once, in the same
+block — and honour a session-wide grant without asking again. The user should
+be able to answer with one word and find the work published.
 
 ## 3. Configuration
 
@@ -319,3 +324,5 @@ Then the proposed commit subjects, one per line, awaiting confirmation.
 - Would someone arriving cold, reading only the entry point, know what is
   settled and what to do next?
 - Is each proposed commit one idea, with a subject that states a conclusion?
+- Did the refuter get a fresh context, and did I act on what it found?
+- Is there one confirmation left to give, or three?

@@ -26,8 +26,10 @@ pick it up without reconstructing it.
   run `wrap` first — it produces the state the daily digest should describe.
 - **Not a report generator.** The tidied repo is the deliverable. The only
   prose it adds is the entry-point section inside your canonical document.
-- **Not autonomous with your files.** Deletions, moves, and git operations
-  always confirm. Everything else it does directly and reports.
+- **Not autonomous with your files.** Deletions, moves, ticket edits, and the
+  publication path always confirm. Everything else it does directly and
+  reports. Publication is *one* confirmation covering branch, commits, push and
+  PR — not three.
 
 ## Install
 
