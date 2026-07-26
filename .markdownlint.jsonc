@@ -3,5 +3,10 @@
   // sample run wider on purpose.
   "MD013": false,
   // The config template and SKILL.md use <type>, <scope>, <phase> placeholders.
-  "MD033": false
+  "MD033": false,
+  // Both the changelog and the reviewed-feedback archives repeat a heading per
+  // dated section — "### Added" per release, "### What worked" per batch. That
+  // is the structure, not a mistake; duplicates under the *same* parent still
+  // fail.
+  "MD024": { "siblings_only": true }
 }

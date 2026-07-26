@@ -9,15 +9,23 @@ pick it up without reconstructing it.
 
 `wrap` crosses that gap, using the 5S as the running order.
 
+Orientation runs first, as one wave of concurrent read-only collectors — git
+state, the grep fan-out over unchanged files, the tracker, and the project's
+checks. Then the five phases run in order, in one context, with one writer.
+
 ## The five phases
 
 | S | What it handles |
 | --- | --- |
-| **Seiri** — sort | What stays, what goes. Absorbed notes deleted; un-reproducible evidence annexed; dead hypotheses retired into a table rather than erased; scratch zones emptied; deliberate non-decisions marked as such. |
-| **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
-| **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers and TL;DRs included, not only body prose. Run the project's checks. Bump changed tool versions. Resolve TODOs left in the diff. |
-| **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, or dated journal. Most sessions produce zero to two. |
-| **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then propose the commits. |
+| 🗂 **Seiri** — sort | What stays, what goes. Absorbed notes deleted; un-reproducible evidence annexed; dead hypotheses retired into a table rather than erased; scratch zones emptied or ignored; deliberate non-decisions marked as such. |
+| 📍 **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
+| 🧹 **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers, TL;DRs and summary lines included, not only body prose. Check the surfaces outside the repo too: a ticket built on a dead premise costs more than a stale doc. Run the project's checks. |
+| 📐 **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, dated journal, or `.wrap.md` when the lesson is about wrapping this repo. Most sessions produce zero to two. |
+| 🪧 **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then the copy-pasteable resume block, and the publication. |
+
+The glyphs are load-bearing in the output, not decoration: they let a run be
+scanned for judgements. The gloss beside each slug is rendered in the language
+of the session.
 
 ## What it is not
 
@@ -26,8 +34,10 @@ pick it up without reconstructing it.
   run `wrap` first — it produces the state the daily digest should describe.
 - **Not a report generator.** The tidied repo is the deliverable. The only
   prose it adds is the entry-point section inside your canonical document.
-- **Not autonomous with your files.** Deletions, moves, and git operations
-  always confirm. Everything else it does directly and reports.
+- **Not autonomous with your files.** Deletions, moves, ticket edits, and the
+  publication path always confirm. Everything else it does directly and
+  reports. Publication is *one* confirmation covering branch, commits, push and
+  PR — not three.
 
 ## Install
 
@@ -40,18 +50,24 @@ Then type `/wrap` when a milestone lands.
 
 ## Configure
 
-Optional but recommended. Copy `skills/wrap/templates/wrap-config.md` to
-`.wrap.md` at your project root (or `.personal/wrap/config.md` to keep it out
-of the repo). It declares four things:
+Optional. Copy `skills/wrap/templates/wrap-config.md` to `.wrap.md` at your
+project root (or `.personal/wrap/config.md` to keep it out of the repo). It
+declares five things:
 
 - **Canonical locations** — the index that must match reality, where lessons
-  go, where decisions go, the dated journal.
+  go, where decisions go, the dated journal, and the tracker whose tickets can
+  also carry a superseded claim.
 - **Verification commands** — blocking vs advisory.
 - **Disposable zones** — paths Seiri need not agonise over.
 - **Commit conventions** — format, scope, ticket pattern.
+- **Notes** — free prose, including what a pass over *this* repo got wrong last
+  time.
 
-With no config, `wrap` infers what it can, runs anyway, says plainly that it
-is unconfigured, and offers to write a `.wrap.md` at the end.
+With no config, `wrap` infers what it can, runs anyway, says plainly that it is
+unconfigured, and **writes the `.wrap.md` itself** during Shitsuke, capturing
+what it inferred and what the repo does not have. Offering it at the end
+instead meant the offer got swallowed by the commit proposal and the next run
+inferred everything again.
 
 ## Usage
 
@@ -59,18 +75,23 @@ is unconfigured, and offers to write a `.wrap.md` at the end.
 /wrap
 /wrap --dry-run                 # read-only: full plan, nothing touched
 /wrap --only seiso              # run a single phase
+/wrap for picking up tomorrow   # free text narrows the scope, or states intent
 ```
 
 ## Output
 
 ```text
-Seiri     3 deleted, 1 annexed, 2 hypotheses retired
-Seiton    6 notes → wip/ingestion-pacing/README.md; index refreshed (67 topics)
-Seiso     4 docs reconciled; markdownlint ✓; lychee 2 dead links (advisory)
-Seiketsu  1 lesson → AGENTS.md; nothing else generalised
-Shitsuke  entry point written; 1 item open (CN2-847), 1 not ticketed
-          3 commits proposed
+🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
+📍 Seiton      6 notes → wip/queue-pacing/README.md; index refreshed (67)
+🧹 Seiso       4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links
+               → PROJ-412's justification is dead, reword proposed not applied
+📐 Seiketsu    1 lesson → AGENTS.md; nothing else generalised
+🪧 Shitsuke    entry point written; 1 open (PROJ-419), 1 not ticketed
 ```
+
+Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking · → routed
+elsewhere. Then the publication block, one confirmation, and a ranked
+recommendation of what to do next.
 
 Empty phases are the normal case for small milestones, and `wrap` reports them
 as empty rather than manufacturing activity.
