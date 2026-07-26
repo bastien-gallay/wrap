@@ -69,6 +69,11 @@ A real run, on this repo, immediately after `0.2.0` was merged and pushed.
   since a numbered section of the protocol has no other name. Decide once,
   apply to all.
 
+  **Folded in `0.2.1`, same day.** The `§Seiso` is fixed; the numeric
+  self-references stay, and the rule now states what it governs so a future
+  pass does not strip them. The reasoning is in `CLAUDE.md` under design
+  decisions, not only here.
+
 - **The refuter did not get a fresh context.** The pass verified its own
   figures by re-running the commands, which caught nothing, and that is not the
   same thing. The session standing instruction was not to spawn agents unless

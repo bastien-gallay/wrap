@@ -103,6 +103,13 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   steps — but `Seiketsu` alone is unreadable at a glance. A glyph costs one
   token per line and makes a run scannable for judgements. Two registers, kept
   distinct: five fixed phase glyphs, and a closed verdict set (✅ ⚠️ ❌ →).
+- **A phase reference is a name; a section reference is a number.** `0.2.1`
+  settled this rather than leaving it to be re-litigated per occurrence. The
+  ban on `§n` governs what wrap says to the user and writes into their files,
+  because a number is unresolvable from memory. `SKILL.md`'s own `§2` / `§4`
+  cross-references are addressed to the agent executing the protocol, where the
+  number *is* the section's identity, so they stay. A phase always has a name,
+  so `§Seiton` is always wrong. Do not "clean up" the numeric ones.
 - **The skill ships decoupled from every real project.** Examples use `PROJ-\d+`
   and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
   sample before anyone noticed; a skill that travels to other people's repos
