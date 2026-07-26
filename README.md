@@ -75,6 +75,7 @@ inferred everything again.
 /wrap --only seiso              # run a single phase
 ```
 
+/wrap for picking up tomorrow   # free text narrows the scope, or states intent
 ## Output
 
 ```text

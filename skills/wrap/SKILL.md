@@ -15,7 +15,7 @@ description: >
   fini, range", "finalise this session", or signals that a piece of work
   has reached a stopping point worth leaving clean.
 user-invocable: true
-argument-hint: "[--dry-run] [--only seiri|seiton|seiso|seiketsu|shitsuke]"
+argument-hint: "[--dry-run] [--only seiri|seiton|seiso|seiketsu|shitsuke] [free text: scope or intent]"
 ---
 
 # wrap — finish a session at a milestone
@@ -44,6 +44,10 @@ one runs on a *milestone* and may fire three times in a week or once a month.
 If both apply, run wrap first — it produces the state that the daily digest
 should describe.
 
+Free-text arguments are honoured: they either **narrow the scope** ("only the
+wrap skill") or **state the intent** ("for picking this up tomorrow morning",
+which makes Shitsuke's handoff the centre of the pass).
+
 ## 1. Always-on directives
 
 1. **Report what you found, not what you hoped to find.** If a phase has
@@ -57,7 +61,7 @@ should describe.
    a lesson, writing the config — you do directly and report. See §2.
 4. **One commit is one idea.** Never bundle a reconciliation, a lesson
    promotion, and a cleanup into one commit because they happened in the same
-   pass.
+   pass. When one file carries two ideas, see §6.
 5. **A commit subject states the conclusion, not the task.** "the ACK consumer
    is not the bottleneck, measured on a live drain" — not "update notes".
 6. **Supersede, do not rewrite history.** A wrong claim gets retracted in
@@ -244,7 +248,8 @@ claim.
   for the claim and fix *every* occurrence. Check headers, TL;DRs, and summary
   tables, not only body prose — a corrected body under a stale header is a
   document that contradicts itself twenty lines apart, and the header is what
-  people read.
+  people read. Summary lines are where superseded claims survive longest,
+  because they read as facts; one has survived an entire consolidation pass.
 - **Re-derive every figure the session wrote down.** Counts, dates, versions,
   "N of M" claims — especially any that came from a subagent's report, a
   summary, or your own earlier command. These are the superseded claims most
@@ -319,12 +324,34 @@ It answers four questions:
    differently on purpose. Naming these saves an hour each time.
 4. **Where the deleted things went.** A pointer to `## Provenance`.
 
-Then, and only then, propose the commits.
+Then two things the user should not have to ask for:
 
-## 6. Output
+- **The resume block.** Three or four lines, copy-pasteable as the opening
+  message of a fresh session: where the work is, what to read first, what the
+  next action is. Fenced, so it can be copied without cleanup.
+- **The reminder**, if the open list has a datable next action. Offer to
+  schedule it; do not schedule silently.
+
+## 6. Publication and output
 
 There is no report file. **The tidied repo is the deliverable**, plus the
-entry-point section. In conversation, close with a compact table:
+entry-point section.
+
+Before proposing anything, run one **refuter**: a fresh-context read of the
+closing table against the files on disk, told to attack it rather than confirm
+it. This costs one collector and it targets the failure this protocol misses
+most often — the summary line that survived the correction of its own body. A
+context that has just written something is the worst judge of whether it is
+true.
+
+**When one file carries two ideas** (§1.4), do not bundle and do not reach for
+interactive staging, which is unavailable here. Move the second idea's text out
+of the file, stage and commit the first, then restore it. Then verify: `git
+diff --stat` must show the number of changed lines you expect. A scripted
+substitution that silently matched nothing looks exactly like a successful one.
+
+Close in conversation with a compact table — glyph, slug, gloss in the
+session's language:
 
 ```text
 🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
