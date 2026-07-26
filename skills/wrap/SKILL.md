@@ -71,6 +71,20 @@ should describe.
 ## 2. Autonomy contract
 
 | Action | Mode |
+8. **Another session may be in this repo right now.** Before editing, check
+   whether the file already carries changes that are not yours. If it does:
+   do not touch it, defer whatever you were going to add, leave it uncommitted,
+   and say so in the output. Re-check the remote immediately before pushing and
+   rebase rather than assuming the branch you verified is still the branch you
+   are pushing. One writer at a time, always — this applies to your own
+   collectors (§4) as much as to a parallel session.
+9. **Locate things by name, never by section number.** "the summary line at the
+   end of `wip/queue-pacing/README.md`, under *What survived*" — not "§6". A
+   number is unresolvable from memory and forces the reader to go hunting.
+10. **Narrate once per phase, at most.** No progress prose between two tool
+    calls, no restating a finding you have already reported. The file you
+    changed is the deliverable; the closing table is the report. Batch
+    independent commands into one call rather than one per turn.
 | --- | --- |
 | Reconcile a document against a superseded claim | Do it, report it |
 | Refresh an index / status table | Do it, report it |
@@ -156,13 +170,13 @@ without touching anything.
 Separate what has earned its place from what is merely still there.
 
 - **Absorbed sources.** Notes whose content now lives in a consolidated
-  document. These get deleted — but only after §Seiton has written the
+  document. These get deleted — but only after Seiton has written the
   provenance record, so sequence matters: identify here, delete after the
   consolidation exists.
 - **Un-reproducible evidence.** Raw measurements, prod dumps, logs that cannot
   be regenerated. These are *never* deleted. They become annexes.
 - **Dead hypotheses.** Beliefs the session killed. These do not get deleted
-  either — they get promoted into a *Retired hypotheses* table (§Seiton) so a
+  either — they get promoted into a *Retired hypotheses* table (Seiton) so a
   future session arriving with one can recognise it.
 - **Disposable zones.** Scratch scripts, one-off shell files, stale worktrees,
   `.DS_Store`. Propose the list.
@@ -326,3 +340,14 @@ Then the proposed commit subjects, one per line, awaiting confirmation.
 - Is each proposed commit one idea, with a subject that states a conclusion?
 - Did the refuter get a fresh context, and did I act on what it found?
 - Is there one confirmation left to give, or three?
+- Never commit a file whose other changes belong to someone else's session.
+- Never edit a ticket, an issue, or a wiki page without confirmation.
+- **The section-number reference.** Telling the user about "§6" instead of
+  naming the file and the heading. It is unresolvable from memory.
+- **The narrated pass.** A message before each tool call announcing what is
+  about to happen. wrap runs at the end of a long session, where every turn
+  re-reads the largest context of the day; half the cost of a run is prose
+  nobody needed.
+- **The finding told five times.** Once in the phase narration, once in a
+  detail table, once in the closing table, once in the commit body, once in
+  the PR body. Once in the file, once in the table.
