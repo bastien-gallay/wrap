@@ -16,7 +16,11 @@ Where things belong once `wrap` decides they belong somewhere.
 
 `index` is the table that must match reality — the one that quietly drifts.
 `lessons` is the file every contributor reads. `journal` supports `{YYYY}` and
-`{MM}` placeholders and is appended to, never rewritten.
+`{MM}` placeholders and is appended to, never rewritten. `tracker` names the
+surfaces *outside* the repo that Seiso must also check for superseded claims —
+a ticket sitting in `READY FOR DEV` on a premise the session just killed is
+more expensive than any stale document. wrap proposes rewordings there; it
+never edits a ticket without confirmation.
 
 ## Verification commands
 
@@ -49,3 +53,10 @@ deleting — this list only means "do not agonise over these".
 Free prose. Anything a wrap should know about this repo that the keys above
 do not capture — a directory whose boundary is contested, a doc that looks
 stale but is deliberately frozen, a check that is expected to fail.
+
+This section is also where a *wrap of this repo* records what it got wrong, so
+the next pass does not repeat it: "a merged branch's commits never appear on
+`main` here, PRs are squash-merged — verify removal against the PR state", or
+"the generated caches under `.tooling/` get ignored, not deleted, since
+they regenerate". Seiketsu routes lessons of that shape here rather than into the
+contributor-facing lessons file, which is for people, not for the pass.

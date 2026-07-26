@@ -9,7 +9,7 @@ description: >
   (standardise — promote the durable lesson up to where the next reader
   will meet it), Shitsuke (sustain — leave an entry point for whoever
   arrives next). Reads project config from `.wrap.md` at project root or
-  `.personal/wrap/config.md`; offers to bootstrap one if absent. Not a
+  `.personal/wrap/config.md`; writes one if absent. Not a
   daily ritual — it triggers on a milestone, not on a clock. Trigger: the
   user types `/wrap`, says "wrap up", "close out this milestone", "on a
   fini, range", "finalise this session", or signals that a piece of work
@@ -95,6 +95,7 @@ should describe.
 | **Delete a file** | **Propose, wait** |
 | **Move / relocate a file** | **Propose, wait** |
 | **Edit a ticket, issue, or wiki page** | **Propose, wait** |
+| Write a `.wrap.md` when none exists | Do it, report it |
 | **The publication path** | **Propose, wait** |
 
 Group the confirmations: present all of a phase's deletions and moves as one
@@ -114,7 +115,7 @@ Read, in order, the first that exists:
 1. `.wrap.md` at project root
 2. `.personal/wrap/config.md`
 
-The config declares four things. Everything in it is optional; a missing key
+The config declares five things. Everything in it is optional; a missing key
 means "figure it out or skip the check", never "fail".
 
 ```markdown
@@ -128,6 +129,7 @@ means "figure it out or skip the check", never "fail".
 ## Verification commands
 - blocking: markdownlint '**/*.md'
 - blocking: uv run pytest
+- tracker: jira PROJ / github issues # surfaces outside the repo (§Seiso)
 - advisory: lychee --offline .
 
 ## Disposable zones
@@ -138,27 +140,46 @@ means "figure it out or skip the check", never "fail".
 ## Commit conventions
 - format: <type>(<scope>): <the conclusion, lowercase>
 - scope: a ticket ref or a topic dir name
-- ticket-pattern: CN2-\d+
+- ticket-pattern: PROJ-\d+
+
+## Notes
+Free prose — including what a wrap of *this* repo learned the hard way.
 ```
 
-**If no config exists**, do not stop. Run the pass using what you can infer
-(a README that looks like an index, a lint command in CI config, a
-`.gitignore`d scratch dir), and at the very end offer to write a `.wrap.md`
-capturing what you inferred. Say plainly that you are running unconfigured.
+**If no config exists**, do not stop. Run the pass using what you can infer (a
+README that looks like an index, a lint command in CI config, a `.gitignore`d
+scratch dir), say plainly that you are running unconfigured, and **write the
+`.wrap.md` during Shitsuke** — capturing what you inferred, what this repo does
+*not* have (no ADR directory, no dated journal, and where those things go
+instead), and anything the pass learned the hard way. Include it in the
+publication. Do not leave it as an offer at the end; the offer gets swallowed
+by the commit proposal and the next run infers everything again.
 
-## 4. Orientation (before phase 1)
+## 4. Orientation — one parallel wave
 
-Establish, in this order, and state each in one line:
+The whole of orientation is read-only, and it is the bulk of the pass's cost.
+Run it as **one wave of concurrent collectors**, then stop and assemble. A
+collector reads, greps, and runs commands; **a collector never edits.**
 
-1. **The milestone.** What concluded? Derive it from `git log` since the last
-   tag or since the session's first commit, plus `git status`. Name it in one
-   sentence — "the ingestion-pacing investigation concluded: the parser is the
-   per-work cost, and the budget closes."
-2. **The blast radius.** Which files changed, which directories they belong
-   to, and — critically — which *unchanged* files talk about the same subject.
-   That second set is Seiso's work list and it is the one everybody forgets.
-3. **The open thread.** Is there exactly one thing still open, several, or
-   none? You will need this for Shitsuke.
+| Collector | Gathers | Returns |
+| --- | --- | --- |
+| git | log since the last tag or the previous wrap, status, `diff --stat`, merged branches and stale worktrees | the milestone, in one sentence, plus the changed-file list |
+| docs | the *unchanged* files that talk about the same subject — the grep fan-out over each claim the session touched | Seiso's work list, the one everybody forgets |
+| tracker | tickets, issues, wiki pages named by the config's `tracker` key that carry a claim this session changed | proposals only, never an edit |
+| checks | the config's blocking and advisory commands, started first because they are the slowest | output, verbatim |
+
+Then, in the main pass and in this order, state each in one line:
+
+1. **The milestone.** What concluded — "the queue-pacing investigation
+   concluded: the parser is the per-work cost, and the budget closes."
+2. **The blast radius.** The changed files, and the unchanged ones that talk
+   about the same subject. That second set is Seiso's work list.
+3. **The open thread.** Exactly one thing still open, several, or none? You
+   will need this for Shitsuke.
+
+If a previous wrap is in `git log`, derive the blast radius from the diff since
+it rather than from the whole history — wrap is often run several times a day in
+the same repo, and re-deriving everything is most of the waste.
 
 If `--dry-run`, run every phase in read-only mode and present the whole plan
 without touching anything.
@@ -229,13 +250,24 @@ claim.
 - **Run the verification commands** from config. Report output verbatim.
   Blocking failures stop the wrap: fix them, or say clearly that the milestone
   is not closable yet. Advisory failures get reported and carried into the
-  open list.
+  open list. Verify that a check that reports success actually ran: a linter
+  that exits 0 having linted nothing is worse than a failing one.
 - **Bump versions** of any tool whose behaviour changed. Minor for a feature,
   patch for a fix, never for cosmetics.
 - **Code hygiene**, where a code milestone applies: a TODO left in the diff
   either becomes a tracked item or gets deleted; commented-out code goes;
   debug logging goes; a test that was skipped to land the fix gets named in
   the open list.
+- **Reconcile the surfaces outside the repo.** A ticket in `READY FOR DEV` on a
+  justification this session killed is more expensive than any stale document —
+  somebody picks it up tomorrow and builds on a dead premise. Report these and
+  **propose** the rewording; do not edit. Prefer a comment over a field edit,
+  and never touch labels: on many projects a label change moves a ticket's
+  status through an automation.
+- **Route what is bigger than the milestone.** A finding outside this
+  milestone's scope gets a ticket, an issue comment, or a line in the open list.
+  It is never silently fixed — that is scope creep with no trace — and never
+  dropped.
 
 ### Seiketsu (清潔) — standardise: promote the lesson
 
@@ -262,6 +294,7 @@ A lesson worth promoting is phrased as the trap plus the instance that
 produced it, not as an abstraction. "A local reading extrapolated into a
 global conclusion — we measured one society's queue and called it fleet
 throughput" beats "be careful with metrics".
+| How to *wrap this repo* — what a pass here gets wrong | `.wrap.md`, `## Notes` |
 
 ### Shitsuke (躾) — sustain: the entry point
 
@@ -333,7 +366,7 @@ Then the proposed commit subjects, one per line, awaiting confirmation.
 - Does every deleted file appear in a `## Provenance` line?
 - Does the index match the directory listing?
 - Did I grep for the superseded claim, or only fix the files I already had
-  open?
+  open? Did I check the summary lines, and the surfaces outside the repo?
 - Is every open item either ticketed or explicitly marked as not-ticketed?
 - Would someone arriving cold, reading only the entry point, know what is
   settled and what to do next?

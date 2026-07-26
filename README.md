@@ -9,6 +9,10 @@ pick it up without reconstructing it.
 
 `wrap` crosses that gap, using the 5S as the running order.
 
+Orientation runs first, as one wave of concurrent read-only collectors — git
+state, the grep fan-out over unchanged files, the tracker, and the project's
+checks. Then the five phases run in order, in one context, with one writer.
+
 ## The five phases
 
 | S | What it handles |
@@ -47,13 +51,17 @@ Optional but recommended. Copy `skills/wrap/templates/wrap-config.md` to
 of the repo). It declares four things:
 
 - **Canonical locations** — the index that must match reality, where lessons
-  go, where decisions go, the dated journal.
+  go, where decisions go, the dated journal, and the tracker whose tickets can
+  also carry a superseded claim.
 - **Verification commands** — blocking vs advisory.
 - **Disposable zones** — paths Seiri need not agonise over.
 - **Commit conventions** — format, scope, ticket pattern.
 
-With no config, `wrap` infers what it can, runs anyway, says plainly that it
-is unconfigured, and offers to write a `.wrap.md` at the end.
+With no config, `wrap` infers what it can, runs anyway, says plainly that it is
+unconfigured, and **writes the `.wrap.md` itself** during Shitsuke, capturing
+what it inferred and what the repo does not have. Offering it at the end
+instead meant the offer got swallowed by the commit proposal and the next run
+inferred everything again.
 
 ## Usage
 
