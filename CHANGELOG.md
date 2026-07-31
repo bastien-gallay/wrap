@@ -5,6 +5,22 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] — 2026-07-31
+
+### Added
+
+- Every confirmation is now a question with named options, not prose the user
+  answers by typing. One question per gate — deletions, moves, tracker edits,
+  publication — with the list written out first and the options acting on the
+  whole batch. An option states what it does and what follows from it, and at
+  least one always does less than the recommendation, because a question with
+  no way out is a notification.
+- Two gates that were prose become questions too: the milestone check when the
+  work looks mid-flight, and Shitsuke's reminder offer.
+- The closing recommendation stays a paragraph unless its top item is
+  actionable in this session, in which case it is also a question. A ranking of
+  next week's work is not a gate.
+
 ## [0.2.1] — 2026-07-26
 
 ### Fixed
