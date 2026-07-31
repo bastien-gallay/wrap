@@ -15,6 +15,36 @@ Last folded: [`feedback/2026-07-26-reviewed.md`](feedback/2026-07-26-reviewed.md
 that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap.
 
+## 2026-07-31 — self-wrap, right after `0.3.0`
+
+A real run, on this repo, immediately after the release that mandates
+`AskUserQuestion` at every gate was merged.
+
+- **The release that forbids the prose ask was published through one.** The
+  session shipping `0.3.0` used an `AskUserQuestion` for the GPG-signing
+  authorisation — a real gate, correctly shaped — and then asked "Veux-tu que
+  je l'ouvre ?" in prose for the PR, and "Je lance `gh pr create` + merge ?"
+  after that. Two prose gates on the publication path, in the session that
+  wrote the rule against them. Not a protocol defect: the rule was not yet
+  installed when the first was asked. It is evidence that the anti-pattern is
+  the *default* behaviour and that the rule has to be loud to displace it.
+
+- **`gh pr merge` was refused by the auto-mode classifier, twice.** The gate
+  had been answered — the user had chosen to publish — and the tool still
+  declined. The pass handed the user a copy-pasteable `! gh pr merge …` and
+  stopped, which worked. Worth knowing: an answered `Publish` question does not
+  guarantee the path completes, so a wrap must verify the merge landed rather
+  than report it from the answer.
+
+- **The refuter went unexercised again**, same cause as 07-26: the session
+  standing instruction forbids spawning agents unless asked. Second consecutive
+  self-wrap where the protocol's most novel step did not run. If the only
+  sessions that self-wrap this repo carry that instruction, the step will never
+  be exercised here and must be tested externally or dropped.
+
+- **Orientation did not fan out, again deliberately.** Nine markdown files, one
+  batched command. Not evidence about the wave.
+
 ## 2026-07-26 — folding the batch hit the commit-split wall twice more
 
 Not a wrap run. Notes from the session that folded the 07-26 batch into
