@@ -58,7 +58,9 @@ which makes Shitsuke's handoff the centre of the pass).
    in a dangling sentence), say so and ask whether to continue anyway.
 3. **Deletions, moves, and the publication path always confirm.** Everything
    else — reconciling prose, refreshing an index, running a linter, appending
-   a lesson, writing the config — you do directly and report. See §2.
+   a lesson, writing the config — you do directly and report. Every
+   confirmation is asked with **AskUserQuestion**, never as prose the user has
+   to answer by typing. See §2.
 4. **One commit is one idea.** Never bundle a reconciliation, a lesson
    promotion, and a cleanup into one commit because they happened in the same
    pass. When one file carries two ideas, see §6.
@@ -109,12 +111,43 @@ which makes Shitsuke's handoff the centre of the pass).
 Group the confirmations: present all of a phase's deletions and moves as one
 list with a one-line reason each, and take one answer. Do not ask nine times.
 
+### How a confirmation is asked
+
+Every gate in the right-hand column above goes through **AskUserQuestion** —
+one call per gate, never one per item, never a prose question the user has to
+answer by typing.
+
+- **The list comes first, the question second.** Write the items out — the
+  four-column Seiri list, the commit subjects, the proposed reword — then ask.
+  The question's options act on the whole batch; they do not re-enumerate it.
+  Four options is the ceiling, and a batch of nine deletions does not fit, so
+  do not try.
+- **An option names the action and its consequence**, not consent. "Delete the
+  6 scratch files — none is referenced, `wip/` becomes the index it claims to
+  be" beats "Yes, proceed". The user is choosing between outcomes, not
+  approving a request.
+- **Always offer one option that does less** — keep everything, delete all but
+  the annexes, commit without pushing. A single-option question is an
+  announcement wearing a question's clothes, and it teaches the user to click
+  through the next one without reading. Free text is always available to the
+  user for the "all except that one" answer; do not build it into the options.
+- **The header is the gate**: `Deletions`, `Moves`, `Tracker`, `Publish`.
+- **Never ask about the left-hand column.** A question about reconciling a
+  stale header spends the user's attention on the thing they installed this
+  skill to stop doing.
+
+Two gates outside the table use the same mechanism: the *milestone check* when
+the work looks mid-flight (§1.2) — continue anyway, or stop here — and
+Shitsuke's *reminder* offer.
+
 **The publication path is one confirmation, not three.** Present, in a single
 block: the branch state (and the new branch name if the current branch is
 `main`), the commit subjects, the push target, and whether a PR/MR follows.
-Ask for any out-of-sandbox or signing authorisation *there*, once, in the same
-block — and honour a session-wide grant without asking again. The user should
-be able to answer with one word and find the work published.
+Then one AskUserQuestion, header `Publish`, whose options are the stopping
+points — commit + push + PR, commit + push, commit only, hold. State any
+out-of-sandbox or signing authorisation the path needs in the question text, so
+the answer grants it once; honour a session-wide grant without asking again.
+The user should be able to answer with one click and find the work published.
 
 ## 3. Configuration
 
@@ -333,8 +366,8 @@ Then two things the user should not have to ask for:
 - **The resume block.** Three or four lines, copy-pasteable as the opening
   message of a fresh session: where the work is, what to read first, what the
   next action is. Fenced, so it can be copied without cleanup.
-- **The reminder**, if the open list has a datable next action. Offer to
-  schedule it; do not schedule silently.
+- **The reminder**, if the open list has a datable next action. Offer it as a
+  question with the date in the option; do not schedule silently.
 
 ## 6. Publication and output
 
@@ -371,9 +404,11 @@ elsewhere. They mark the judgement, so the output can be scanned for judgements
 alone.
 
 Then the publication block (§2), and last, **what you would do next, ranked**.
-Not a menu of options — a recommendation, with the reason in half a line. The
-pass has just read everything; the user should not have to ask "so what do you
-advise?".
+A recommendation, with the reason in half a line — the pass has just read
+everything, and the user should not have to ask "so what do you advise?". Write
+the ranking as prose. Only when its top item is actionable in this session does
+it also become a question, recommendation first; a ranking of things to do next
+week is a paragraph, not a gate.
 
 ## 7. Hard rules
 
@@ -387,6 +422,8 @@ advise?".
 - Never commit without showing the subjects first.
 - Never commit a file whose other changes belong to someone else's session.
 - Never edit a ticket, an issue, or a wiki page without confirmation.
+- Never take a confirmation from prose. If it gates a deletion, a move, a
+  ticket edit, or the publication, it is an AskUserQuestion.
 - Never write "TODO" as the resolution of anything in this pass.
 
 ## 8. Anti-patterns
@@ -400,6 +437,12 @@ advise?".
   the TL;DR, and the summary table asserting the old claim.
 - **Silent tidying.** Deleting or moving without listing it, on the grounds
   that it was obviously junk.
+- **The buried ask.** "I'll delete these three and push — let me know if that's
+  wrong." A confirmation the user has to notice, then type an objection to, is
+  not a confirmation; it is a notification with a disclaimer.
+- **The rubber-stamp question.** One option, or two options that differ only in
+  wording. The user learns to click the first one, and the gate that mattered
+  three phases later gets the same reflex.
 - **The archaeology-proof rewrite.** Editing a wrong claim into correctness so
   cleanly that a reader still holding the wrong claim finds no trace of it and
   assumes they are in the wrong repo.
@@ -427,3 +470,5 @@ advise?".
 - Is each proposed commit one idea, with a subject that states a conclusion?
 - Did the refuter get a fresh context, and did I act on what it found?
 - Is there one confirmation left to give, or three?
+- Was every gate a question the user could answer with one click, listing what
+  each answer does — and did each one offer a way to do less?

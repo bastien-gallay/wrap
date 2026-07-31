@@ -38,6 +38,9 @@ of the session.
   publication path always confirm. Everything else it does directly and
   reports. Publication is *one* confirmation covering branch, commits, push and
   PR — not three.
+- **Not a prose ask.** Every gate is a question with named options — what each
+  answer does, and always one that does less. Nothing gets approved by not
+  objecting to a sentence.
 
 ## Install
 
