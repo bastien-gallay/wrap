@@ -42,6 +42,14 @@ A real run, on this repo, immediately after the release that mandates
   sessions that self-wrap this repo carry that instruction, the step will never
   be exercised here and must be tested externally or dropped.
 
+- **The deletion gate listed three branches that did not exist.** Seiri offered
+  four merged branches for deletion, read from `git branch -r`. Three were
+  stale remote-tracking refs — GitHub deletes the branch on merge, and no
+  `fetch --prune` had run since. The user approved deleting four things and got
+  one, plus three `remote ref does not exist` errors. Same failure mode as a
+  stale figure in a summary line, in a phase that does not currently think of
+  itself as handling figures: `git branch -r` is a cache, not an observation.
+
 - **Orientation did not fan out, again deliberately.** Nine markdown files, one
   batched command. Not evidence about the wave.
 
