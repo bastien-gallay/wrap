@@ -126,18 +126,28 @@ forcing.
 
 ## State — what is open
 
-Revised 2026-07-26, after folding 26 runs into `0.2.0` and publishing the repo.
-The 2026-07-21 lines are kept where they are still true and marked closed where
-they are not.
+Revised 2026-07-31, after shipping `0.3.0`. The 2026-07-21 and 07-26 lines are
+kept where they are still true and marked closed where they are not.
 
-Two open items below are marked *not ticketed*. GitHub issues exist as of
-2026-07-26, so that is now a choice rather than a constraint: both are
+Three open items below are marked *not ticketed*. GitHub issues exist as of
+2026-07-26, so that is now a choice rather than a constraint: all three are
 questions about the protocol's own design that the next run answers or does
 not, and an issue would only restate this section.
 
 - **Settled.** The protocol is written, installed at `~/.claude/skills/wrap`,
   and committed. `0.2.0` folds two feedback batches; see
-  `feedback/2026-07-26-reviewed.md` for the note-to-fold ledger.
+  `feedback/2026-07-26-reviewed.md` for the note-to-fold ledger. `0.3.0`
+  (2026-07-31) turns every confirmation gate into an `AskUserQuestion` — it did
+  not come from a feedback batch but from a direct request, so nothing was
+  archived out of `FEEDBACK.md` for it.
+- **Open, not ticketed — the question-shaped gates are written but unexercised.**
+  `0.3.0` mandates `AskUserQuestion` at every gate, with options that name
+  their consequence and always one that does less. No wrap has run them. The
+  session that shipped it used a question for the GPG-signing authorisation and
+  then asked about publication in prose — the exact anti-pattern the release
+  names, committed while the release was in flight. The prediction to check on
+  the next real run: whether a batch of deletions genuinely fits four options,
+  or whether the ceiling forces a shape the phase output does not have.
 - **Settled 2026-07-26 — the repo is published.**
   `github.com/bastien-gallay/wrap`, public, `main` default. It had no remote at
   all until then, which is why the manifests' `homepage` and `repository` URLs
