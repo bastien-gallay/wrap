@@ -258,6 +258,26 @@ not, and an issue would only restate this section.
   deleted on the remote by default, so if the branch is the archive, it has to
   be kept rather than pruned. `wrap/0.5.0` exists locally; `origin/wrap/0.5.0`
   did not survive the merge, and #6's ten commits are already gone this way.
+
+  **Corrected the same day, by measuring instead of inferring: "by default" is
+  false here.** `gh repo view --json deleteBranchOnMerge` returns `false`.
+  GitHub deleted nothing — both branches were removed by the human clicking
+  *Delete branch* after the merge, twice within an hour, the second time on the
+  branch whose own commit said to keep it. The mechanism was wrong; the
+  conclusion was not, and got worse: a support whose survival depends on a
+  human not clicking a button is not an archive.
+
+  **So the archive is a tag, since 2026-08-03.** `ideas/0.5.0` → `6e3d58a`,
+  `ideas/post-0.5.0` → `bd210f1`, annotated, each naming the squash commit that
+  replaced it on `main`. The merge button cannot reach a tag. The namespace is
+  deliberate: `ideas/` leaves `v0.5.0` free if release tags are ever added, and
+  this repo has none for five releases. One squashed PR, one `ideas/` tag —
+  same gesture every time, no decision to retake.
+
+  Note the shape of the error, because it is this protocol's own: the claim was
+  inferred from a plausible default and committed as a design decision, in the
+  same hour as a release extending the directive that says a command's output is
+  a claim until you know the command ran. Nobody had run the command.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
@@ -285,6 +305,13 @@ not, and an issue would only restate this section.
   immediately afterwards. Its commit conventions section diverges from the
   template on purpose: this repo's subjects carry no type prefix, verified
   against `git log` rather than assumed.
+- **Looks like a contradiction, is not.** The `ideas/*` tags point at commits
+  that are **not ancestors of `main`**, so `git log` from `main` never shows
+  them and `git tag --contains` finds nothing. That is the archive working, not
+  a broken repo: each tagged tip was squashed onto `main` as a single commit
+  with the same tree, and the tag exists to keep the discarded commits
+  reachable. Read them with `git log ideas/0.5.0`, and compare with
+  `git diff ideas/0.5.0 29d66a3` — which is empty.
 - **Looks like a contradiction, is not.** The first commit message
   (`cd75710`) says the pattern was observed across "~590 commits". The real
   figure is 635. The message is left uncorrected on purpose — the
