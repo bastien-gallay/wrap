@@ -187,6 +187,13 @@ not, and an issue would only restate this section.
   pointed at nothing through `0.1.0` and most of `0.2.0`. The first PR (#1) set
   the precedent: a merge commit, not a squash, so the per-idea commit subjects
   survive in the history.
+
+  **#6 is the exception, 2026-08-03, and the rule stands.** It was squashed —
+  ten commits became `7e1e962`. GitHub kept every subject and body as bullets
+  in the squash message, so nothing written is lost; what is lost is `git
+  blame` and `git log` per idea, which is the whole reason the one-idea rule
+  exists. The nine per-idea commits survive nowhere but a deleted local
+  branch's reflog. Merge, do not squash, on the next one.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
