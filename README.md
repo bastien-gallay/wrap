@@ -41,6 +41,11 @@ of the session.
 - **Not a prose ask.** Every gate is a question with named options — what each
   answer does, and always one that does less. Nothing gets approved by not
   objecting to a sentence.
+- **Not credulous about its own commands.** A shell command's output is a claim
+  until the command is known to have run. A probe that fails in a way that
+  looks like an answer — an empty result, a stale cache, an exit status read
+  off the wrong end of a pipe — is the one failure that survives the pass,
+  because it gets written into a file as a fact.
 
 ## Install
 

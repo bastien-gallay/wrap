@@ -66,28 +66,43 @@ which makes Shitsuke's handoff the centre of the pass).
    pass. When one file carries two ideas, see §6.
 5. **A commit subject states the conclusion, not the task.** "the ACK consumer
    is not the bottleneck, measured on a live drain" — not "update notes".
-6. **Supersede, do not rewrite history.** A wrong claim gets retracted in
+6. **A command's output is a claim until you know the command ran.** Every
+   phase produces facts from a shell: Seiri reads git, Seiso runs the checks,
+   the collectors do both. A probe that fails in a way that *looks like an
+   answer* is worse than one that errors, because it gets written into a file
+   and outlives the pass. The known ways this protocol has produced a
+   confidently wrong number: `$?` after a pipeline reports the last command's
+   status, not the one you care about — use `set -o pipefail` or
+   `${PIPESTATUS[0]}`; an unquoted expansion word-splits and surveys the wrong
+   branches; `cd` does not persist between tool calls, so a linter runs in the
+   wrong directory and passes; a colourising `ls` emits ANSI escapes that
+   silently break a `^`-anchored grep; `grep` skips a file it classified as
+   binary unless given `-a`, and mis-reads ISO-8859-1 without `LC_ALL=C`.
+   Reading a cache is not reading the thing: `git branch -r` with no
+   `fetch --prune` lists branches that were deleted on merge, which is how a
+   deletion gate comes to ask for four things and deliver one.
+7. **Supersede, do not rewrite history.** A wrong claim gets retracted in
    place with a pointer to what replaced it. It does not get silently edited
    into correctness, because the next reader may be arriving *with* the wrong
    claim in their head and needs to recognise it.
-7. **No profiles.** There is one pass. A doc milestone and a bugfix milestone
+8. **No profiles.** There is one pass. A doc milestone and a bugfix milestone
    run the same five phases; each phase simply finds different things, or
    nothing.
-8. **Another session may be in this repo right now.** Before editing, check
+9. **Another session may be in this repo right now.** Before editing, check
    whether the file already carries changes that are not yours. If it does:
    do not touch it, defer whatever you were going to add, leave it uncommitted,
    and say so in the output. Re-check the remote immediately before pushing and
    rebase rather than assuming the branch you verified is still the branch you
    are pushing. One writer at a time, always — this applies to your own
    collectors (§4) as much as to a parallel session.
-9. **Locate things by name, never by section number.** "the summary line at the
-   end of `wip/queue-pacing/README.md`, under *What survived*" — not "§6". A
-   number is unresolvable from memory and forces the reader to go hunting. This
-   governs what you say to the user and what you write into their files. The
-   numbered cross-references in *this* document (§2, §4) are addressed to you
-   and stay: a numbered section here has no other name. A *phase* always does —
-   write "Seiton", never "§Seiton".
-10. **Narrate once per phase, at most.** No progress prose between two tool
+10. **Locate things by name, never by section number.** "the summary line at
+    the end of `wip/queue-pacing/README.md`, under *What survived*" — not
+    "§6". A number is unresolvable from memory and forces the reader to go
+    hunting. This governs what you say to the user and what you write into
+    their files. The numbered cross-references in *this* document (§2, §4) are
+    addressed to you and stay: a numbered section here has no other name. A
+    *phase* always does — write "Seiton", never "§Seiton".
+11. **Narrate once per phase, at most.** No progress prose between two tool
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
     independent commands into one call rather than one per turn.
@@ -254,6 +269,13 @@ Separate what has earned its place from what is merely still there.
 Output of this phase: a four-column list — *item / verdict (keep, delete,
 annex, retire) / where it goes / why*. Deletions wait for confirmation.
 
+**Verify each target still exists before you list it.** A deletion gate spends
+the user's attention, and spending it on something already gone teaches them
+the list is not checked. Remote branches are the standing case: `git branch -r`
+is a local cache, and a host that deletes the branch on merge leaves the
+tracking ref behind until a `fetch --prune` runs. Prune first, then survey. The
+same applies to a file another session removed while this one was working.
+
 ### 📍 Seiton (整頓) — put each thing in its place
 
 A place for everything, and the place is discoverable.
@@ -291,9 +313,9 @@ claim.
   "N of M" claims — especially any that came from a subagent's report, a
   summary, or your own earlier command. These are the superseded claims most
   likely to survive the pass, because they look like facts rather than
-  conclusions and nobody re-runs the command. Re-run it. Watch for shell
-  aliases too: a colourising `ls` emits ANSI escapes that silently break a
-  `^`-anchored grep and return a confident zero.
+  conclusions and nobody re-runs the command. Re-run it, under the probe
+  discipline in §1 — this is the phase where a broken probe becomes a
+  published figure.
 - **Reconcile the surfaces outside the repo.** A ticket in `READY FOR DEV` on a
   justification this session killed is more expensive than any stale document —
   somebody picks it up tomorrow and builds on a dead premise. Report these and
@@ -387,6 +409,13 @@ of the file, stage and commit the first, then restore it. Then verify: `git
 diff --stat` must show the number of changed lines you expect. A scripted
 substitution that silently matched nothing looks exactly like a successful one.
 
+**Read the host off the remote; never assume one.** `git remote -v` decides
+whether the pull request is `gh` or the merge request is `glab`, and a repo
+that answers to neither is one where the publication path stops at the push.
+Many orgs run both, and a guess costs the wrong tool at the last step of the
+pass — after every gate has already been answered, which is the most expensive
+place to be wrong.
+
 Close in conversation with a compact table — glyph, slug, gloss in the
 session's language:
 
@@ -443,6 +472,10 @@ week is a paragraph, not a gate.
 - **The rubber-stamp question.** One option, or two options that differ only in
   wording. The user learns to click the first one, and the gate that mattered
   three phases later gets the same reflex.
+- **The confident zero.** A probe returns nothing and the nothing is read as an
+  absence — no stale claims, no dead links, no branches to prune. Empty output
+  is the shape a clean result and a broken command both take, and only one of
+  them is worth reporting.
 - **The archaeology-proof rewrite.** Editing a wrong claim into correctness so
   cleanly that a reader still holding the wrong claim finds no trace of it and
   assumes they are in the wrong repo.
@@ -467,6 +500,9 @@ week is a paragraph, not a gate.
 - Is every open item either ticketed or explicitly marked as not-ticketed?
 - Would someone arriving cold, reading only the entry point, know what is
   settled and what to do next?
+- Did every figure and every list I am about to publish come from a command I
+  watched run — not from a cache, a subagent's summary, or a pipeline whose
+  exit status belonged to the last stage?
 - Is each proposed commit one idea, with a subject that states a conclusion?
 - Did the refuter get a fresh context, and did I act on what it found?
 - Is there one confirmation left to give, or three?
