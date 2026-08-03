@@ -245,6 +245,19 @@ not, and an issue would only restate this section.
   caught up with. **Open, and a real decision:** either the merge button
   changes, or `.wrap.md` and this file stop claiming per-idea history survives
   publication and say instead that the branch is where it lives.
+
+  **Settled 2026-08-03 by #8, three to one, the second way.** Squashed again —
+  `29d66a3`, one parent, six commits collapsed — after a PR body that asked for
+  a merge in as many words. Three consecutive squashes is not a slip repeated;
+  it is the practice, and the documents were wrong about it. So: **`main`
+  carries one commit per release, and per-idea history lives on the release
+  branch.** The one-idea rule does not weaken — the commits are what the PR is
+  read from and what the squash message is built out of — but nothing may claim
+  `git blame` on `main` resolves to the idea that caused a line. It resolves to
+  the release. The consequence the earlier lines missed: a merged branch is
+  deleted on the remote by default, so if the branch is the archive, it has to
+  be kept rather than pruned. `wrap/0.5.0` exists locally; `origin/wrap/0.5.0`
+  did not survive the merge, and #6's ten commits are already gone this way.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
