@@ -29,6 +29,29 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-08-03 — the archive claim, inferred and wrong within the hour
+
+Not a wrap run. What happened to the rule written one merge earlier.
+
+- **"GitHub deletes the merged branch by default" was never measured.**
+  `gh repo view --json deleteBranchOnMerge` returns `false` on this repo. The
+  claim was inferred from a plausible GitHub default, written into `CLAUDE.md`
+  as a design decision and into `.wrap.md` as a rule, and published — in the
+  same hour as a release extending the directive that says a command's output is
+  a claim until you know the command ran. The command was never run. Corrected
+  in place, not rewritten.
+
+- **The rule was broken by the merge that published it.** `wrap/post-0.5.0`
+  carried the commit saying not to delete a release branch, and was deleted from
+  the remote on merge, by hand, like `wrap/0.5.0` an hour before. Two for two.
+  A support whose survival depends on a human not clicking a button is not an
+  archive, which is what the branch rule assumed and the tag rule does not.
+
+- **Nine commits spent the interval reachable from one clone only.** Recovered
+  because this session still held the local branches. Had the clone been fresh,
+  or the session over, `git blame` per idea would have been gone for `0.5.0` the
+  way it is already gone for #6's ten commits.
+
 ## 2026-08-03 — the `0.5.0` publication
 
 Not a wrap run. The publication of the external-run fold, kept because it
