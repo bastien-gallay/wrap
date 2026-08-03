@@ -21,6 +21,46 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-08-03 — self-wrap, right after folding the probe directive
+
+A real run, on this repo, on the branch that adds the probe-hygiene directive
+— so the protocol executing the pass is the one the pass just wrote.
+
+- **The probe directive ships a probe bug.** It tells the agent to use
+  `set -o pipefail` or `${PIPESTATUS[0]}`. `PIPESTATUS` is a bash array;
+  **zsh** — this user's shell, and the shell every session in the usage report
+  ran in — spells it `pipestatus` and indexes from 1. Measured, not assumed:
+  `zsh -c 'false | true; echo "[${PIPESTATUS[0]}]"'` prints `[]`, while
+  `${pipestatus[1]}` prints `1`. So the directive's own remedy returns an empty
+  string exactly where a wrong exit code was the problem. Caught because the
+  orientation command used it and printed `fetch exit=` with nothing after it.
+  **Routed, not fixed** — editing `SKILL.md` mid-pass is the documented hazard,
+  and the precedent is the `§Seiso` note of 2026-07-26 that became `0.2.1`.
+
+- **`git log --format='%G?'` reports `E` inside the sandbox.** Not a broken
+  signature: gpg cannot reach `keyboxd` from the sandbox, so the *verification*
+  fails and the field reports the failure. Read once inside the sandbox and
+  once outside, the same five commits are `E` then `G`. A wrap that verifies
+  its own signatures and believes the first reading would report five broken
+  commits. Same family as everything the directive names, met twice in one
+  session.
+
+- **`fetch --prune` had something to prune.** `origin/wrap/post-0.3.0` was a
+  stale tracking ref left by the merge of #5. The Seiri rule added this morning
+  fired on its first run, and the branch survey after it was correct.
+
+- **The refuter went unexercised a third consecutive time**, same cause: the
+  session's standing instruction forbids spawning agents unless the user asks,
+  and invoking `/wrap` was not read as asking. The pass re-read its own claims
+  against the files instead, which is the thing the protocol says is not a
+  refuter. Three self-wraps, zero runs. The step is now the least-tested part
+  of the protocol and the decision is overdue: exercise it externally, or make
+  the protocol degrade explicitly when agents are unavailable rather than
+  silently skipping its own gate.
+
+- **Orientation did not fan out, third consecutive self-wrap.** Ten markdown
+  files, two batched commands. Still not evidence about the wave.
+
 ## 2026-07-31 — self-wrap, right after `0.3.0`
 
 A real run, on this repo, immediately after the release that mandates
