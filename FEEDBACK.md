@@ -52,6 +52,22 @@ Not a wrap run. What happened to the rule written one merge earlier.
   or the session over, `git blame` per idea would have been gone for `0.5.0` the
   way it is already gone for #6's ten commits.
 
+  **False, measured an hour later.** `git ls-remote origin`, run with no filter
+  for the first time all day, lists `refs/pull/8/head` = `6e3d58a` and
+  `refs/pull/9/head` = `bd210f1`. GitHub keeps a `refs/pull/N/head` for every
+  PR and never deletes it. Nothing was ever reachable from one clone only, and
+  #6's ten commits are in `refs/pull/6/head`, read one by one to check.
+
+- **Four statements about loss, in one day, in ascending confidence.** "#6's
+  ten commits survive nowhere but a reflog" (asserted). "The branch is the
+  archive, so keep it" (asserted, and broken by the merge that published it).
+  "The branch is not the archive, a tag is — because otherwise they are gone"
+  (measured on `deleteBranchOnMerge`, inferred on the loss). Then the loss
+  itself measured, and false. Each correction fixed the mechanism of the last
+  and reproduced its epistemic shape: the load-bearing premise went unmeasured
+  every time, and one unfiltered `ls-remote` would have settled all four at any
+  point.
+
 ## 2026-08-03 — the `0.5.0` publication
 
 Not a wrap run. The publication of the external-run fold, kept because it
