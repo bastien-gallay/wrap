@@ -234,6 +234,13 @@ not, and an issue would only restate this section.
   exists. All ten survive nowhere but a deleted local branch's reflog. Merge,
   do not squash, on the next one.
 
+  **False, and it stayed false all day: they survive in `refs/pull/6/head`.**
+  `94aa852`, with the other nine behind it, tree-identical to `7e1e962`. GitHub
+  keeps a `refs/pull/N/head` ref for every pull request it has ever seen and
+  never deletes it — deleting the branch does not touch it. Read them with
+  `git fetch origin refs/pull/6/head` . Nothing was ever lost; the loss was
+  asserted three times in one day and measured once, at the end.
+
   **Superseded the same day: #7 was squashed too, and the sentence above is
   now the losing side of a two-to-one count.** `06b37b5` collapsed eleven
   commits, and GitHub took its subject from a PR title that had been rewritten
@@ -278,6 +285,25 @@ not, and an issue would only restate this section.
   inferred from a plausible default and committed as a design decision, in the
   same hour as a release extending the directive that says a command's output is
   a claim until you know the command ran. Nobody had run the command.
+
+  **And the correction repeated the error it corrected.** "A support whose
+  survival depends on a human not clicking a button is not an archive" is true,
+  but the premise under it — that the commits were otherwise unreachable — was
+  inferred too. `git ls-remote origin` with no filter, run once at the end of
+  the day, lists a `refs/pull/N/head` for every PR this repo has ever had.
+  `pull/8/head` is `6e3d58a` and `pull/9/head` is `bd210f1`: the two branch tips
+  said to survive in one clone only were on the remote the whole time. Three
+  successive statements about loss, each written to correct the last, none of
+  them measured until the fourth.
+
+  **The `ideas/` tags stay, on a smaller claim.** They do not rescue anything
+  from oblivion — `refs/pull/N/head` already does that, permanently and for
+  free. What they add is a *name*: a `refs/pull` ref requires knowing the PR
+  number, is not fetched by any default refspec, and says nothing about which
+  squash commit it corresponds to. An annotated `ideas/<name>` is discoverable
+  with `git tag`, arrives with a normal clone, and carries the mapping in its
+  message. Convenience, not preservation — and the distinction is the whole
+  lesson of the day.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
