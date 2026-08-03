@@ -5,6 +5,19 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- A shell command's output is treated as a claim until the command is known to
+  have run. The five mechanisms that have actually produced a confidently
+  wrong number here — `$?` read after a pipeline, an unquoted expansion
+  word-splitting, a non-persisting `cd`, ANSI escapes from a colourising `ls`,
+  `grep` on a binary-classified or ISO-8859-1 file — are named in the
+  always-on directives, along with the rule that reading a cache is not
+  reading the thing. Seiso's re-derivation bullet and the self-check point at
+  it, and *the confident zero* joins the anti-patterns.
+
 ## [0.3.0] — 2026-07-31
 
 ### Added

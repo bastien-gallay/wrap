@@ -110,6 +110,16 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   cross-references are addressed to the agent executing the protocol, where the
   number *is* the section's identity, so they stay. A phase always has a name,
   so `§Seiton` is always wrong. Do not "clean up" the numeric ones.
+- **Probe hygiene is a directive, not a phase split.** The 2026-08-02 usage
+  report proposed splitting wrap into a read-only audit that stops, then an
+  approve-and-execute phase, on the grounds that its frictions are all
+  read-phase errors surfacing during the write phase. Rejected: `--dry-run`
+  already offers that shape on demand, and a standing split adds a sixth gate
+  to a protocol whose stated position is *publication is one confirmation, not
+  three*. The frictions were not caused by phase ordering — they were caused
+  by shell probes returning plausible wrong answers, which a later gate would
+  have approved just as confidently. The fix is upstream of the ordering, so
+  it went into the always-on directives.
 - **The skill ships decoupled from every real project.** Examples use `PROJ-\d+`
   and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
   sample before anyone noticed; a skill that travels to other people's repos
