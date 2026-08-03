@@ -15,6 +15,58 @@ Last folded: [`feedback/2026-07-26-reviewed.md`](feedback/2026-07-26-reviewed.md
 that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap.
 
+## 2026-08-02 — recovered from the usage report, not from a run
+
+Not session notes. `~/.claude/usage-data/report-2026-08-02-185150.html`
+aggregates 182 sessions and 4,183 messages between 2026-06-06 and 08-02, and
+five of its findings are about `wrap`. It is the second instance of the
+external-run intake being recovered after the fact rather than captured at the
+time — the first was the `jsonl` parse behind `feedback/2026-07-26-reviewed.md`.
+The verbatim and the per-run dates are gone; what survives is the shape and the
+count. Notes below are the report's observations, not this session's.
+
+- **Shell probes produce measurements that look valid and are wrong.** The
+  report names four recurring mechanisms across at least four sessions: `$?`
+  read after a pipeline (`git rebase … | tail -3; echo exit=$?` reported a
+  success that belonged to `tail`, during a wrap); `zsh` word-splitting on an
+  unquoted expansion, which produced a false branch survey; a missing
+  `LC_ALL=C` on ISO-8859-1 data; a non-persisting `cd` between tool calls,
+  which gave bogus `markdownlint` results and nearly committed to `main`. Also
+  a `grep` that silently skipped a file classified as binary. `SKILL.md` has a
+  rule for retracting a false claim and none for not manufacturing one, in two
+  phases — Seiso runs the checks, Seiri reads git — whose output *is* shell
+  measurement.
+
+- **The stale-remote-ref deletion was seen externally too.** Same failure as
+  the 2026-07-31 bullet below; the report lists "a Seiri table proposes
+  deleting refs that no longer exist" among wrap's repeating shapes, so it is
+  not a one-off of that self-wrap.
+
+- **A push resurrected a deleted branch.** Reported as another instance of the
+  same family: state read once, acted on later, no re-read in between.
+  `SKILL.md` already says to re-check the remote immediately before pushing.
+  Unknown from the report whether the run predates that directive.
+
+- **`gh` was assumed on a GitLab remote.** Observed on `/review`, not on wrap.
+  Recorded here because wrap's publication path opens a PR the same way and
+  has no host detection: the org uses both hosts.
+
+- **GPG signing and PR auto-merge blocked mid-wrap, breaking an otherwise
+  automated pass.** Most of the window predates `0.3.0` (2026-07-31), which
+  moved the signing authorisation into the `Publish` question. Counted as
+  corroboration of why that change was made, not as open friction.
+
+- **What the report says is working**, for balance: `/wrap` is named as the
+  spine of the user's session-close rhythm, and the payoff it points to is the
+  pre-vacation handover — Jira comments posted, branches cleaned, seven docs
+  reconciled. The 195 `AskUserQuestion` calls are read as a deliberate choice
+  to gate at decisions and run free elsewhere.
+
+- **The report's own recommendation, recorded as-is and not endorsed:** split
+  wrap into a strict read-only audit that outputs a findings table and stops,
+  then an approve-and-execute phase. Its rationale is that all four frictions
+  above are read-phase problems surfacing during the write phase.
+
 ## 2026-07-31 — self-wrap, right after `0.3.0`
 
 A real run, on this repo, immediately after the release that mandates
