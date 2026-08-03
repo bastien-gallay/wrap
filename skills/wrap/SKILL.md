@@ -320,6 +320,12 @@ claim.
   document that contradicts itself twenty lines apart, and the header is what
   people read. Summary lines are where superseded claims survive longest,
   because they read as facts; one has survived an entire consolidation pass.
+- **The blast radius is not only your own diff.** Commits that landed on the
+  default branch while the session ran can falsify prose you wrote minutes ago,
+  and they appear in no diff of your branch — a doc stating "there is no such
+  setting yet" was false the minute it was typed, because the setting had just
+  been merged upstream. Fetch, read what moved (`git log HEAD..origin/main`),
+  and re-check every claim of absence the session wrote against it.
 - **Re-derive every figure the session wrote down.** Counts, dates, versions,
   "N of M" claims — especially any that came from a subagent's report, a
   summary, or your own earlier command. These are the superseded claims most
