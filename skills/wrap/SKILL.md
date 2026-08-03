@@ -79,8 +79,12 @@ which makes Shitsuke's handoff the centre of the pass).
    branches; `cd` does not persist between tool calls, so a linter runs in the
    wrong directory and passes; a colourising `ls` emits ANSI escapes that
    silently break a `^`-anchored grep; `grep` skips a file it classified as
-   binary unless given `-a`, and mis-reads ISO-8859-1 without `LC_ALL=C`.
-   Reading a cache is not reading the thing: `git branch -r` with no
+   binary unless given `-a`, and mis-reads ISO-8859-1 without `LC_ALL=C`; an
+   argument that does nothing never reaches the check the probe was meant to
+   exercise — `osascript -e 'keystroke ""'` succeeds *without* accessibility
+   permission, so a wait loop built on it reports a permission granted while
+   every real keystroke is being denied. Reading a cache is not reading the
+   thing: `git branch -r` with no
    `fetch --prune` lists branches that were deleted on merge, which is how a
    deletion gate comes to ask for four things and deliver one.
 7. **Supersede, do not rewrite history.** A wrong claim gets retracted in
@@ -95,8 +99,12 @@ which makes Shitsuke's handoff the centre of the pass).
    do not touch it, defer whatever you were going to add, leave it uncommitted,
    and say so in the output. Re-check the remote immediately before pushing and
    rebase rather than assuming the branch you verified is still the branch you
-   are pushing. One writer at a time, always — this applies to your own
-   collectors (§4) as much as to a parallel session.
+   are pushing. Ask that question with the range in the right direction:
+   `git log HEAD..origin/main` is what tells you the default branch moved;
+   `git log origin/main..HEAD` lists what your branch has *in addition* and
+   returns the same thing whether you are current or three commits behind. One
+   writer at a time, always — this applies to your own collectors (§4) as much
+   as to a parallel session.
 10. **Locate things by name, never by section number.** "the summary line at
     the end of `wip/queue-pacing/README.md`, under *What survived*" — not
     "§6". A number is unresolvable from memory and forces the reader to go
@@ -220,6 +228,14 @@ The whole of orientation is read-only, and it is the bulk of the pass's cost.
 Run it as **one wave of concurrent collectors**, then stop and assemble. A
 collector reads, greps, and runs commands; **a collector never edits.**
 
+**Invoking wrap is the request for these subagents**, and for the refuter (§6).
+Some harnesses stand off subagents unless the user asked for them; a user who
+typed `/wrap` asked for this wave and that one pass, and for nothing else — no
+other part of the protocol needs a subagent, so this does not become a general
+permission. If the harness refuses anyway, read serially in this context and
+declare the degradation the way the refuter does; never let the authorisation be
+read as licence to substitute your own reading and report it as the wave.
+
 | Collector | Gathers | Returns |
 | --- | --- | --- |
 | git | log since the last tag or the previous wrap, status, `diff --stat`, merged branches and stale worktrees | the milestone, in one sentence, plus the changed-file list |
@@ -312,6 +328,12 @@ claim.
   document that contradicts itself twenty lines apart, and the header is what
   people read. Summary lines are where superseded claims survive longest,
   because they read as facts; one has survived an entire consolidation pass.
+- **The blast radius is not only your own diff.** Commits that landed on the
+  default branch while the session ran can falsify prose you wrote minutes ago,
+  and they appear in no diff of your branch — a doc stating "there is no such
+  setting yet" was false the minute it was typed, because the setting had just
+  been merged upstream. Fetch, read what moved (`git log HEAD..origin/main`),
+  and re-check every claim of absence the session wrote against it.
 - **Re-derive every figure the session wrote down.** Counts, dates, versions,
   "N of M" claims — especially any that came from a subagent's report, a
   summary, or your own earlier command. These are the superseded claims most
@@ -406,8 +428,8 @@ most often — the summary line that survived the correction of its own body. A
 context that has just written something is the worst judge of whether it is
 true.
 
-**If you cannot spawn one, say so in the closing table and name what went
-unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
+Invoking wrap is the request for it (§4). **If you cannot spawn one anyway, say
+so in the closing table and name what went unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
 re-read your own claims and call it a refuter; that is the check the step
 exists to replace. A session may forbid subagents, or none may be available;
 that is a degraded pass, not a complete one, and the user decides whether a

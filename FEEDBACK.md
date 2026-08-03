@@ -10,13 +10,20 @@ Once a batch has been folded into `SKILL.md`, archive it under
 A run that went smoothly is worth a line too. Only recording friction makes
 the log read like the protocol is worse than it is.
 
-Last folded: [`feedback/2026-08-03-reviewed.md`](feedback/2026-08-03-reviewed.md)
+Last folded:
+[`feedback/2026-08-03-external-run-reviewed.md`](feedback/2026-08-03-external-run-reviewed.md)
+— three findings from a real run on **another repo**, carried here by hand
+because the intake cannot reach across checkouts, folded and **released in
+`0.5.0`** on 2026-08-03. It is the first batch from an external run to be folded
+at all.
+
+Before it: [`feedback/2026-08-03-reviewed.md`](feedback/2026-08-03-reviewed.md)
 — five findings about `wrap` read out of the periodic usage report, folded
 2026-08-03 and **released in `0.4.0`** the same day. It also consumed one
 bullet of the 07-31 batch below, marked in place; the rest of that batch is
 still open.
 
-Before it: [`feedback/2026-07-26-reviewed.md`](feedback/2026-07-26-reviewed.md)
+Before that: [`feedback/2026-07-26-reviewed.md`](feedback/2026-07-26-reviewed.md)
 — 26 runs across six repos, released as `0.2.0`. It also records the one note
 that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
@@ -100,6 +107,12 @@ A real run, on this repo, on the branch that adds the probe-hygiene directive
   went unverified. The refuter then ran twice for real: six refutations on the
   repo's own claims, three more on the release itself. Both halves of the
   decision taken, so nothing here stays open.
+
+  **The stated cause is settled too, in `0.5.0`.** "Invoking `/wrap` was not
+  read as asking" is now answered by the protocol itself: it says invoking wrap
+  *is* the request, for the collector wave and the refuter and for nothing else.
+  See
+  [`feedback/2026-08-03-external-run-reviewed.md`](feedback/2026-08-03-external-run-reviewed.md).
 
 - **Orientation did not fan out, third consecutive self-wrap.** Ten markdown
   files, two batched commands. Still not evidence about the wave.

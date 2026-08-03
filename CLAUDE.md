@@ -120,6 +120,20 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   by shell probes returning plausible wrong answers, which a later gate would
   have approved just as confidently. The fix is upstream of the ordering, so
   it went into the always-on directives.
+- **The skill authorises its own two subagents, and nothing else.** Several
+  harnesses inject a standing "do not call the AgentTool unless the user
+  requested it", from the client rather than from any user configuration — the
+  2026-08-03 external run ruled out `settings.json`, `CLAUDE.md`, `AGENTS.md`,
+  managed-settings, `~/.claude.json`, output-styles, shell aliases and the launch
+  line before concluding that. Under it, Orientation's wave and the refuter both
+  fail to run, which is three self-wraps and one external run with the
+  protocol's most novel step unexercised. `0.5.0` states that invoking wrap *is*
+  the request. Two constraints on that sentence, both deliberate: it names the
+  two subagents rather than granting permission in general, because a skill that
+  hands itself a blanket agent permission is a skill nobody should install; and
+  the degradation rule stays the exit, because the failure to design against is
+  not a harness that refuses — it is a pass that reads the authorisation,
+  substitutes its own re-read, and reports a verification that did not happen.
 - **The skill ships decoupled from every real project.** Examples use `PROJ-\d+`
   and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
   sample before anyone noticed; a skill that travels to other people's repos
@@ -149,6 +163,19 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
+- **Open 2026-08-03 — `0.5.0` is folded and versioned, not yet published.**
+  Three folds from the first external-run batch: wrap authorises its own two
+  subagents, Seiso's blast radius extends to what landed upstream during the
+  session, and two instances join probe hygiene (an empty argument that never
+  reaches the check, a commit range read in the wrong direction). Minor, because
+  the subagent line changes behaviour. The manifests are at `0.5.0`; nothing is
+  committed, pushed, or merged, and no wrap has run over it.
+- **Settled 2026-08-03 — the intake crossed a repo boundary for the first
+  time.** The 07-26 open item says friction from another checkout has nowhere to
+  land. It still does not — what changed is that a human carried a batch across
+  by hand and it folded cleanly, which is evidence the *format* travels, not
+  that the intake works. The item below stays open; do not read this as closing
+  it.
 - **Settled 2026-08-03 — `0.4.0` is released on `main`** as `06b37b5`, and the
   installed skill serves it — verified by grepping the installed file, not the
   commit. Four folds: probe
