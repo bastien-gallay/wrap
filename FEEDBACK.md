@@ -37,6 +37,8 @@ A real run, on this repo, on the branch that adds the probe-hygiene directive
   **Routed, not fixed** — editing `SKILL.md` mid-pass is the documented hazard,
   and the precedent is the `§Seiso` note of 2026-07-26 that became `0.2.1`.
 
+  **Folded in `0.4.0`**, after the pass closed, as the precedent prescribes.
+
 - **`git log --format='%G?'` reports `E` inside the sandbox.** Not a broken
   signature: gpg cannot reach `keyboxd` from the sandbox, so the *verification*
   fails and the field reports the failure. Read once inside the sandbox and
@@ -57,6 +59,12 @@ A real run, on this repo, on the branch that adds the probe-hygiene directive
   of the protocol and the decision is overdue: exercise it externally, or make
   the protocol degrade explicitly when agents are unavailable rather than
   silently skipping its own gate.
+
+  **Folded in `0.4.0`, same day, and then exercised.** The degradation rule is
+  in `SKILL.md` — a pass that cannot spawn a refuter declares it and names what
+  went unverified. The refuter then ran twice for real: six refutations on the
+  repo's own claims, three more on the release itself. Both halves of the
+  decision taken, so nothing here stays open.
 
 - **Orientation did not fan out, third consecutive self-wrap.** Ten markdown
   files, two batched commands. Still not evidence about the wave.
