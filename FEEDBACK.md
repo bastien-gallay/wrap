@@ -29,6 +29,39 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-08-03 — the `0.5.0` publication
+
+Not a wrap run. The publication of the external-run fold, kept because it
+settles a question three documents had left open.
+
+- **Third consecutive squash, on a PR whose body asked for a merge.** `29d66a3`,
+  one parent, six per-idea commits collapsed. #6 asked in `CLAUDE.md`, #7 asked
+  again, #8 asked in the PR body itself, at the top of the section a merger
+  reads last. Three to zero. Reconciled the same hour in `CLAUDE.md` and
+  `.wrap.md`: `main` carries one commit per release, and the release branch is
+  where per-idea history lives.
+
+  The consequence nobody had written down: GitHub deletes the merged branch by
+  default, so "the branch is the archive" only holds if the branch is kept.
+  `origin/wrap/0.5.0` was gone within the minute; #6's ten commits are already
+  lost this way.
+
+- **The sandboxed `git fetch` failed and the count that followed still
+  answered.** `fatal: failed to store: 100001`, then
+  `git rev-list --count HEAD..origin/main` returned `0` off a cache that had
+  never been refreshed. Re-run outside the sandbox, the answer was the same — so
+  the wrong reading and the right one were indistinguishable, which is the whole
+  shape the probe directive names. Met while committing the change that extends
+  that directive.
+
+- **No refuter, and the authorisation written in this very release did not
+  apply.** The session forbids subagents unless asked, and this was not a
+  `/wrap` invocation — so the new line, which says invoking wrap *is* the
+  request, had nothing to attach to. Everything published went out attacked by
+  nobody. Worth knowing before reading `0.5.0` as having closed the question: it
+  authorises the refuter *inside a wrap*, and the folds themselves are landed by
+  sessions that are not wraps.
+
 ## 2026-08-03 — the release wrap, and a second session in the same checkout
 
 The pass that cut `0.4.0` and the one that closed it, both with another agent
