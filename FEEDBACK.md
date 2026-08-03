@@ -12,14 +12,49 @@ the log read like the protocol is worse than it is.
 
 Last folded: [`feedback/2026-08-03-reviewed.md`](feedback/2026-08-03-reviewed.md)
 — five findings about `wrap` read out of the periodic usage report, folded
-2026-08-03, unreleased. It also consumed one bullet of the 07-31 batch below,
-marked in place; the rest of that batch is still open.
+2026-08-03 and **released in `0.4.0`** the same day. It also consumed one
+bullet of the 07-31 batch below, marked in place; the rest of that batch is
+still open.
 
 Before it: [`feedback/2026-07-26-reviewed.md`](feedback/2026-07-26-reviewed.md)
 — 26 runs across six repos, released as `0.2.0`. It also records the one note
 that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
+
+## 2026-08-03 — the release wrap, and a second session in the same checkout
+
+The pass that cut `0.4.0` and the one that closed it, both with another agent
+writing into the same worktree.
+
+- **A parallel session moved the ground three times mid-pass.** It added a
+  twelfth always-on directive to `SKILL.md` and withdrew it before it could be
+  committed; it committed `docs/infographic.md` on top of the release branch
+  after this pass had un-tracked the same file; and it opened the PR under a
+  title describing one of eleven commits. Directive 9 covers the file-level
+  case and worked — the withdrawn directive was never committed. It does not
+  cover the surfaces *outside* the repo: nothing in the protocol says to check
+  whether a PR already exists before opening one, and `gh pr create` refusing
+  was what surfaced it.
+
+- **`git add -A` swept in the other session's file.** It landed in a commit
+  whose subject is about a bash-only `PIPESTATUS` spelling. Un-tracked in a
+  follow-up rather than rewritten, then re-committed deliberately by its
+  author. The protocol says not to commit another session's changes; it does
+  not say how to stage, and the habit that breaks it is the convenient one.
+
+- **The squash happened again, under a stale title.** `CLAUDE.md` said "merge,
+  do not squash, on the next one" and the next one was squashed. Worse, GitHub
+  took the squash subject from the PR title as it stood before a rewrite, so
+  `main` records the `0.4.0` release as `docs: add 5S workflow infographic
+  guide (#7)`. Retitling a PR does not retitle what the merge button will
+  write, and nothing warned about that.
+
+- **The refuter ran twice and found nine things.** Six on the repo's own
+  claims after two verification passes, three more on the release itself. Four
+  of the six were in prose written minutes earlier by the context that then
+  self-checked it and passed. This is the evidence the protocol lacked for
+  three passes; see `CLAUDE.md` for what it settles.
 
 ## 2026-08-03 — self-wrap, right after folding the probe directive
 
