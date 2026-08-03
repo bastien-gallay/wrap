@@ -79,8 +79,12 @@ which makes Shitsuke's handoff the centre of the pass).
    branches; `cd` does not persist between tool calls, so a linter runs in the
    wrong directory and passes; a colourising `ls` emits ANSI escapes that
    silently break a `^`-anchored grep; `grep` skips a file it classified as
-   binary unless given `-a`, and mis-reads ISO-8859-1 without `LC_ALL=C`.
-   Reading a cache is not reading the thing: `git branch -r` with no
+   binary unless given `-a`, and mis-reads ISO-8859-1 without `LC_ALL=C`; an
+   argument that does nothing never reaches the check the probe was meant to
+   exercise — `osascript -e 'keystroke ""'` succeeds *without* accessibility
+   permission, so a wait loop built on it reports a permission granted while
+   every real keystroke is being denied. Reading a cache is not reading the
+   thing: `git branch -r` with no
    `fetch --prune` lists branches that were deleted on merge, which is how a
    deletion gate comes to ask for four things and deliver one.
 7. **Supersede, do not rewrite history.** A wrong claim gets retracted in
@@ -95,8 +99,12 @@ which makes Shitsuke's handoff the centre of the pass).
    do not touch it, defer whatever you were going to add, leave it uncommitted,
    and say so in the output. Re-check the remote immediately before pushing and
    rebase rather than assuming the branch you verified is still the branch you
-   are pushing. One writer at a time, always — this applies to your own
-   collectors (§4) as much as to a parallel session.
+   are pushing. Ask that question with the range in the right direction:
+   `git log HEAD..origin/main` is what tells you the default branch moved;
+   `git log origin/main..HEAD` lists what your branch has *in addition* and
+   returns the same thing whether you are current or three commits behind. One
+   writer at a time, always — this applies to your own collectors (§4) as much
+   as to a parallel session.
 10. **Locate things by name, never by section number.** "the summary line at
     the end of `wip/queue-pacing/README.md`, under *What survived*" — not
     "§6". A number is unresolvable from memory and forces the reader to go
