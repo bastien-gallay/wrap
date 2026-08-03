@@ -149,11 +149,15 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Open — three folds are on `wrap/feedback-2026-08-02`, unreleased.** Probe
-  hygiene as an always-on directive, Seiri pruning before it surveys, and host
-  detection on the publication path. `CHANGELOG.md` carries them under
+- **Open — four folds are unreleased.** Probe hygiene as an always-on
+  directive, Seiri pruning before it surveys, host detection on the publication
+  path — all three merged to `main` as `7e1e962` — and the refuter-degradation
+  rule, on `wrap/0.4.0`. `CHANGELOG.md` carries the four under
   `## [Unreleased]`; the manifests still say `0.3.0`. They are a `0.4.0` when
-  someone decides to cut one — minor, because the directive changes behaviour.
+  someone decides to cut one — minor, because the directives change behaviour.
+  An earlier revision of this line named `wrap/feedback-2026-08-02` as their
+  home and counted three; that branch was squashed and deleted on 2026-08-03,
+  and the fourth fold landed after it.
 - **Open — the probe directive contains a probe bug, found by the self-wrap
   that followed it.** It prescribes `${PIPESTATUS[0]}`, which is bash; zsh
   spells it `pipestatus` and indexes from 1, so the remedy returns an empty
