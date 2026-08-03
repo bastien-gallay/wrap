@@ -124,6 +124,15 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
   sample before anyone noticed; a skill that travels to other people's repos
   must not carry a client's identifiers in its own prose.
+- **`feedback/` is a publication surface, and the rule covers the author too.**
+  The 2026-08-02 batch came from a usage report dense with client names,
+  production infrastructure and ticket refs; none of it crossed over, which is
+  the decoupling rule working. What did cross over was the *author's* own
+  telemetry — session and message counts, employer tooling, a dated absence —
+  none of which any finding needed. Redacted after the fact, in place and
+  marked, because the commits and the PR carrying them were already public.
+  When folding from an aggregate source, carry the finding and leave the
+  measurement of the person behind it.
 
 ## Provenance
 
