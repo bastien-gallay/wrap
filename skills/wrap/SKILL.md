@@ -269,6 +269,13 @@ Separate what has earned its place from what is merely still there.
 Output of this phase: a four-column list — *item / verdict (keep, delete,
 annex, retire) / where it goes / why*. Deletions wait for confirmation.
 
+**Verify each target still exists before you list it.** A deletion gate spends
+the user's attention, and spending it on something already gone teaches them
+the list is not checked. Remote branches are the standing case: `git branch -r`
+is a local cache, and a host that deletes the branch on merge leaves the
+tracking ref behind until a `fetch --prune` runs. Prune first, then survey. The
+same applies to a file another session removed while this one was working.
+
 ### 📍 Seiton (整頓) — put each thing in its place
 
 A place for everything, and the place is discoverable.

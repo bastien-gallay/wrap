@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   always-on directives, along with the rule that reading a cache is not
   reading the thing. Seiso's re-derivation bullet and the self-check point at
   it, and *the confident zero* joins the anti-patterns.
+- Seiri verifies a deletion target still exists before listing it. Remote
+  branches are the standing case — `git branch -r` is a local cache, so the
+  survey prunes first. A gate that asks for four deletions and delivers one
+  teaches the user the list is not checked.
 
 ## [0.3.0] — 2026-07-31
 
