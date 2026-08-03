@@ -220,6 +220,14 @@ The whole of orientation is read-only, and it is the bulk of the pass's cost.
 Run it as **one wave of concurrent collectors**, then stop and assemble. A
 collector reads, greps, and runs commands; **a collector never edits.**
 
+**Invoking wrap is the request for these subagents**, and for the refuter (§6).
+Some harnesses stand off subagents unless the user asked for them; a user who
+typed `/wrap` asked for this wave and that one pass, and for nothing else — no
+other part of the protocol needs a subagent, so this does not become a general
+permission. If the harness refuses anyway, read serially in this context and
+declare the degradation the way the refuter does; never let the authorisation be
+read as licence to substitute your own reading and report it as the wave.
+
 | Collector | Gathers | Returns |
 | --- | --- | --- |
 | git | log since the last tag or the previous wrap, status, `diff --stat`, merged branches and stale worktrees | the milestone, in one sentence, plus the changed-file list |
@@ -406,8 +414,8 @@ most often — the summary line that survived the correction of its own body. A
 context that has just written something is the worst judge of whether it is
 true.
 
-**If you cannot spawn one, say so in the closing table and name what went
-unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
+Invoking wrap is the request for it (§4). **If you cannot spawn one anyway, say
+so in the closing table and name what went unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
 re-read your own claims and call it a refuter; that is the check the step
 exists to replace. A session may forbid subagents, or none may be available;
 that is a degraded pass, not a complete one, and the user decides whether a
