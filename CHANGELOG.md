@@ -5,6 +5,28 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.5.0] — 2026-08-03
+
+### Added
+
+- Invoking wrap is stated to be the request for the only two subagents the
+  protocol uses — Orientation's collector wave and the refuter — for harnesses
+  that stand off subagents unless the user asked. Scoped deliberately: no other
+  part of the pass needs one, so the line cannot be read as a general
+  permission, and the existing degradation rule stays the exit when a harness
+  refuses anyway.
+- Seiso's blast radius now includes what landed on the default branch *while
+  the session ran*. Those commits falsify prose written minutes earlier and
+  appear in no diff of your own branch — a doc asserting a setting did not
+  exist was false the minute it was typed, because the setting had just been
+  merged.
+- Two instances join the probe-hygiene directive: an argument that does nothing
+  never reaches the check it was meant to exercise (`osascript -e 'keystroke
+  ""'` succeeds without accessibility permission), and a commit range is
+  directional — `git log origin/main..HEAD` answers a different question than
+  the one asked before a push, and returns the same thing whether you are
+  current or three commits behind.
+
 ## [0.4.0] — 2026-08-03
 
 ### Added
