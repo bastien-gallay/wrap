@@ -149,7 +149,9 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Settled 2026-08-03 — `0.4.0` is cut, on `wrap/0.4.0`.** Four folds: probe
+- **Settled 2026-08-03 — `0.4.0` is released on `main`** as `06b37b5`, and the
+  installed skill serves it — verified by grepping the installed file, not the
+  commit. Four folds: probe
   hygiene as an always-on directive, Seiri pruning before it surveys, host
   detection on the publication path, and a refuter that declares its own
   absence instead of skipping in silence. Minor, because the directives change
@@ -204,6 +206,18 @@ not, and an issue would only restate this section.
   blame` and `git log` per idea, which is the whole reason the one-idea rule
   exists. All ten survive nowhere but a deleted local branch's reflog. Merge,
   do not squash, on the next one.
+
+  **Superseded the same day: #7 was squashed too, and the sentence above is
+  now the losing side of a two-to-one count.** `06b37b5` collapsed eleven
+  commits, and GitHub took its subject from a PR title that had been rewritten
+  minutes earlier — so `main` records the `0.4.0` release as `docs: add 5S
+  workflow infographic guide (#7)`, carrying a type prefix this repo's
+  conventions do not use. Both squashes were the human's choice at the merge
+  button, both times after a document asked for a merge commit. That is not a
+  precedent being broken twice; it is a preference the documents have not
+  caught up with. **Open, and a real decision:** either the merge button
+  changes, or `.wrap.md` and this file stop claiming per-idea history survives
+  publication and say instead that the branch is where it lives.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
