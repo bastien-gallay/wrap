@@ -403,6 +403,14 @@ most often — the summary line that survived the correction of its own body. A
 context that has just written something is the worst judge of whether it is
 true.
 
+**If you cannot spawn one, say so in the closing table and name what went
+unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
+re-read your own claims and call it a refuter; that is the check the step
+exists to replace. A session may forbid subagents, or none may be available;
+that is a degraded pass, not a complete one, and the user decides whether a
+degraded pass is enough. Silently skipping it reports a verification that did
+not happen.
+
 **When one file carries two ideas** (§1.4), do not bundle and do not reach for
 interactive staging, which is unavailable here. Move the second idea's text out
 of the file, stage and commit the first, then restore it. Then verify: `git
@@ -454,6 +462,7 @@ week is a paragraph, not a gate.
 - Never take a confirmation from prose. If it gates a deletion, a move, a
   ticket edit, or the publication, it is an AskUserQuestion.
 - Never write "TODO" as the resolution of anything in this pass.
+- Never report a pass as complete when the refuter did not run. Name the gap.
 
 ## 8. Anti-patterns
 
