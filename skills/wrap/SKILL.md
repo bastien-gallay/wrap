@@ -101,9 +101,10 @@ which makes Shitsuke's handoff the centre of the pass).
     the end of `wip/queue-pacing/README.md`, under *What survived*" — not
     "§6". A number is unresolvable from memory and forces the reader to go
     hunting. This governs what you say to the user and what you write into
-    their files. The numbered cross-references in *this* document (§2, §4) are
-    addressed to you and stay: a numbered section here has no other name. A
-    *phase* always does — write "Seiton", never "§Seiton".
+    their files. The numbered cross-references in *this* document — `§1`, `§2`,
+    `§4`, `§6` and the `§1.n` forms — are addressed to you and stay: a numbered
+    section here has no other name. A *phase* always does — write "Seiton",
+    never "§Seiton".
 11. **Narrate once per phase, at most.** No progress prose between two tool
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
