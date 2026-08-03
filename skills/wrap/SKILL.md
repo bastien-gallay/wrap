@@ -72,8 +72,10 @@ which makes Shitsuke's handoff the centre of the pass).
    answer* is worse than one that errors, because it gets written into a file
    and outlives the pass. The known ways this protocol has produced a
    confidently wrong number: `$?` after a pipeline reports the last command's
-   status, not the one you care about — use `set -o pipefail` or
-   `${PIPESTATUS[0]}`; an unquoted expansion word-splits and surveys the wrong
+   status, not the one you care about — use `set -o pipefail`, which works in
+   both shells, and know that the array is `${PIPESTATUS[0]}` in bash but
+   `${pipestatus[1]}` in zsh, where the bash spelling silently returns an empty
+   string; an unquoted expansion word-splits and surveys the wrong
    branches; `cd` does not persist between tool calls, so a linter runs in the
    wrong directory and passes; a colourising `ls` emits ANSI escapes that
    silently break a `^`-anchored grep; `grep` skips a file it classified as
@@ -99,9 +101,10 @@ which makes Shitsuke's handoff the centre of the pass).
     the end of `wip/queue-pacing/README.md`, under *What survived*" — not
     "§6". A number is unresolvable from memory and forces the reader to go
     hunting. This governs what you say to the user and what you write into
-    their files. The numbered cross-references in *this* document (§2, §4) are
-    addressed to you and stay: a numbered section here has no other name. A
-    *phase* always does — write "Seiton", never "§Seiton".
+    their files. The numbered cross-references in *this* document — `§1`, `§2`,
+    `§4`, `§6` and the `§1.n` forms — are addressed to you and stay: a numbered
+    section here has no other name. A *phase* always does — write "Seiton",
+    never "§Seiton".
 11. **Narrate once per phase, at most.** No progress prose between two tool
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
@@ -403,6 +406,14 @@ most often — the summary line that survived the correction of its own body. A
 context that has just written something is the worst judge of whether it is
 true.
 
+**If you cannot spawn one, say so in the closing table and name what went
+unverified** — `❌ refuter unavailable, closing table unattacked`. Do not
+re-read your own claims and call it a refuter; that is the check the step
+exists to replace. A session may forbid subagents, or none may be available;
+that is a degraded pass, not a complete one, and the user decides whether a
+degraded pass is enough. Silently skipping it reports a verification that did
+not happen.
+
 **When one file carries two ideas** (§1.4), do not bundle and do not reach for
 interactive staging, which is unavailable here. Move the second idea's text out
 of the file, stage and commit the first, then restore it. Then verify: `git
@@ -454,6 +465,7 @@ week is a paragraph, not a gate.
 - Never take a confirmation from prose. If it gates a deletion, a move, a
   ticket edit, or the publication, it is an AskUserQuestion.
 - Never write "TODO" as the resolution of anything in this pass.
+- Never report a pass as complete when the refuter did not run. Name the gap.
 
 ## 8. Anti-patterns
 

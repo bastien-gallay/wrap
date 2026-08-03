@@ -149,18 +149,28 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Open — three folds are on `wrap/feedback-2026-08-02`, unreleased.** Probe
-  hygiene as an always-on directive, Seiri pruning before it surveys, and host
-  detection on the publication path. `CHANGELOG.md` carries them under
-  `## [Unreleased]`; the manifests still say `0.3.0`. They are a `0.4.0` when
-  someone decides to cut one — minor, because the directive changes behaviour.
-- **Open — the probe directive contains a probe bug, found by the self-wrap
-  that followed it.** It prescribes `${PIPESTATUS[0]}`, which is bash; zsh
-  spells it `pipestatus` and indexes from 1, so the remedy returns an empty
-  string in the shell every observed session actually used. Measured, routed to
-  `FEEDBACK.md` rather than fixed mid-pass, per the `0.2.1` precedent. Fix it
-  before cutting the release — shipping a probe-hygiene rule whose example
-  fails silently is the exact failure the rule describes.
+- **Settled 2026-08-03 — `0.4.0` is cut, on `wrap/0.4.0`.** Four folds: probe
+  hygiene as an always-on directive, Seiri pruning before it surveys, host
+  detection on the publication path, and a refuter that declares its own
+  absence instead of skipping in silence. Minor, because the directives change
+  behaviour. Two earlier revisions of this line are superseded — one named
+  `wrap/feedback-2026-08-02` as the folds' home after that branch was squashed
+  and deleted, the other counted three folds and said the manifests were still
+  at `0.3.0`. Both were true when written and neither survived the release.
+- **Settled 2026-08-03 — the probe directive's own probe bug is fixed.** It
+  prescribed `${PIPESTATUS[0]}`, which is bash; zsh spells the array
+  `pipestatus` and indexes from 1, so the remedy returned an empty string in
+  the shell every observed session actually used. Measured in both shells. The
+  rule now names `set -o pipefail` as the portable form and both spellings
+  beside it.
+- **Open — the refuter earns its place, and nothing else in this repo does the
+  job.** First actual run, 2026-08-03, after three passes skipped it: six
+  refutations on claims that had already been verified twice, four of them on
+  prose written minutes earlier. A second run over the release caught three
+  more, including a README link to an untracked file. Two things follow. The
+  cheap self-check does not substitute — every one of those claims had passed
+  one. And a refuter's finding can be stale by the time it is read: the README
+  link was repaired by a parallel session between the run and the fix.
 
 Three open items below are marked *not ticketed*. GitHub issues exist as of
 2026-07-26, so that is now a choice rather than a constraint: all three are
@@ -192,8 +202,8 @@ not, and an issue would only restate this section.
   ten commits became `7e1e962`. GitHub kept every subject and body as bullets
   in the squash message, so nothing written is lost; what is lost is `git
   blame` and `git log` per idea, which is the whole reason the one-idea rule
-  exists. The nine per-idea commits survive nowhere but a deleted local
-  branch's reflog. Merge, do not squash, on the next one.
+  exists. All ten survive nowhere but a deleted local branch's reflog. Merge,
+  do not squash, on the next one.
 - **Closed 2026-07-26 (was: never run externally).** 26 runs across six repos
   between 07-21 and 07-25 exercised all five phases on real external
   milestones. Seiso carries the value in essentially every run; Seiri and
@@ -247,5 +257,9 @@ not, and an issue would only restate this section.
   `node_modules/`, `.impeccable/`. The last is a regenerating hook cache that
   was ignored only through this clone's `.git/info/exclude` until 2026-07-26 —
   a fresh clone saw it as an untracked file.
-- Version bumps live in `.claude-plugin/plugin.json` *and*
-  `marketplace.json` — both, or the plugin silently freezes.
+- **A version bump is three strings in two files**, both under
+  `.claude-plugin/`: `plugin.json` line 3, and `marketplace.json` twice — the
+  marketplace's own version and the plugin entry's. There is no
+  `marketplace.json` at the repo root; an earlier wording here named one and
+  sent at least one reader looking for it. Miss any of the three and the plugin
+  silently freezes.

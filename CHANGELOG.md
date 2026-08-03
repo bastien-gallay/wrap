@@ -5,7 +5,7 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.4.0] — 2026-08-03
 
 ### Added
 
@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - The publication path reads the host off `git remote -v` — `gh` for GitHub,
   `glab` for GitLab, stop at the push for anything else — instead of assuming
   `gh`. Guessing fails at the last step, after every gate has been answered.
+- A pass that cannot spawn its refuter says so in the closing table and names
+  what went unverified, instead of skipping the step in silence. Re-reading
+  your own claims is not a refuter — it is the check the refuter replaces.
+  Three consecutive runs skipped it without the output showing anything.
 
 ## [0.3.0] — 2026-07-31
 
