@@ -409,6 +409,13 @@ of the file, stage and commit the first, then restore it. Then verify: `git
 diff --stat` must show the number of changed lines you expect. A scripted
 substitution that silently matched nothing looks exactly like a successful one.
 
+**Read the host off the remote; never assume one.** `git remote -v` decides
+whether the pull request is `gh` or the merge request is `glab`, and a repo
+that answers to neither is one where the publication path stops at the push.
+Many orgs run both, and a guess costs the wrong tool at the last step of the
+pass — after every gate has already been answered, which is the most expensive
+place to be wrong.
+
 Close in conversation with a compact table — glyph, slug, gloss in the
 session's language:
 

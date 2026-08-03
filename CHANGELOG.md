@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   branches are the standing case — `git branch -r` is a local cache, so the
   survey prunes first. A gate that asks for four deletions and delivers one
   teaches the user the list is not checked.
+- The publication path reads the host off `git remote -v` — `gh` for GitHub,
+  `glab` for GitLab, stop at the push for anything else — instead of assuming
+  `gh`. Guessing fails at the last step, after every gate has been answered.
 
 ## [0.3.0] — 2026-07-31
 
