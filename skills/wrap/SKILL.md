@@ -72,8 +72,10 @@ which makes Shitsuke's handoff the centre of the pass).
    answer* is worse than one that errors, because it gets written into a file
    and outlives the pass. The known ways this protocol has produced a
    confidently wrong number: `$?` after a pipeline reports the last command's
-   status, not the one you care about — use `set -o pipefail` or
-   `${PIPESTATUS[0]}`; an unquoted expansion word-splits and surveys the wrong
+   status, not the one you care about — use `set -o pipefail`, which works in
+   both shells, and know that the array is `${PIPESTATUS[0]}` in bash but
+   `${pipestatus[1]}` in zsh, where the bash spelling silently returns an empty
+   string; an unquoted expansion word-splits and surveys the wrong
    branches; `cd` does not persist between tool calls, so a linter runs in the
    wrong directory and passes; a colourising `ls` emits ANSI escapes that
    silently break a `^`-anchored grep; `grep` skips a file it classified as

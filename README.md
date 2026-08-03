@@ -7,7 +7,7 @@ the work is done and the traces of doing it are still lying around. Closed
 means the next arrival — a colleague, a future agent, you in six weeks — can
 pick it up without reconstructing it.
 
-`wrap` crosses that gap, using the 5S as the running order.
+`wrap` crosses that gap, using the 5S as the running order. See the [Infographic Guide](docs/infographic.md) for a complete visual workflow.
 
 Orientation runs first, as one wave of concurrent read-only collectors — git
 state, the grep fan-out over unchanged files, the tracker, and the project's
