@@ -149,22 +149,28 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Open — four folds are unreleased.** Probe hygiene as an always-on
-  directive, Seiri pruning before it surveys, host detection on the publication
-  path — all three merged to `main` as `7e1e962` — and the refuter-degradation
-  rule, on `wrap/0.4.0`. `CHANGELOG.md` carries the four under
-  `## [Unreleased]`; the manifests still say `0.3.0`. They are a `0.4.0` when
-  someone decides to cut one — minor, because the directives change behaviour.
-  An earlier revision of this line named `wrap/feedback-2026-08-02` as their
-  home and counted three; that branch was squashed and deleted on 2026-08-03,
-  and the fourth fold landed after it.
-- **Open — the probe directive contains a probe bug, found by the self-wrap
-  that followed it.** It prescribes `${PIPESTATUS[0]}`, which is bash; zsh
-  spells it `pipestatus` and indexes from 1, so the remedy returns an empty
-  string in the shell every observed session actually used. Measured, routed to
-  `FEEDBACK.md` rather than fixed mid-pass, per the `0.2.1` precedent. Fix it
-  before cutting the release — shipping a probe-hygiene rule whose example
-  fails silently is the exact failure the rule describes.
+- **Settled 2026-08-03 — `0.4.0` is cut, on `wrap/0.4.0`.** Four folds: probe
+  hygiene as an always-on directive, Seiri pruning before it surveys, host
+  detection on the publication path, and a refuter that declares its own
+  absence instead of skipping in silence. Minor, because the directives change
+  behaviour. Two earlier revisions of this line are superseded — one named
+  `wrap/feedback-2026-08-02` as the folds' home after that branch was squashed
+  and deleted, the other counted three folds and said the manifests were still
+  at `0.3.0`. Both were true when written and neither survived the release.
+- **Settled 2026-08-03 — the probe directive's own probe bug is fixed.** It
+  prescribed `${PIPESTATUS[0]}`, which is bash; zsh spells the array
+  `pipestatus` and indexes from 1, so the remedy returned an empty string in
+  the shell every observed session actually used. Measured in both shells. The
+  rule now names `set -o pipefail` as the portable form and both spellings
+  beside it.
+- **Open — the refuter earns its place, and nothing else in this repo does the
+  job.** First actual run, 2026-08-03, after three passes skipped it: six
+  refutations on claims that had already been verified twice, four of them on
+  prose written minutes earlier. A second run over the release caught three
+  more, including a README link to an untracked file. Two things follow. The
+  cheap self-check does not substitute — every one of those claims had passed
+  one. And a refuter's finding can be stale by the time it is read: the README
+  link was repaired by a parallel session between the run and the fix.
 
 Three open items below are marked *not ticketed*. GitHub issues exist as of
 2026-07-26, so that is now a choice rather than a constraint: all three are
