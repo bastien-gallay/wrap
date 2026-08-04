@@ -102,6 +102,7 @@ The skill strictly distinguishes between automatic actions and those requiring e
 │ Run linter and unit tests                       │ ⚡ Auto & Verbatim   │
 │ Append a durable lesson to `AGENTS.md` or ADR   │ ⚡ Auto & Report     │
 │ Write the Resume Block (Shitsuke)               │ ⚡ Auto & Report     │
+│ Reconcile the entry point after the merge lands │ ⚡ Auto & Report     │
 ├─────────────────────────────────────────────────┼──────────────────────┤
 │ 🗑️ Delete a file or branch                       │ 🛡️ Propose & Wait    │
 │ 🚚 Move / Relocate a file                       │ 🛡️ Propose & Wait    │

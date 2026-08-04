@@ -109,6 +109,12 @@ Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking 
 elsewhere. Then the publication block, one confirmation, and a ranked
 recommendation of what to do next.
 
+The pass does not end at the push. Once the merge lands, `wrap` verifies it from
+the merge commit rather than from your answer, re-reads the entry point on the
+merged result, and reconciles what publishing just falsified. The `Publish`
+question says so, so that correction is inside the one confirmation you already
+gave.
+
 Empty phases are the normal case for small milestones, and `wrap` reports them
 as empty rather than manufacturing activity.
 
