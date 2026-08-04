@@ -25,10 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - *The entry point that describes the pass instead of the result* joins the
   anti-patterns; a hard rule and a self-check point at the same gap.
 
-Folded from three measured occurrences in this repo's own history, where the
-State section described a released version as unreleased — twice inside the
-release that published it, and a third time through four merges before a refuter
-found it.
+Folded from two measured occurrences of the entry point itself going stale —
+`0b0fe37`, inside the release that published it, and the bullet that survived
+four merges until a refuter read it. A third commit the same day, `8b173d1`,
+fixed the same *family* of error on a different surface: release notes calling
+`0.4.0` unreleased. It supports the shape of the failure, not the count, and the
+fix shipped here would not have caught it. A refuter separated the two.
 
 ## [0.5.0] — 2026-08-03
 
