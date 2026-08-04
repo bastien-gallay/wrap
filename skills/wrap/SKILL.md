@@ -408,6 +408,14 @@ It answers four questions:
    differently on purpose. Naming these saves an hour each time.
 4. **Where the deleted things went.** A pointer to `## Provenance`.
 
+**You are writing this before the publication gate, so do not assert what the
+gate is about to change.** "Not yet published", "nothing is committed", "the
+manifests are at 0.5.0 but the branch is unmerged" — every one of those is false
+within the minute if the user answers *publish*, and nothing later in the pass
+re-reads this section. Write the state as of the writing, dated, and leave the
+publication claim for after it happens. The correction is in Publication and
+output; this is the half you control.
+
 Then two things the user should not have to ask for:
 
 - **The resume block.** Three or four lines, copy-pasteable as the opening
@@ -449,6 +457,19 @@ Many orgs run both, and a guess costs the wrong tool at the last step of the
 pass — after every gate has already been answered, which is the most expensive
 place to be wrong.
 
+**The pass does not end at the push.** Once the publication path completes, go
+back and read the entry point Shitsuke wrote, because the answer to the gate
+falsified part of it: a version it called unreleased is released, a branch it
+called unmerged is merged, a commit count it stated is now one squash. Fix what
+the publication changed, name the commit or the PR that did it, and say in the
+closing table that you did. This is a *reconciliation*, not a gate — do it and
+report it, do not ask.
+
+Verify the landing rather than reporting it from the answer: read the merge
+commit and its parents, confirm the branch state on the remote, and re-read the
+entry point on the merged result, not on the branch. An answered `Publish`
+question does not guarantee the path completed.
+
 Close in conversation with a compact table — glyph, slug, gloss in the
 session's language:
 
@@ -488,6 +509,7 @@ week is a paragraph, not a gate.
   ticket edit, or the publication, it is an AskUserQuestion.
 - Never write "TODO" as the resolution of anything in this pass.
 - Never report a pass as complete when the refuter did not run. Name the gap.
+- Never leave the entry point asserting a publication state the gate changed.
 
 ## 8. Anti-patterns
 
@@ -521,6 +543,11 @@ week is a paragraph, not a gate.
   about to happen. wrap runs at the end of a long session, where every turn
   re-reads the largest context of the day; half the cost of a run is prose
   nobody needed.
+- **The entry point that describes the pass instead of the result.** "Folded and
+  versioned, not yet published — nothing is committed, pushed or merged", left
+  standing after the user answered *publish*. It reads as a status and is a
+  snapshot of a moment that ended mid-sentence, and the next arrival believes it
+  because the entry point is the one section written for them.
 - **The finding told five times.** Once in the phase narration, once in a
   detail table, once in the closing table, once in the commit body, once in
   the PR body. Once in the file, once in the table.
@@ -539,6 +566,8 @@ week is a paragraph, not a gate.
   exit status belonged to the last stage?
 - Is each proposed commit one idea, with a subject that states a conclusion?
 - Did the refuter get a fresh context, and did I act on what it found?
+- If the work was published, did I re-read the entry point *after* the merge
+  landed, and does it describe the result rather than the pass?
 - Is there one confirmation left to give, or three?
 - Was every gate a question the user could answer with one click, listing what
   each answer does — and did each one offer a way to do less?
