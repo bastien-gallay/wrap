@@ -53,6 +53,12 @@ subagent authorisation folded that morning applied to the pass executing it.
   answered, and nothing re-reads what was written. The protocol has no step
   after publication.
 
+  **Folded in `0.6.0`, 2026-08-04.** The pass no longer ends at the push: it
+  re-reads the entry point once the merge lands and reconciles what the answer
+  falsified, and Shitsuke stops asserting publication state it cannot yet know.
+  The reasoning, including the two fixes deliberately not taken, is in
+  `CLAUDE.md`.
+
 - **The figure trap, in a repo whose PRs are squashed.** `.wrap.md` carried
   "thirty-four of thirty-five non-merge commits". Correct when written; wrong
   two hours and three squashes later. Any count over `git log` here is stale by
