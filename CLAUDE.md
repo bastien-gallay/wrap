@@ -163,13 +163,22 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Open 2026-08-03 — `0.5.0` is folded and versioned, not yet published.**
-  Three folds from the first external-run batch: wrap authorises its own two
-  subagents, Seiso's blast radius extends to what landed upstream during the
-  session, and two instances join probe hygiene (an empty argument that never
-  reaches the check, a commit range read in the wrong direction). Minor, because
-  the subagent line changes behaviour. The manifests are at `0.5.0`; nothing is
-  committed, pushed, or merged, and no wrap has run over it.
+- **Settled 2026-08-03 — `0.5.0` is released on `main`** as `29d66a3` (PR #8),
+  archived as `ideas/0.5.0`, with three correction releases landed on top of it
+  since. Three folds from the first external-run batch: wrap authorises its own
+  two subagents, Seiso's blast radius extends to what landed upstream during the
+  session, and two probe instances — an empty argument that never reaches the
+  check, which joins probe hygiene, and a commit range read in the wrong
+  direction, which joins the parallel-session directive because that is where
+  the question is asked. Minor, because the subagent line changes behaviour.
+
+  **The superseded revision of this line said `0.5.0` was "folded and versioned,
+  not yet published — nothing is committed, pushed, or merged".** It stayed
+  false through four merges, and a refuter found it. This is the third time this
+  section has described a released version as unreleased (`0b0fe37`, `8b173d1`,
+  now). The pattern is not carelessness about one line: a State section written
+  *before* the publication gate is stale the moment the gate is answered, and
+  nothing in the pass re-reads it afterwards.
 - **Settled 2026-08-03 — the intake crossed a repo boundary for the first
   time.** The 07-26 open item says friction from another checkout has nowhere to
   land. It still does not — what changed is that a human carried a batch across
