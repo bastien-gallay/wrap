@@ -35,6 +35,45 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-08-04 — publishing `0.6.0`, and running its own step on it
+
+Not a wrap run. The release that adds the post-publication step, published and
+then reconciled by that step.
+
+- **The step worked on its first run, and it was the first mechanism here to
+  catch itself.** `CLAUDE.md`'s State line said `0.6.0` was "folded, versioned,
+  and on `wrap/0.6.0`; the publication gate has not been answered" — written that
+  way deliberately, since it is the sentence the release exists to stop getting
+  wrong. It became false at `8df27d3` and was corrected within the hour, from the
+  merge commit and its parents rather than from the answer to the gate. Three
+  previous releases got the equivalent line wrong; the one that was caught took a
+  refuter and four merges.
+
+- **"C'est mergé" is an answer, and the rule caught it.** Told the PR was merged,
+  the pass queried GitHub: `state=OPEN`, `mergeCommit=none`, `main` unmoved. The
+  directive says to verify the landing from the merge commit rather than report
+  it from the answer. It was written about an answered `AskUserQuestion`; the
+  same failure arrived as a human sentence, and the same check caught it.
+
+- **But the tag went out before the verification, carrying a false SHA.** The
+  annotation read "squashed onto main as `8df27d3`" — the *previous* release's
+  squash. Deleted from the remote and locally, then re-created after the real
+  merge. Nothing was lost, and nothing in `SKILL.md` prevented it: the protocol
+  says verify, then report, and does not say that on this repo **tagging is part
+  of reporting**. Two gestures whose order is load-bearing, one of them invisible
+  to the rule that governs the other.
+
+  Second instance of the same shape in two days: `.wrap.md` already records that
+  an answered `Publish` question does not guarantee the path completed. Here the
+  path had not even started.
+
+- **The reconciliation needed its own PR, and that is the cost the fold accepted.**
+  `0.6.0` says the correction travels the same route as the pass — a follow-up
+  commit where the project pushes to its default branch, a small PR where it does
+  not. This repo does not, so one superseded sentence cost a branch, a PR, a
+  squash and a tag. Worth knowing before deciding the ratio is fine everywhere:
+  on a repo with heavier review, that follow-up is not small.
+
 ## 2026-08-03 — the first self-wrap whose refuter actually ran
 
 A real run on this repo, after four merges and `0.5.0`. The first where the
