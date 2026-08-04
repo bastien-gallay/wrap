@@ -179,14 +179,20 @@ Revised 2026-08-04, folding the entry-point mechanism as `0.6.0`. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **2026-08-04, as of writing — `0.6.0` is folded, versioned, and on
-  `wrap/0.6.0`; the publication gate has not been answered.** Deliberately
-  phrased as of the writing, because this is the line `0.6.0` exists to stop
-  getting wrong: it will be reconciled after the merge lands, not before. One
-  fold, from two measured occurrences in this repo — the pass now re-reads the
-  entry point after publication, and Shitsuke stops asserting what the gate is
-  about to change. Minor, because the pass gains a step. **Not ticketed** — it
-  resolves itself at the merge, and this line is the thing being tested.
+- **Settled 2026-08-04 — `0.6.0` is released on `main`** as `8df27d3` (PR #13),
+  archived as `ideas/0.6.0`, and the installed skill serves it — verified by
+  grepping the installed file, not the commit. One fold, from two measured
+  occurrences in this repo: the pass now re-reads the entry point after
+  publication, and Shitsuke stops asserting what the gate is about to change.
+  Minor, because the pass gains a step.
+
+  **This line is the release's own first test, and it passed.** The superseded
+  revision said `0.6.0` was "folded, versioned, and on `wrap/0.6.0`; the
+  publication gate has not been answered" — phrased as of the writing precisely
+  because it was the sentence `0.6.0` exists to stop getting wrong. It became
+  false at the merge, and the new post-publication step is what came back and
+  corrected it, in this commit. Three previous releases got the equivalent line
+  wrong and none of them noticed.
 - **Settled 2026-08-03 — `0.5.0` is released on `main`** as `29d66a3` (PR #8),
   archived as `ideas/0.5.0`, with three correction releases landed on top of it
   since. Three folds from the first external-run batch: wrap authorises its own
