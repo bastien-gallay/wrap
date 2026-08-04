@@ -119,6 +119,11 @@ settles a question three documents had left open.
   `origin/wrap/0.5.0` was gone within the minute; #6's ten commits are already
   lost this way.
 
+  **Both halves false, measured later the same day** and left standing here so
+  the batch reads as it was written. `deleteBranchOnMerge` is `false` on this
+  repo — a human deleted the branches. And nothing was lost: `refs/pull/6/head`
+  holds all ten. See the 08-03 batch above this one.
+
 - **The sandboxed `git fetch` failed and the count that followed still
   answered.** `fatal: failed to store: 100001`, then
   `git rev-list --count HEAD..origin/main` returned `0` off a cache that had
