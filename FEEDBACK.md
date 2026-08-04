@@ -29,6 +29,40 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-08-03 — the first self-wrap whose refuter actually ran
+
+A real run on this repo, after four merges and `0.5.0`. The first where the
+subagent authorisation folded that morning applied to the pass executing it.
+
+- **The refuter found six things nobody had looked for.** It was given eleven
+  claims to attack; ten survived and one was partly refuted. The value was
+  entirely in what it volunteered: a `CLAUDE.md` State bullet still calling
+  `0.5.0` unpublished after four merges, a commit figure stale for the fourth
+  time in a day, a squash count that said three when six had happened, a tag
+  list of two when four exist, a `.markdownlint.jsonc` that neither document
+  describing it describes in full, and `docs/infographic.md` — a third spine —
+  drifted from `SKILL.md` and `README.md` on both of `0.5.0`'s changes.
+
+  Ratio worth recording: the claims I chose to submit were the ones I had
+  already verified, and they held. The findings came from the file the refuter
+  opened next.
+
+- **The State section has now described a released version as unreleased three
+  times** — `0b0fe37`, `8b173d1`, and this run. Not carelessness about one line:
+  Shitsuke writes the entry point *before* the publication gate, the gate is
+  answered, and nothing re-reads what was written. The protocol has no step
+  after publication.
+
+- **The figure trap, in a repo whose PRs are squashed.** `.wrap.md` carried
+  "thirty-four of thirty-five non-merge commits". Correct when written; wrong
+  two hours and three squashes later. Any count over `git log` here is stale by
+  construction. Replaced by the command that derives it.
+
+- **Orientation did not fan out, fourth consecutive self-wrap.** Twelve markdown
+  files, two batched commands. Still not evidence about the wave, and the
+  authorisation changes nothing here: the wave is a cost decision, not a
+  permission one.
+
 ## 2026-08-03 — the archive claim, inferred and wrong within the hour
 
 Not a wrap run. What happened to the rule written one merge earlier.
@@ -84,6 +118,11 @@ settles a question three documents had left open.
   default, so "the branch is the archive" only holds if the branch is kept.
   `origin/wrap/0.5.0` was gone within the minute; #6's ten commits are already
   lost this way.
+
+  **Both halves false, measured later the same day** and left standing here so
+  the batch reads as it was written. `deleteBranchOnMerge` is `false` on this
+  repo — a human deleted the branches. And nothing was lost: `refs/pull/6/head`
+  holds all ten. See the 08-03 batch above this one.
 
 - **The sandboxed `git fetch` failed and the count that followed still
   answered.** `fatal: failed to store: 100001`, then

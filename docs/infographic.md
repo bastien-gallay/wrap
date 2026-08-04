@@ -56,7 +56,7 @@ flowchart TD
 | :--- | :---: | :--- | :--- |
 | **Seiri** | 🗂 | **Sort** *(What stays, what goes)* | • Distinguish necessary from unnecessary.<br>• Delete absorbed notes.<br>• Retain raw measurements as **annexes**.<br>• Transfer killed beliefs into a **Retired Hypotheses** table.<br>• Identify disposable zones (`scratchpad`, `.DS_Store`). |
 | **Seiton** | 📍 | **Set in order** *(Put each thing in its place)* | • Consolidate scattered documents into a **Single Source of Truth**.<br>• Write the `## Provenance` section.<br>• Write the `## Retired hypotheses` table *(to prevent re-opening dead ends)*.<br>• Refresh index files and status tables. |
-| **Seiso** | 🧹 | **Clean & Verify** *(Reconcile and verify)* | • Scan the repo to reconcile superseded claims across all files (headers, TL;DRs, body prose).<br>• Re-verify all derived numbers/metrics.<br>• Run verification commands (`markdownlint`, `pytest`).<br>• Propose rewording for external surfaces (Jira tickets/GitHub issues). |
+| **Seiso** | 🧹 | **Clean & Verify** *(Reconcile and verify)* | • Scan the repo to reconcile superseded claims across all files (headers, TL;DRs, body prose).<br>• Read what landed on the default branch *during* the session — it falsifies prose written minutes ago and shows in no diff of your own branch.<br>• Re-verify all derived numbers/metrics.<br>• Run verification commands (`markdownlint`, `pytest`).<br>• Propose rewording for external surfaces (Jira tickets/GitHub issues). |
 | **Seiketsu** | 📐 | **Standardise** *(Promote the lesson)* | • Identify **0 to 2 durable lessons** maximum.<br>• Route each lesson by scope:<br>  - Local: Topic doc<br>  - Operational: Skill (`.claude/skills/`)<br>  - Fleet-wide: `AGENTS.md`<br>  - Architecture: ADR (`architecture/adr/`) |
 | **Shitsuke** | 🪧 | **Sustain** *(The entry point)* | • Write the entry point section:<br>  1. What is settled<br>  2. What is still open (*Ranked open list*)<br>  3. False contradictions<br>  4. Pointer to `## Provenance`<br>• Provide a copy-pasteable **Resume Block**. |
 
@@ -64,7 +64,11 @@ flowchart TD
 
 ## ⚡ Parallel Orientation Wave (Read-Only)
 
-Before making any edits, the skill launches **one wave of concurrent read-only collectors**:
+Before making any edits, the skill launches **one wave of concurrent read-only collectors**.
+These four and the refuter at the end are the *only* subagents `wrap` uses, and
+typing `/wrap` is what authorises them — several harnesses stand off subagents
+unless the user asked. A harness that refuses anyway gets a serial read and an
+output that names what went unverified:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐

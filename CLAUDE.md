@@ -163,13 +163,22 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
-- **Open 2026-08-03 — `0.5.0` is folded and versioned, not yet published.**
-  Three folds from the first external-run batch: wrap authorises its own two
-  subagents, Seiso's blast radius extends to what landed upstream during the
-  session, and two instances join probe hygiene (an empty argument that never
-  reaches the check, a commit range read in the wrong direction). Minor, because
-  the subagent line changes behaviour. The manifests are at `0.5.0`; nothing is
-  committed, pushed, or merged, and no wrap has run over it.
+- **Settled 2026-08-03 — `0.5.0` is released on `main`** as `29d66a3` (PR #8),
+  archived as `ideas/0.5.0`, with three correction releases landed on top of it
+  since. Three folds from the first external-run batch: wrap authorises its own
+  two subagents, Seiso's blast radius extends to what landed upstream during the
+  session, and two probe instances — an empty argument that never reaches the
+  check, which joins probe hygiene, and a commit range read in the wrong
+  direction, which joins the parallel-session directive because that is where
+  the question is asked. Minor, because the subagent line changes behaviour.
+
+  **The superseded revision of this line said `0.5.0` was "folded and versioned,
+  not yet published — nothing is committed, pushed, or merged".** It stayed
+  false through four merges, and a refuter found it. This is the third time this
+  section has described a released version as unreleased (`0b0fe37`, `8b173d1`,
+  now). The pattern is not carelessness about one line: a State section written
+  *before* the publication gate is stale the moment the gate is answered, and
+  nothing in the pass re-reads it afterwards.
 - **Settled 2026-08-03 — the intake crossed a repo boundary for the first
   time.** The 07-26 open item says friction from another checkout has nowhere to
   land. It still does not — what changed is that a human carried a batch across
@@ -192,6 +201,13 @@ closed where they are not.
   the shell every observed session actually used. Measured in both shells. The
   rule now names `set -o pipefail` as the portable form and both spellings
   beside it.
+- **Settled 2026-08-03 — the refuter runs in a self-wrap now, and it paid.**
+  The `0.5.0` authorisation applied to the first `/wrap` after it: eleven claims
+  submitted, ten survived, one partly refuted — and six findings nobody had
+  asked about, including the State bullet above this one, which had called
+  `0.5.0` unpublished through four merges. The lesson is in the shape, not the
+  count: the claims a pass volunteers for checking are the ones it already
+  verified. The findings come from the file the refuter opens next.
 - **Open — the refuter earns its place, and nothing else in this repo does the
   job.** First actual run, 2026-08-03, after three passes skipped it: six
   refutations on claims that had already been verified twice, four of them on
@@ -253,7 +269,9 @@ not, and an issue would only restate this section.
   changes, or `.wrap.md` and this file stop claiming per-idea history survives
   publication and say instead that the branch is where it lives.
 
-  **Settled 2026-08-03 by #8, three to one, the second way.** Squashed again —
+  **Settled 2026-08-03 by #8, three to one, the second way** — and by the end of
+  the day it was **six to one**: #6 through #11 are all single-parent squashes,
+  measured, not counted from memory. Squashed again —
   `29d66a3`, one parent, six commits collapsed — after a PR body that asked for
   a merge in as many words. Three consecutive squashes is not a slip repeated;
   it is the practice, and the documents were wrong about it. So: **`main`
@@ -274,9 +292,12 @@ not, and an issue would only restate this section.
   conclusion was not, and got worse: a support whose survival depends on a
   human not clicking a button is not an archive.
 
-  **So the archive is a tag, since 2026-08-03.** `ideas/0.5.0` → `6e3d58a`,
-  `ideas/post-0.5.0` → `bd210f1`, annotated, each naming the squash commit that
-  replaced it on `main`. The merge button cannot reach a tag. The namespace is
+  **So the archive is a tag, since 2026-08-03.** Four exist, one per squashed PR
+  of that day: `ideas/0.5.0` → `6e3d58a`, `ideas/post-0.5.0` → `bd210f1`,
+  `ideas/archive-tags` → `4f1883e`, `ideas/pull-refs` → `40674c9` — annotated,
+  each naming the squash commit that replaced it on `main`. An earlier revision
+  of this line listed only the first two, which were all that existed when it
+  was written. The merge button cannot reach a tag. The namespace is
   deliberate: `ideas/` leaves `v0.5.0` free if release tags are ever added, and
   this repo has none for five releases. One squashed PR, one `ideas/` tag —
   same gesture every time, no decision to retake.
@@ -359,7 +380,11 @@ not, and an issue would only restate this section.
   `MD013` (line length) is disabled because the phase tables run wide on
   purpose; keep prose wrapped at ~78 columns to match existing style. `MD024`
   is scoped to siblings, because the changelog repeats `### Added` per release
-  and each reviewed-feedback archive repeats `### What worked` per batch.
+  and each reviewed-feedback archive repeats `### What worked` per batch. `MD033`
+  is disabled too, for the `<type>`/`<scope>`/`<phase>` placeholders in
+  `SKILL.md` and the config template. Those three rules are the whole config —
+  this line omitted `MD033` and `.wrap.md` omitted `MD024` until a refuter read
+  the file that both were describing.
 - **`.gitignore` covers five paths**: `.DS_Store`, `.personal/`, `dist/`,
   `node_modules/`, `.impeccable/`. The last is a regenerating hook cache that
   was ignored only through this clone's `.git/info/exclude` until 2026-07-26 —

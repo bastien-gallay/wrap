@@ -20,12 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   appear in no diff of your own branch — a doc asserting a setting did not
   exist was false the minute it was typed, because the setting had just been
   merged.
-- Two instances join the probe-hygiene directive: an argument that does nothing
-  never reaches the check it was meant to exercise (`osascript -e 'keystroke
-  ""'` succeeds without accessibility permission), and a commit range is
-  directional — `git log origin/main..HEAD` answers a different question than
-  the one asked before a push, and returns the same thing whether you are
-  current or three commits behind.
+- An argument that does nothing never reaches the check it was meant to
+  exercise — `osascript -e 'keystroke ""'` succeeds without accessibility
+  permission. Joins the probe-hygiene directive.
+- The directive on parallel sessions now names the range direction. Before a
+  push, `git log HEAD..origin/main` is what says the default branch moved;
+  `git log origin/main..HEAD` answers a different question and returns the same
+  thing whether you are current or three commits behind. It sits there rather
+  than under probe hygiene because that is where the question is asked.
 
 ## [0.4.0] — 2026-08-03
 

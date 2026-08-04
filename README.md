@@ -11,7 +11,15 @@ pick it up without reconstructing it.
 
 Orientation runs first, as one wave of concurrent read-only collectors — git
 state, the grep fan-out over unchanged files, the tracker, and the project's
-checks. Then the five phases run in order, in one context, with one writer.
+checks. Then the five phases run in order, in one context, with one writer. One
+more subagent runs at the end: a **refuter**, given a fresh context and told to
+attack the closing table rather than confirm it, because a context that has just
+written something is the worst judge of whether it is true.
+
+Those two are the only subagents `wrap` uses, and typing `/wrap` is what
+authorises them — several harnesses stand off subagents unless the user asked.
+If yours refuses anyway, the pass reads serially and says in its output what
+went unverified, rather than re-reading its own claims and calling that a check.
 
 ## The five phases
 
@@ -19,7 +27,7 @@ checks. Then the five phases run in order, in one context, with one writer.
 | --- | --- |
 | 🗂 **Seiri** — sort | What stays, what goes. Absorbed notes deleted; un-reproducible evidence annexed; dead hypotheses retired into a table rather than erased; scratch zones emptied or ignored; deliberate non-decisions marked as such. |
 | 📍 **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
-| 🧹 **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers, TL;DRs and summary lines included, not only body prose. Check the surfaces outside the repo too: a ticket built on a dead premise costs more than a stale doc. Run the project's checks. |
+| 🧹 **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers, TL;DRs and summary lines included, not only body prose. Check the surfaces outside the repo too: a ticket built on a dead premise costs more than a stale doc — and what landed on the default branch *while you worked* can falsify prose you wrote minutes ago while appearing in no diff of your own. Run the project's checks. |
 | 📐 **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, dated journal, or `.wrap.md` when the lesson is about wrapping this repo. Most sessions produce zero to two. |
 | 🪧 **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then the copy-pasteable resume block, and the publication. |
 
