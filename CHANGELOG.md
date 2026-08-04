@@ -5,6 +5,31 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.6.0] — 2026-08-04
+
+### Added
+
+- **The pass no longer ends at the push.** Once the publication path completes,
+  `wrap` re-reads the entry point Shitsuke wrote and reconciles what the gate's
+  answer falsified — a version called unreleased that is released, a branch
+  called unmerged that is merged, a commit count that is now one squash. It is a
+  reconciliation, not a gate: done and reported, never asked.
+- **Shitsuke stops asserting what the gate is about to change.** The entry point
+  is written *before* publication, so "not yet published" and "nothing is
+  committed" are false within the minute if the user answers *publish*. Write
+  the state as of the writing, dated, and leave the publication claim for after
+  it happens.
+- The landing is verified, not taken from the answer: read the merge commit and
+  its parents, confirm the remote's branch state, and re-read the entry point on
+  the merged result rather than on the branch.
+- *The entry point that describes the pass instead of the result* joins the
+  anti-patterns; a hard rule and a self-check point at the same gap.
+
+Folded from three measured occurrences in this repo's own history, where the
+State section described a released version as unreleased — twice inside the
+release that published it, and a third time through four merges before a refuter
+found it.
+
 ## [0.5.0] — 2026-08-03
 
 ### Added
