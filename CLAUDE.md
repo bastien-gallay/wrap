@@ -120,6 +120,18 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   by shell probes returning plausible wrong answers, which a later gate would
   have approved just as confidently. The fix is upstream of the ordering, so
   it went into the always-on directives.
+- **The pass has a step after the publication gate, and it is not a gate.** The
+  entry point is written in Shitsuke, the user answers *publish*, and everything
+  the section says about publication state becomes false — with nothing left in
+  the pass to re-read it. Measured three times here: `0b0fe37`, `8b173d1`, and
+  the bullet a refuter caught on 2026-08-03 that had called `0.5.0` unpublished
+  through four merges. `0.6.0` adds the re-read. Two things it deliberately is
+  not: it is not a sixth confirmation — the protocol's position is *publication
+  is one confirmation, not three*, and a reconciliation belongs in the do-it-and-
+  report-it column; and it is not solved by moving Shitsuke after publication,
+  because the entry point is part of what gets committed. The fix is a
+  post-merge reconciliation plus a Shitsuke that does not assert what the gate
+  will change.
 - **The skill authorises its own two subagents, and nothing else.** Several
   harnesses inject a standing "do not call the AgentTool unless the user
   requested it", from the client rather than from any user configuration — the
@@ -163,6 +175,13 @@ Revised 2026-08-03, after folding the 2026-08-02 usage-report batch. The
 2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
 closed where they are not.
 
+- **2026-08-04, as of writing — `0.6.0` is folded, versioned, and on
+  `wrap/0.6.0`; the publication gate has not been answered.** Deliberately
+  phrased as of the writing, because this is the line `0.6.0` exists to stop
+  getting wrong: it will be reconciled after the merge lands, not before. One
+  fold, from three measured occurrences in this repo — the pass now re-reads the
+  entry point after publication, and Shitsuke stops asserting what the gate is
+  about to change. Minor, because the pass gains a step.
 - **Settled 2026-08-03 — `0.5.0` is released on `main`** as `29d66a3` (PR #8),
   archived as `ideas/0.5.0`, with three correction releases landed on top of it
   since. Three folds from the first external-run batch: wrap authorises its own
