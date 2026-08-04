@@ -37,7 +37,9 @@ flowchart TD
     S4 -->|Promote 0 to 2 durable lessons| S5[🪧 5. Shitsuke - Sustain]
     S5 -->|Create entry point & Resume Block| Pub[📦 Refuter & Git Publication]
     
-    Pub --> End([🏁 Clean Closed Session])
+    Pub -->|Merge landed| Rec[🔁 Reconcile the entry point
+against what was published]
+    Rec --> End([🏁 Clean Closed Session])
 
     style Start fill:#2563eb,color:#fff,stroke:#1d4ed8
     style S1 fill:#0284c7,color:#fff,stroke:#0369a1
@@ -45,6 +47,7 @@ flowchart TD
     style S3 fill:#16a34a,color:#fff,stroke:#15803d
     style S4 fill:#d97706,color:#fff,stroke:#b45309
     style S5 fill:#9333ea,color:#fff,stroke:#7e22ce
+    style Rec fill:#be123c,color:#fff,stroke:#9f1239
     style End fill:#059669,color:#fff,stroke:#047857
 ```
 
@@ -58,7 +61,7 @@ flowchart TD
 | **Seiton** | 📍 | **Set in order** *(Put each thing in its place)* | • Consolidate scattered documents into a **Single Source of Truth**.<br>• Write the `## Provenance` section.<br>• Write the `## Retired hypotheses` table *(to prevent re-opening dead ends)*.<br>• Refresh index files and status tables. |
 | **Seiso** | 🧹 | **Clean & Verify** *(Reconcile and verify)* | • Scan the repo to reconcile superseded claims across all files (headers, TL;DRs, body prose).<br>• Read what landed on the default branch *during* the session — it falsifies prose written minutes ago and shows in no diff of your own branch.<br>• Re-verify all derived numbers/metrics.<br>• Run verification commands (`markdownlint`, `pytest`).<br>• Propose rewording for external surfaces (Jira tickets/GitHub issues). |
 | **Seiketsu** | 📐 | **Standardise** *(Promote the lesson)* | • Identify **0 to 2 durable lessons** maximum.<br>• Route each lesson by scope:<br>  - Local: Topic doc<br>  - Operational: Skill (`.claude/skills/`)<br>  - Fleet-wide: `AGENTS.md`<br>  - Architecture: ADR (`architecture/adr/`) |
-| **Shitsuke** | 🪧 | **Sustain** *(The entry point)* | • Write the entry point section:<br>  1. What is settled<br>  2. What is still open (*Ranked open list*)<br>  3. False contradictions<br>  4. Pointer to `## Provenance`<br>• Provide a copy-pasteable **Resume Block**. |
+| **Shitsuke** | 🪧 | **Sustain** *(The entry point)* | • Write the entry point section:<br>  1. What is settled<br>  2. What is still open (*Ranked open list*)<br>  3. False contradictions<br>  4. Pointer to `## Provenance`<br>• Provide a copy-pasteable **Resume Block**.<br>• Assert no publication state the gate is about to change — then reconcile the entry point *after* the merge lands. |
 
 ---
 
