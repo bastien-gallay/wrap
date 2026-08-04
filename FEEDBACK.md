@@ -10,7 +10,13 @@ Once a batch has been folded into `SKILL.md`, archive it under
 A run that went smoothly is worth a line too. Only recording friction makes
 the log read like the protocol is worse than it is.
 
-Last folded:
+Last folded: the entry-point bullet of the 2026-08-03 batch below, **released in
+`0.6.0`** on 2026-08-04 and marked in place rather than archived — the rest of
+that batch is still open, so the file it belongs to cannot move yet. That is the
+standing shape now: a batch is annotated as its bullets are consumed, and only
+archived under [`feedback/`](feedback/) once nothing in it is open.
+
+Last archived:
 [`feedback/2026-08-03-external-run-reviewed.md`](feedback/2026-08-03-external-run-reviewed.md)
 — three findings from a real run on **another repo**, carried here by hand
 because the intake cannot reach across checkouts, folded and **released in
@@ -48,10 +54,21 @@ subagent authorisation folded that morning applied to the pass executing it.
   opened next.
 
 - **The State section has now described a released version as unreleased three
-  times** — `0b0fe37`, `8b173d1`, and this run. Not carelessness about one line:
+  times** — `0b0fe37`, `8b173d1`, and this run. **Corrected during the `0.6.0`
+  fold: it is twice, not three times.** `8b173d1` touched `FEEDBACK.md` only —
+  release notes calling `0.4.0` unreleased, the same family of error on a
+  different surface, which the fix shipped in `0.6.0` would not have caught. The
+  miscount was written here, then propagated into the changelog and `CLAUDE.md`
+  before a refuter separated them. Not carelessness about one line:
   Shitsuke writes the entry point *before* the publication gate, the gate is
   answered, and nothing re-reads what was written. The protocol has no step
   after publication.
+
+  **Folded in `0.6.0`, 2026-08-04.** The pass no longer ends at the push: it
+  re-reads the entry point once the merge lands and reconciles what the answer
+  falsified, and Shitsuke stops asserting publication state it cannot yet know.
+  The reasoning, including the two fixes deliberately not taken, is in
+  `CLAUDE.md`.
 
 - **The figure trap, in a repo whose PRs are squashed.** `.wrap.md` carried
   "thirty-four of thirty-five non-merge commits". Correct when written; wrong

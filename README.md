@@ -29,7 +29,7 @@ went unverified, rather than re-reading its own claims and calling that a check.
 | 📍 **Seiton** — set in order | Consolidate scattered notes into one source. Write `## Provenance` (absorbed-and-deleted / kept-as-annex / corrected-in-place). Re-check the canonical-vs-exploratory boundary. Refresh the index that has quietly drifted. |
 | 🧹 **Seiso** — clean | Grep for every superseded claim and reconcile *all* its occurrences — headers, TL;DRs and summary lines included, not only body prose. Check the surfaces outside the repo too: a ticket built on a dead premise costs more than a stale doc — and what landed on the default branch *while you worked* can falsify prose you wrote minutes ago while appearing in no diff of your own. Run the project's checks. |
 | 📐 **Seiketsu** — standardise | Route each durable lesson by scope: topic doc, skill, contributor-facing lessons file, ADR, dated journal, or `.wrap.md` when the lesson is about wrapping this repo. Most sessions produce zero to two. |
-| 🪧 **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then the copy-pasteable resume block, and the publication. |
+| 🪧 **Shitsuke** — sustain | Write the entry point: what is settled, what is open (ranked, each ticketed or explicitly not), what will look like a contradiction and is not, where the deleted things went. Then the copy-pasteable resume block, and the publication. The entry point is written *before* the publication gate, so it never asserts what that gate is about to change — and once the merge lands, `wrap` goes back and reconciles it against what actually happened. |
 
 The glyphs are load-bearing in the output, not decoration: they let a run be
 scanned for judgements. The gloss beside each slug is rendered in the language
@@ -108,6 +108,12 @@ inferred everything again.
 Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking · → routed
 elsewhere. Then the publication block, one confirmation, and a ranked
 recommendation of what to do next.
+
+The pass does not end at the push. Once the merge lands, `wrap` verifies it from
+the merge commit rather than from your answer, re-reads the entry point on the
+merged result, and reconciles what publishing just falsified. The `Publish`
+question says so, so that correction is inside the one confirmation you already
+gave.
 
 Empty phases are the normal case for small milestones, and `wrap` reports them
 as empty rather than manufacturing activity.
