@@ -262,7 +262,9 @@ not, and an issue would only restate this section.
   changes, or `.wrap.md` and this file stop claiming per-idea history survives
   publication and say instead that the branch is where it lives.
 
-  **Settled 2026-08-03 by #8, three to one, the second way.** Squashed again —
+  **Settled 2026-08-03 by #8, three to one, the second way** — and by the end of
+  the day it was **six to one**: #6 through #11 are all single-parent squashes,
+  measured, not counted from memory. Squashed again —
   `29d66a3`, one parent, six commits collapsed — after a PR body that asked for
   a merge in as many words. Three consecutive squashes is not a slip repeated;
   it is the practice, and the documents were wrong about it. So: **`main`
@@ -283,9 +285,12 @@ not, and an issue would only restate this section.
   conclusion was not, and got worse: a support whose survival depends on a
   human not clicking a button is not an archive.
 
-  **So the archive is a tag, since 2026-08-03.** `ideas/0.5.0` → `6e3d58a`,
-  `ideas/post-0.5.0` → `bd210f1`, annotated, each naming the squash commit that
-  replaced it on `main`. The merge button cannot reach a tag. The namespace is
+  **So the archive is a tag, since 2026-08-03.** Four exist, one per squashed PR
+  of that day: `ideas/0.5.0` → `6e3d58a`, `ideas/post-0.5.0` → `bd210f1`,
+  `ideas/archive-tags` → `4f1883e`, `ideas/pull-refs` → `40674c9` — annotated,
+  each naming the squash commit that replaced it on `main`. An earlier revision
+  of this line listed only the first two, which were all that existed when it
+  was written. The merge button cannot reach a tag. The namespace is
   deliberate: `ideas/` leaves `v0.5.0` free if release tags are ever added, and
   this repo has none for five releases. One squashed PR, one `ideas/` tag —
   same gesture every time, no decision to retake.
