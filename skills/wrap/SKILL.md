@@ -128,6 +128,7 @@ which makes Shitsuke's handoff the centre of the pass).
 | Append a lesson to a durable location | Do it, report it |
 | Write the next-session entry point | Do it, report it |
 | Write a `.wrap.md` when none exists | Do it, report it |
+| Reconcile the entry point after the merge lands | Do it, report it |
 | Bump a tool version | Do it, report it |
 | **Delete a file** | **Propose, wait** |
 | **Move / relocate a file** | **Propose, wait** |
@@ -173,6 +174,8 @@ Then one AskUserQuestion, header `Publish`, whose options are the stopping
 points — commit + push + PR, commit + push, commit only, hold. State any
 out-of-sandbox or signing authorisation the path needs in the question text, so
 the answer grants it once; honour a session-wide grant without asking again.
+State too that a reconciliation of the entry point follows the merge, so the one
+answer covers the correction the pass already knows it will need.
 The user should be able to answer with one click and find the work published.
 
 ## 3. Configuration
@@ -410,7 +413,7 @@ It answers four questions:
 
 **You are writing this before the publication gate, so do not assert what the
 gate is about to change.** "Not yet published", "nothing is committed", "the
-manifests are at 0.5.0 but the branch is unmerged" — every one of those is false
+manifests are bumped but the branch is unmerged" — every one of those is false
 within the minute if the user answers *publish*, and nothing later in the pass
 re-reads this section. Write the state as of the writing, dated, and leave the
 publication claim for after it happens. The correction is in Publication and
@@ -457,19 +460,6 @@ Many orgs run both, and a guess costs the wrong tool at the last step of the
 pass — after every gate has already been answered, which is the most expensive
 place to be wrong.
 
-**The pass does not end at the push.** Once the publication path completes, go
-back and read the entry point Shitsuke wrote, because the answer to the gate
-falsified part of it: a version it called unreleased is released, a branch it
-called unmerged is merged, a commit count it stated is now one squash. Fix what
-the publication changed, name the commit or the PR that did it, and say in the
-closing table that you did. This is a *reconciliation*, not a gate — do it and
-report it, do not ask.
-
-Verify the landing rather than reporting it from the answer: read the merge
-commit and its parents, confirm the branch state on the remote, and re-read the
-entry point on the merged result, not on the branch. An answered `Publish`
-question does not guarantee the path completed.
-
 Close in conversation with a compact table — glyph, slug, gloss in the
 session's language:
 
@@ -492,6 +482,31 @@ everything, and the user should not have to ask "so what do you advise?". Write
 the ranking as prose. Only when its top item is actionable in this session does
 it also become a question, recommendation first; a ranking of things to do next
 week is a paragraph, not a gate.
+
+### After the merge lands
+
+**The pass does not end at the push.** The answer to the gate falsified part of
+the entry point Shitsuke wrote — a version it called unreleased is released, a
+branch it called unmerged is merged, a commit count it stated is now one squash
+— and nothing has re-read it. So, once the path completes:
+
+1. **Verify the landing rather than reporting it from the answer.** Read the
+   merge commit and its parents, and confirm the branch state on the remote. An
+   answered `Publish` question does not guarantee the path completed.
+2. **Re-read the entry point on the merged result, not on the branch**, and fix
+   what the publication changed, naming the commit or PR that did it.
+3. **Report it under the closing table**, which by then is already printed — as
+   a line in the message that confirms the landing, not by rewriting the table.
+
+This is a *reconciliation*, not a gate. But the fix is prose in a file, and prose
+in a file has to be committed, so **the `Publish` question must say that the
+reconciliation follows** — one grant covering the pass and the correction it
+knows it will need. Publication stays one confirmation; it is simply a
+confirmation of the whole path, of which the last step comes after the merge.
+The correction travels the same route as the rest of the pass: a follow-up
+commit where the project pushes to its default branch, a small follow-up PR
+where it does not. What it must never do is end with the fix uncommitted in the
+worktree, which is the *stopped* state this protocol exists to prevent.
 
 ## 7. Hard rules
 
@@ -544,7 +559,7 @@ week is a paragraph, not a gate.
   re-reads the largest context of the day; half the cost of a run is prose
   nobody needed.
 - **The entry point that describes the pass instead of the result.** "Folded and
-  versioned, not yet published — nothing is committed, pushed or merged", left
+  versioned, not yet published — nothing is committed, pushed, or merged", left
   standing after the user answered *publish*. It reads as a status and is a
   snapshot of a moment that ended mid-sentence, and the next arrival believes it
   because the entry point is the one section written for them.
