@@ -201,6 +201,13 @@ closed where they are not.
   the shell every observed session actually used. Measured in both shells. The
   rule now names `set -o pipefail` as the portable form and both spellings
   beside it.
+- **Settled 2026-08-03 — the refuter runs in a self-wrap now, and it paid.**
+  The `0.5.0` authorisation applied to the first `/wrap` after it: eleven claims
+  submitted, ten survived, one partly refuted — and six findings nobody had
+  asked about, including the State bullet above this one, which had called
+  `0.5.0` unpublished through four merges. The lesson is in the shape, not the
+  count: the claims a pass volunteers for checking are the ones it already
+  verified. The findings come from the file the refuter opens next.
 - **Open — the refuter earns its place, and nothing else in this repo does the
   job.** First actual run, 2026-08-03, after three passes skipped it: six
   refutations on claims that had already been verified twice, four of them on
