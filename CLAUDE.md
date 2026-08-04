@@ -373,7 +373,11 @@ not, and an issue would only restate this section.
   `MD013` (line length) is disabled because the phase tables run wide on
   purpose; keep prose wrapped at ~78 columns to match existing style. `MD024`
   is scoped to siblings, because the changelog repeats `### Added` per release
-  and each reviewed-feedback archive repeats `### What worked` per batch.
+  and each reviewed-feedback archive repeats `### What worked` per batch. `MD033`
+  is disabled too, for the `<type>`/`<scope>`/`<phase>` placeholders in
+  `SKILL.md` and the config template. Those three rules are the whole config —
+  this line omitted `MD033` and `.wrap.md` omitted `MD024` until a refuter read
+  the file that both were describing.
 - **`.gitignore` covers five paths**: `.DS_Store`, `.personal/`, `dist/`,
   `node_modules/`, `.impeccable/`. The last is a regenerating hook cache that
   was ignored only through this clone's `.git/info/exclude` until 2026-07-26 —
