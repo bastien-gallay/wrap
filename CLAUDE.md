@@ -20,9 +20,12 @@ other files exist only to install, lint, and iterate on it.
   phases → output → hard rules → anti-patterns → self-check). The five phase
   *slugs* under §5 are load-bearing — `--only <phase>` names them, so
   `seiri|seiton|seiso|seiketsu|shitsuke` must match the frontmatter
-  `argument-hint`. The English glosses beside them are not: `SKILL.md` says
-  "Seiton — put each thing in its place" where `README.md` says "set in
-  order", and that divergence is fine. Only the slugs need syncing.
+  `argument-hint`. The English glosses beside them are not: `SKILL.md`'s
+  heading says "Seiton — put each thing in its place" where `README.md` and,
+  since `0.7.0`, `SKILL.md`'s own closing-table sample say "set in order", and
+  that divergence is fine. The closing table's *Translation* column is a short
+  gloss in the session's language, not a copy of the heading. Only the slugs
+  need syncing.
 - **`skills/wrap/templates/wrap-config.md`** — the `.wrap.md` template users
   copy into their projects. Its four section headings (Canonical locations /
   Verification commands / Disposable zones / Commit conventions) are parsed by
@@ -184,10 +187,20 @@ forcing.
 
 ## State — what is open
 
-Revised 2026-08-04, folding the entry-point mechanism as `0.6.0`. The
-2026-07-21, 07-26 and 07-31 lines are kept where they are still true and marked
-closed where they are not.
+Revised 2026-09-23, after `0.7.0` landed. The 2026-08-04 revision folded the
+entry-point mechanism as `0.6.0`; the 2026-07-21, 07-26 and 07-31 lines are kept
+where they are still true and marked closed where they are not.
 
+- **Settled 2026-09-23 — `0.7.0` is released on `main`** as `ac131da` (PR #17,
+  squash, one parent `48ed8df`), archived as `ideas/0.7.0` → `88fde07`, which is
+  also `refs/pull/17/head` and tree-identical to `ac131da`, and the installed
+  skill serves it — verified by grepping the installed file. From a direct
+  request, not a feedback batch: the closing output becomes a markdown table
+  with a translation per phase, a changed-file list, and a *Next — recommended
+  in a new session* heading; two directives say a fact needs no sentence and a
+  phase name never travels without its gloss. Minor, because the output
+  contract changes. The self-wrap that wrote this line is the format's first
+  run inside `/wrap`.
 - **Settled 2026-08-04 — `0.6.0` is released on `main`** as `8df27d3` (PR #13),
   archived as `ideas/0.6.0`, and the installed skill serves it — verified by
   grepping the installed file, not the commit. One fold, from two measured
