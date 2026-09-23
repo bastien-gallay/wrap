@@ -5,6 +5,27 @@ All notable changes to this skill are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.7.0] — 2026-09-23
+
+### Changed
+
+- **The closing report is a markdown table**, one row per phase, with a
+  *Translation* column carrying the gloss in the session's language. A phase
+  name never appears in the output without its translation.
+- **A fact that stands alone gets no sentence.** `3 deleted`, not "I deleted
+  three files" — a new always-on directive, applied to the whole output.
+- **A changed-file list follows the table**: repo-relative paths the terminal
+  renders as links, built from `git diff --name-status`, with no detail.
+- **The next step is introduced by `### → Next — recommended in a new
+  session`**, a ranked numbered list, then the resume block last. The
+  recommendation to continue in a fresh session is explicit rather than
+  implied by the resume block.
+- Two anti-patterns and a self-check cover the prose report and the next step
+  that continues in the current context.
+
+From a direct request, not a feedback batch — nothing is archived out of
+`FEEDBACK.md` for it.
+
 ## [0.6.0] — 2026-08-04
 
 ### Added
