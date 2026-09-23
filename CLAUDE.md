@@ -20,9 +20,12 @@ other files exist only to install, lint, and iterate on it.
   phases → output → hard rules → anti-patterns → self-check). The five phase
   *slugs* under §5 are load-bearing — `--only <phase>` names them, so
   `seiri|seiton|seiso|seiketsu|shitsuke` must match the frontmatter
-  `argument-hint`. The English glosses beside them are not: `SKILL.md` says
-  "Seiton — put each thing in its place" where `README.md` says "set in
-  order", and that divergence is fine. Only the slugs need syncing.
+  `argument-hint`. The English glosses beside them are not: `SKILL.md`'s
+  heading says "Seiton — put each thing in its place" where `README.md` and,
+  since `0.7.0`, `SKILL.md`'s own closing-table sample say "set in order", and
+  that divergence is fine. The closing table's *Translation* column is a short
+  gloss in the session's language, not a copy of the heading. Only the slugs
+  need syncing.
 - **`skills/wrap/templates/wrap-config.md`** — the `.wrap.md` template users
   copy into their projects. Its four section headings (Canonical locations /
   Verification commands / Disposable zones / Commit conventions) are parsed by
