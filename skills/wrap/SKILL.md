@@ -117,6 +117,15 @@ which makes Shitsuke's handoff the centre of the pass).
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
     independent commands into one call rather than one per turn.
+12. **A fact that stands alone gets no sentence.** `3 deleted`,
+    `markdownlint ✅`, `README.md` — not "I deleted three files", "the linter
+    passed", "I updated the README". Use a sentence only when it carries
+    something no fact carries: a reason, a consequence, a caveat. This applies
+    to every line of output, the closing table first of all.
+13. **A phase name never appears without its translation.** Slugs are
+    Japanese, and `Seiketsu` alone is unreadable at a glance. Wherever the
+    output names a phase, the gloss in the session's language goes beside it —
+    a column in the closing table, `Seiso (clean)` in running text.
 
 ## 2. Autonomy contract
 
