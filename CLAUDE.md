@@ -150,6 +150,15 @@ append to `~/.claude/skills/wrap/FEEDBACK.md`) is deliberately not folded; see
   the degradation rule stays the exit, because the failure to design against is
   not a harness that refuses — it is a pass that reads the authorisation,
   substitutes its own re-read, and reports a verification that did not happen.
+- **The closing output is a table, and the next step points at a new
+  session.** Requested directly on 2026-09-23, not folded from a run. The
+  earlier fixed-width text block was scannable only in a monospace font and
+  left the glosses optional; a markdown table makes the *Translation* column
+  structural. The next step says "new session" out loud because the resume
+  block alone implied it and did not say it — and the reason is the same cost
+  argument as Orientation's fan-out: the end-of-pass context is the most
+  expensive of the day, and the entry point exists so the next piece of work
+  does not need it.
 - **The skill ships decoupled from every real project.** Examples use `PROJ-\d+`
   and invented topic paths. Two client ticket refs shipped in `0.1.0`'s output
   sample before anyone noticed; a skill that travels to other people's repos

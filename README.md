@@ -96,18 +96,26 @@ inferred everything again.
 
 ## Output
 
-```text
-🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
-📍 Seiton      6 notes → wip/queue-pacing/README.md; index refreshed (67)
-🧹 Seiso       4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links
-               → PROJ-412's justification is dead, reword proposed not applied
-📐 Seiketsu    1 lesson → AGENTS.md; nothing else generalised
-🪧 Shitsuke    entry point written; 1 open (PROJ-419), 1 not ticketed
-```
+Four parts, in this order, facts rather than sentences:
+
+1. **The closing table** — one row per phase, each with its translation:
+
+   | Phase | Translation | Result |
+   | --- | --- | --- |
+   | 🗂 Seiri | sort | 3 deleted, 1 annexed, 2 hypotheses retired |
+   | 📍 Seiton | set in order | 6 notes → `wip/queue-pacing/README.md` · index refreshed (67) |
+   | 🧹 Seiso | clean | 4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links |
+   | 📐 Seiketsu | standardise | 1 lesson → `AGENTS.md` |
+   | 🪧 Shitsuke | sustain | entry point written · 1 open (PROJ-419) · 1 not ticketed |
+
+2. **Files changed** — repo-relative paths, clickable in the terminal, no
+   detail.
+3. **The publication block** — one confirmation.
+4. **→ Next — recommended in a new session** — the ranked next actions, then
+   the copy-pasteable resume block.
 
 Verdict glyphs are a closed set — ✅ clean · ⚠️ finding · ❌ blocking · → routed
-elsewhere. Then the publication block, one confirmation, and a ranked
-recommendation of what to do next.
+elsewhere.
 
 The pass does not end at the push. Once the merge lands, `wrap` verifies it from
 the merge commit rather than from your answer, re-reads the entry point on the

@@ -117,6 +117,15 @@ which makes Shitsuke's handoff the centre of the pass).
     calls, no restating a finding you have already reported. The file you
     changed is the deliverable; the closing table is the report. Batch
     independent commands into one call rather than one per turn.
+12. **A fact that stands alone gets no sentence.** `3 deleted`,
+    `markdownlint ✅`, `README.md` — not "I deleted three files", "the linter
+    passed", "I updated the README". Use a sentence only when it carries
+    something no fact carries: a reason, a consequence, a caveat. This applies
+    to every line of output, the closing table first of all.
+13. **A phase name never appears without its translation.** Slugs are
+    Japanese, and `Seiketsu` alone is unreadable at a glance. Wherever the
+    output names a phase, the gloss in the session's language goes beside it —
+    a column in the closing table, `Seiso (clean)` in running text.
 
 ## 2. Autonomy contract
 
@@ -423,7 +432,8 @@ Then two things the user should not have to ask for:
 
 - **The resume block.** Three or four lines, copy-pasteable as the opening
   message of a fresh session: where the work is, what to read first, what the
-  next action is. Fenced, so it can be copied without cleanup.
+  next action is. Fenced, so it can be copied without cleanup, and printed
+  last, under the *Next — recommended in a new session* heading (§6).
 - **The reminder**, if the open list has a datable next action. Offer it as a
   question with the date in the option; do not schedule silently.
 
@@ -460,28 +470,54 @@ Many orgs run both, and a guess costs the wrong tool at the last step of the
 pass — after every gate has already been answered, which is the most expensive
 place to be wrong.
 
-Close in conversation with a compact table — glyph, slug, gloss in the
-session's language:
+The closing output has four parts, always in this order and always all four.
+Each part is facts, not sentences (§1.12).
 
-```text
-🗂 Seiri       3 deleted, 1 annexed, 2 hypotheses retired
-📍 Seiton      6 notes → wip/queue-pacing/README.md; index refreshed (67)
-🧹 Seiso       4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links
-               → PROJ-412's justification is dead, reword proposed not applied
-📐 Seiketsu    1 lesson → AGENTS.md; nothing else generalised
-🪧 Shitsuke    entry point written; 1 open (PROJ-419), 1 not ticketed
+**1. The closing table** — a markdown table, one row per phase, five rows even
+when a phase found nothing. The *Translation* column carries the gloss in the
+session's language (§1.13); it is never dropped to save width.
+
+```markdown
+| Phase | Translation | Result |
+| --- | --- | --- |
+| 🗂 Seiri | sort | 3 deleted, 1 annexed, 2 hypotheses retired |
+| 📍 Seiton | set in order | 6 notes → `wip/queue-pacing/README.md` · index refreshed (67) |
+| 🧹 Seiso | clean | 4 docs reconciled ⚠️ · markdownlint ✅ · lychee ⚠️ 2 dead links · → PROJ-412 reword proposed, not applied |
+| 📐 Seiketsu | standardise | 1 lesson → `AGENTS.md` |
+| 🪧 Shitsuke | sustain | entry point written · 1 open (PROJ-419) · 1 not ticketed |
 ```
 
 Verdict glyphs are a closed set: ✅ clean · ⚠️ finding · ❌ blocking · → routed
 elsewhere. They mark the judgement, so the output can be scanned for judgements
-alone.
+alone. An empty phase reads `nothing`, not a sentence explaining why.
 
-Then the publication block (§2), and last, **what you would do next, ranked**.
-A recommendation, with the reason in half a line — the pass has just read
-everything, and the user should not have to ask "so what do you advise?". Write
-the ranking as prose. Only when its top item is actionable in this session does
-it also become a question, recommendation first; a ranking of things to do next
-week is a paragraph, not a gate.
+**2. Files changed** — the repo files this pass modified, created or deleted,
+one per line, each a repo-relative path in backticks so the terminal renders it
+as a link. No description, no line counts, no diff: the table already said what
+changed, and the list only says where. Build it from `git diff --name-status`
+over the pass, never from memory (§1.6); mark a deletion `(deleted)` and nothing
+else.
+
+**3. The publication block** (§2).
+
+**4. Next — in a new session.** Open it with a heading the eye cannot miss:
+
+```markdown
+### → Next — recommended in a new session
+```
+
+The heading is the recommendation: the next piece of work starts in a fresh
+session, not in this one. This context is the largest of the day, every further
+turn re-reads it, and the entry point was written precisely so that nothing in
+it is needed. Under the heading, **what you would do next, ranked**: a
+numbered list, one item per line, each with its reason in half a line — the
+pass has just read everything, and the user should not have to ask "so what do
+you advise?". Then the resume block from Shitsuke, fenced, as the last thing in
+the output, so the copy is one selection away.
+
+Only when the top item is small and actionable right now may it also become a
+question — and its recommended option is still the new session. A ranking of
+things to do next week is a list, not a gate.
 
 ### After the merge lands
 
@@ -563,6 +599,12 @@ worktree, which is the *stopped* state this protocol exists to prevent.
   standing after the user answered *publish*. It reads as a status and is a
   snapshot of a moment that ended mid-sentence, and the next arrival believes it
   because the entry point is the one section written for them.
+- **The prose report.** "I reconciled four documents and the linter passed"
+  where `4 reconciled · markdownlint ✅` says the same in a third of the
+  width. A closing table that needs reading is not scannable.
+- **The next step that continues here.** A ranking of next actions with no
+  signal that it belongs in a fresh session, so the user carries on in the
+  most expensive context of the day and the entry point goes unread.
 - **The finding told five times.** Once in the phase narration, once in a
   detail table, once in the closing table, once in the commit body, once in
   the PR body. Once in the file, once in the table.
@@ -583,6 +625,9 @@ worktree, which is the *stopped* state this protocol exists to prevent.
 - Did the refuter get a fresh context, and did I act on what it found?
 - If the work was published, did I re-read the entry point *after* the merge
   landed, and does it describe the result rather than the pass?
+- Is the closing table a markdown table with a translation beside every
+  phase, followed by the changed-file list, the publication block, and the
+  *Next — recommended in a new session* heading, in that order?
 - Is there one confirmation left to give, or three?
 - Was every gate a question the user could answer with one click, listing what
   each answer does — and did each one offer a way to do less?
