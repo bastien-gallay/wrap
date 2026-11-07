@@ -35,6 +35,46 @@ that was *not* folded, and why: this file is unreachable from any repo other
 than this one, so the intake only fires during a self-wrap. The usage report is
 a partial answer to that, and the 08-03 archive says what it does not recover.
 
+## 2026-11-07 — termherd: a review of the context files that wraps fed
+
+Not a wrap run. A review of termherd's agent context files, the files many
+wraps had promoted lessons into, carried here by hand. Each finding is
+about what Seiketsu and the `.wrap.md` config produced over time.
+
+- **The `lessons` file became the largest always-loaded cost.** `AGENTS.md`
+  reached 903 lines (57 kB, ~14 k tokens in every session). Most of it was
+  *the instance* that §5 Seiketsu asks a lesson to carry ("the trap plus the
+  instance that produced it"): five to fifteen lines of incident per one-line
+  rule, plus the order in which the MCP rungs shipped. The fix split each
+  lesson into a rule line in `AGENTS.md` and its incident in
+  `docs/agents/lessons.md`, which loads on demand: 19 kB at the root.
+- **Promoting never looked for the last copy.** The no-AI-signature rule was
+  in five places (global `CLAUDE.md`, `AGENTS.md`, `CODING_STANDARDS.md`,
+  `.wrap.md`, user memory), the gate list in five files, the `#NN`-in-code
+  rule in four files plus a memory. Each was added by a pass promoting a
+  lesson it had just learned.
+- **A rule that kept failing got more prose, not enforcement.** The
+  signature rule failed three times (#84, #406, #420) while those copies
+  grew; each wrap added an incident paragraph. A PreToolUse hook replaced
+  them. The routing table has no row for "make it a hook, script or test".
+- **The `Notes` row attracted every trap noticed during a wrap.** Twelve of
+  twenty-five `.wrap.md` notes were about tools a feature session hits first
+  (`cargo mutants`, `gh pr checks`, board ids, `markdownlint-cli2`'s summary,
+  git from an agent shell), not about wrapping. Only a `/wrap` ever read
+  them. They moved to `docs/agents/tooling.md`.
+- **The config named a location that did not exist, and nothing checked.**
+  `.wrap.md` gave `skills: .claude/skills/`; the directory was absent, so the
+  *Operational → a skill* row had no destination and procedures piled up in
+  `AGENTS.md` and `Notes` instead.
+- **Writing a skill or a hook config can need the human.** In auto mode the
+  harness classifier refused writes to `.claude/settings.json` and
+  `.claude/skills/` as self-modification. The pass drafted them in the
+  scratchpad and handed over a copy command.
+- **Superseded memories were marked, not deleted.** A memory flagged
+  *SUPERSEDED* was still linked from another, which repeated its obsolete
+  `env -u ZDOTDIR` advice; the review deleted the memory and the link. That is the user's memory, outside the repo, but a
+  Seiso pass reconciling claims read past it.
+
 ## 2026-09-23 — publishing `0.7.0`, then the first `/wrap` on the new format
 
 Not a wrap run for the release itself; the self-wrap that followed is.
